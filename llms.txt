@@ -1,0 +1,80 @@
+# Restcalc — Sleep Calculator & Bedtime Planner
+
+> Restcalc is a free, browser-based sleep calculator and bedtime planner. It helps users find the best time to go to bed or wake up by aligning with natural 90-minute sleep cycles. No signup, no backend, 100% client-side. Available in English and 中文 (Chinese), with one-click language switching.
+
+## What is Restcalc?
+
+Restcalc is an online sleep-planning tool for people who want to wake up feeling refreshed instead of groggy. It is built on a simple, science-backed idea: a healthy night of sleep is organized into cycles of about 90 minutes, and waking up at the boundary between cycles (during light sleep) feels much better than being jolted out of deep sleep.
+
+The site targets general adults who want better sleep, shift workers, students, parents, and travelers dealing with jet lag. It is not medical advice.
+
+## Interactive Tools
+
+### Bedtime Calculator
+- URL: https://restcalc.com/#bedtime
+- Enter the time you must wake up; Restcalc counts backward in 90-minute cycles (plus ~15 minutes to fall asleep) and suggests several bedtimes for 3, 4, 5, or 6 cycles.
+
+### Wake-up Calculator
+- URL: https://restcalc.com/#wake
+- Enter your planned bedtime; Restcalc adds full sleep cycles to show the best moments to set your alarm.
+
+### Sleep Duration Checker
+- URL: https://restcalc.com/#duration
+- Enter bedtime and wake time to see total sleep, completed cycles, and a quality rating (Great / Good / Fair / Insufficient).
+
+### Nap Calculator
+- URL: https://restcalc.com/#nap
+- Enter the current time to get the ideal window for a 20-minute power nap or a 90-minute full-cycle nap.
+
+### Sleep Debt Estimator
+- URL: https://restcalc.com/#debt
+- Enter your average nightly hours and target to estimate nightly and weekly sleep debt and a rough recovery timeline.
+
+## How Sleep Cycles Work
+
+Your brain moves through sleep cycles roughly every 90 minutes, alternating between light sleep, deep sleep, and REM (dream) sleep. A full night usually contains 4–6 cycles. Waking between cycles — during light sleep — leaves you clear-headed; waking from deep sleep causes grogginess. Restcalc works backward from your alarm (or forward from bedtime) to land you on a cycle boundary.
+
+## Frequently Asked Questions
+
+**How many sleep cycles do I need?**
+Most adults feel best with 4–6 full cycles, or about 6–9 hours in bed. Five cycles (7.5 hours) is a common sweet spot.
+
+**What is the 90-minute rule?**
+Sleep cycles average about 90 minutes. Planning bed or wake times on these boundaries helps you surface during light sleep, reducing grogginess.
+
+**How long does it take to fall asleep?**
+Restcalc assumes about 15 minutes to fall asleep. Adjust mentally if you know you take longer.
+
+**Is it better to wake during light sleep?**
+Yes. Waking at the end of a cycle, in light sleep, is far easier than being jolted out of deep sleep.
+
+**Can I use this for naps?**
+Yes. A 20-minute power nap or a 90-minute full-cycle nap both avoid deep-sleep grogginess.
+
+**Why do I feel tired after 8 hours?**
+It may be timing, not duration. Waking mid-cycle can leave you groggy even after a long night. Try shifting your schedule 30–60 minutes.
+
+## Science-Backed Sleep Tips
+
+- Get 10–20 minutes of morning sunlight soon after waking to set your body clock.
+- Keep the bedroom around 18°C (65°F) for deeper sleep.
+- Dim screens and avoid blue light about an hour before bed.
+- Keep a consistent wake time to stabilize your whole cycle.
+- Avoid caffeine 8+ hours before bed — it lingers in your system.
+- Use cycle timing (with Restcalc) to wake at a 90-minute boundary.
+
+## Monetization & Affiliate Disclosure
+
+Restcalc participates in the Amazon Associates program. As an affiliate, the site may earn from qualifying purchases made through “sponsored” product links, at no extra cost to users. The site also plans to display Google AdSense ads. Affiliate and ad content do not affect tool results.
+
+## Languages
+
+- English (default): https://restcalc.com/
+- 中文 (Chinese): https://restcalc.com/?lang=zh
+
+## Technical Notes
+
+- Single-page static site, no build step, no external runtime dependencies.
+- All calculations run client-side in JavaScript; no user data is uploaded.
+- Structured data (JSON-LD): WebSite, ItemList, FAQPage.
+- Multilingual via hreflang alternates (en, zh, x-default).
