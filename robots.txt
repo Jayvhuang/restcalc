@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://restcalc.com/sitemap.xml
+Sitemap: https://restcalc.vercel.app/sitemap.xml

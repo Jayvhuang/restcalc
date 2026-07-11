@@ -264,6 +264,7 @@ a{color:inherit;text-decoration:none}
       <a href="#science" data-i18n="nav.science">How it works</a>
       <a href="#tips" data-i18n="nav.tips">Tips</a>
       <a href="#faq" data-i18n="nav.faq">FAQ</a>
+      <a href="privacy.html" data-i18n="nav.privacy">Privacy</a>
     </nav>
     <span class="nav-spacer"></span>
     <button class="btn icon" id="themeBtn" title="Toggle theme">🌗</button>
@@ -479,6 +480,14 @@ a{color:inherit;text-decoration:none}
     <div class="aff-grid" id="aff-grid"></div>
     <p class="aff-note" data-i18n="aff.note">Restcalc is a participant in the Amazon Associates program. As an affiliate we may earn from qualifying purchases, at no extra cost to you. Links are marked “sponsored”.</p>
   </section>
+
+  <!-- ABOUT -->
+  <section class="section wrap" id="about">
+    <div class="section-head">
+      <h2 data-i18n="about.heading">About Restcalc</h2>
+    </div>
+    <div class="sci-prose" data-i18n="about.body"></div>
+  </section>
 </main>
 
 <footer class="site-footer">
@@ -505,6 +514,7 @@ a{color:inherit;text-decoration:none}
       <a href="#science" data-i18n="nav.science">How it works</a>
       <a href="#tips" data-i18n="nav.tips">Tips</a>
       <a href="#faq" data-i18n="nav.faq">FAQ</a>
+      <a href="privacy.html" data-i18n="nav.privacy">Privacy</a>
     </div>
     <div class="col">
       <h5 data-i18n="foot.sources">Sources</h5>
@@ -525,7 +535,7 @@ a{color:inherit;text-decoration:none}
 /* ============ i18n content ============ */
 const T = {
   en:{
-    nav:{tools:"Tools",science:"How it works",tips:"Tips",faq:"FAQ"},
+    nav:{tools:"Tools",science:"How it works",tips:"Tips",faq:"FAQ",privacy:"Privacy"},
     hero:{
       title:'Plan your sleep around your <span class="grad">body clock</span>',
       sub:"Restcalc calculates the perfect bedtime or wake-up time using natural 90-minute sleep cycles, so you rise during light sleep — refreshed, not groggy.",
@@ -630,10 +640,17 @@ const T = {
         {q:"How long does it take to fall asleep?",a:"We assume ~15 minutes to fall asleep. You can adjust mentally if you know you take longer."},
         {q:"Is it better to wake during light sleep?",a:"Yes. Waking at the end of a cycle, in light sleep, is far easier than being jolted out of deep sleep."},
         {q:"Can I use this for naps?",a:"Absolutely. A 20-minute power nap or a 90-minute full-cycle nap both avoid deep-sleep grogginess."},
-        {q:"Why do I feel tired after 8 hours?",a:"It may be timing, not duration. Waking mid-cycle can leave you groggy even after a long night. Try shifting 30–60 min."}
+        {q:"Why do I feel tired after 8 hours?",a:"It may be timing, not duration. Waking mid-cycle can leave you groggy even after a long night. Try shifting 30–60 min."},
+        {q:"Do you store my sleep log?",a:"No. Your sleep-log entries are saved only in your own browser (localStorage). They are never uploaded to us or any server, and clearing your browser data erases them."},
+        {q:"How accurate are the 90-minute estimates?",a:"They are model-based estimates, not measured sleep. Real cycles vary from person to person and night to night. Use them as a planning guide, not a medical reading."},
+        {q:"Is Restcalc a medical device?",a:"No. Restcalc is an educational tool. It does not diagnose or treat any condition. For chronic sleep problems, see a healthcare professional."}
       ]
     },
     aff:{
+    about:{
+      heading:"About Restcalc",
+      body:"Restcalc is a free educational tool that helps you plan sleep around your natural 90-minute cycles. It is built on peer-reviewed sleep science — National Sleep Foundation sleep-duration guidance (2022), Kleitman &amp; Aserinsky's discovery of REM sleep (1953), and Walker's Why We Sleep (2017). Every calculation runs privately in your browser; we never see or store your data. Restcalc does not diagnose or treat any medical condition."
+    },
       heading:"Sleep products we recommend",
       sub:"Gear that helps you fall — and stay — asleep.",
       note:"Restcalc is a participant in the Amazon Associates program. As an affiliate we may earn from qualifying purchases, at no extra cost to you. Links are marked “sponsored”.",
@@ -653,7 +670,7 @@ const T = {
     langName:"中文"
   },
   zh:{
-    nav:{tools:"工具",science:"原理",tips:"建议",faq:"常见问题"},
+    nav:{tools:"工具",science:"原理",tips:"建议",faq:"常见问题",privacy:"隐私"},
     hero:{
       title:'顺应你的<span class="grad">生物钟</span>安排睡眠',
       sub:"Restcalc 基于天然的 90 分钟睡眠周期，为你算出最佳就寝或起床时间，让你在浅睡中自然醒来——神清气爽，不再昏沉。",
@@ -758,10 +775,17 @@ const T = {
         {q:"入睡通常需要多久？",a:"我们按约 15 分钟计算。如果你知道自己入睡更慢，可相应调整。"},
         {q:"在浅睡中醒来更好吗？",a:"是的。在周期结束、浅睡阶段醒来，远比从深睡中被惊醒要轻松。"},
         {q:"午睡也能用这个吗？",a:"当然。20 分钟小憩或 90 分钟完整周期午睡都能避免深睡昏沉。"},
-        {q:"为什么睡了 8 小时还是累？",a:"可能是时机而非时长问题。在周期中途醒来，即便睡很久也会昏沉。尝试调整 30–60 分钟。"}
+        {q:"为什么睡了 8 小时还是累？",a:"可能是时机而非时长问题。在周期中途醒来，即便睡很久也会昏沉。尝试调整 30–60 分钟。"},
+        {q:"你们会保存我的睡眠记录吗？",a:"不会。你的睡眠记录只保存在你自己的浏览器（localStorage）里，不会上传给我们或任何服务器；清除浏览器数据即可删除。"},
+        {q:"90 分钟估算有多准？",a:"它是基于模型的估算，并非实测睡眠。真实周期因人而异、因夜而异。请把它当作规划参考，而非医学读数。"},
+        {q:"Restcalc 是医疗器械吗？",a:"不是。Restcalc 是教育类工具，不诊断也不治疗任何疾病。如有长期睡眠问题，请咨询医疗专业人士。"}
       ]
     },
     aff:{
+    about:{
+      heading:"关于 Restcalc",
+      body:"Restcalc 是一款免费的睡眠规划教育工具，帮你顺着天然的 90 分钟周期安排睡眠。它建立在同行评审的睡眠科学之上——美国国家睡眠基金会（NSF，2022）的睡眠时长指引、Kleitman 与 Aserinsky 于 1953 年发现 REM 睡眠、以及 Walker 的《我们为何睡眠》（2017）。所有计算都在你的浏览器本地私密完成，我们看不到、也不存储你的数据。Restcalc 不诊断、不治疗任何医学状况。"
+    },
       heading:"我们推荐的睡眠好物",
       sub:"帮你更快入睡、睡得更沉的装备。",
       note:"Restcalc 是亚马逊联盟（Amazon Associates）计划的参与者。作为联盟成员，我们可能从符合条件的购买中获得收益，不会增加你的成本。链接已标注“sponsored（赞助）”。",
