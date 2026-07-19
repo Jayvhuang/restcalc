@@ -1,6 +1,6 @@
 # Restcalc — Sleep Calculator & Bedtime Planner
 
-> Restcalc is a free, browser-based sleep calculator and bedtime planner. It helps users find the best time to go to bed or wake up by aligning with natural 90-minute sleep cycles. No signup, no backend, 100% client-side. Available in English and 中文 (Chinese), with one-click language switching.
+> Restcalc is a free, browser-based sleep calculator and bedtime planner. It helps users find the best time to go to bed or wake up by aligning with natural 90-minute sleep cycles. No signup, no backend, 100% client-side. Available in English (default) and 中文 (Chinese, via an in-page toggle).
 
 ## What is Restcalc?
 
@@ -10,29 +10,18 @@ The site targets general adults who want better sleep, shift workers, students, 
 
 ## Interactive Tools
 
-### Bedtime Calculator
-- URL: https://restcalc.com/#bedtime
-- Enter the time you must wake up; Restcalc counts backward in 90-minute cycles (plus ~15 minutes to fall asleep) and suggests several bedtimes for 3, 4, 5, or 6 cycles.
+Each tool is a standalone page with its own calculator, explanation, and FAQ.
 
-### Wake-up Calculator
-- URL: https://restcalc.com/#wake
-- Enter your planned bedtime; Restcalc adds full sleep cycles to show the best moments to set your alarm.
-
-### Sleep Duration Checker
-- URL: https://restcalc.com/#duration
-- Enter bedtime and wake time to see total sleep, completed cycles, and a quality rating (Great / Good / Fair / Insufficient).
-
-### Nap Calculator
-- URL: https://restcalc.com/#nap
-- Enter the current time to get the ideal window for a 20-minute power nap or a 90-minute full-cycle nap.
-
-### Sleep Debt Estimator
-- URL: https://restcalc.com/#debt
-- Enter your average nightly hours and target to estimate nightly and weekly sleep debt and a rough recovery timeline.
+- [Bedtime Calculator](https://restcalc.vercel.app/tools/bedtime-calculator.html): Enter the time you need to wake up. We count back in 90-minute sleep cycles plus ~15 minutes to fall asleep.
+- [Wake-up Calculator](https://restcalc.vercel.app/tools/wake-up-calculator.html): Enter when you plan to go to bed. We add sleep cycles to find the best moments to wake up.
+- [Sleep Duration Calculator](https://restcalc.vercel.app/tools/sleep-duration-calculator.html): Enter your bedtime and wake time to see total sleep, completed cycles, and a quality rating.
+- [Nap Calculator](https://restcalc.vercel.app/tools/nap-calculator.html): Enter the current time to see the best window for a refreshing power nap or a full-cycle nap.
+- [Sleep Window Helper](https://restcalc.vercel.app/tools/sleep-window-calculator.html): Choose the time range you are free to sleep. We find the bedtimes that complete full 90-minute cycles and keep you inside your window.
+- [Sleep Log & Trend](https://restcalc.vercel.app/tools/sleep-log.html): Log a few nights — just your bedtime, wake time, and how you felt. We turn it into a visual trend and show your 90-minute cycles each night.
 
 ## How Sleep Cycles Work
 
-Your brain moves through sleep cycles roughly every 90 minutes, alternating between light sleep, deep sleep, and REM (dream) sleep. A full night usually contains 4–6 cycles. Waking between cycles — during light sleep — leaves you clear-headed; waking from deep sleep causes grogginess. Restcalc works backward from your alarm (or forward from bedtime) to land you on a cycle boundary.
+Your brain moves through sleep cycles roughly every 90 minutes, alternating between light sleep, deep sleep, and REM (dream) sleep. A full night usually contains 4–6 cycles. Waking between cycles — during light sleep — leaves you clear-headed; waking from deep sleep causes grogginess. Restcalc works backward from your alarm (or forward from bedtime) to land you on a cycle boundary. Recommended total time in bed for adults is about 7–9 hours, following guidance such as the National Sleep Foundation's 2022 recommendations.
 
 ## Frequently Asked Questions
 
@@ -63,18 +52,18 @@ It may be timing, not duration. Waking mid-cycle can leave you groggy even after
 - Avoid caffeine 8+ hours before bed — it lingers in your system.
 - Use cycle timing (with Restcalc) to wake at a 90-minute boundary.
 
-## Monetization & Affiliate Disclosure
-
-Restcalc participates in the Amazon Associates program. As an affiliate, the site may earn from qualifying purchases made through “sponsored” product links, at no extra cost to users. The site also plans to display Google AdSense ads. Affiliate and ad content do not affect tool results.
-
 ## Languages
 
-- English (default): https://restcalc.com/
-- 中文 (Chinese): https://restcalc.com/?lang=zh
+- English (default, crawlable static content): https://restcalc.vercel.app/
+- 中文 (Chinese): available via an in-page language toggle on every page. Note: the Chinese text is rendered client-side, so the English version is the primary crawlable content for search engines and AI crawlers.
+
+## Monetization & Affiliate Disclosure
+
+Restcalc participates in the Amazon Associates program. As an affiliate, the site may earn from qualifying purchases made through sponsored product links, at no extra cost to users. The site also displays Google AdSense ads. Affiliate and ad content do not affect tool results. See the Privacy Policy for details on cookies and data: https://restcalc.vercel.app/privacy.html
 
 ## Technical Notes
 
-- Single-page static site, no build step, no external runtime dependencies.
-- All calculations run client-side in JavaScript; no user data is uploaded.
-- Structured data (JSON-LD): WebSite, ItemList, FAQPage.
-- Multilingual via hreflang alternates (en, zh, x-default).
+- Static site, no build step, no external runtime dependencies.
+- Six independent tool pages plus a homepage; all calculations run client-side in JavaScript, and no user sleep data is uploaded.
+- Structured data (JSON-LD): WebSite + ItemList on the homepage; WebPage + FAQPage on each tool page.
+- Multilingual via an in-page toggle (English default, 中文 available).
