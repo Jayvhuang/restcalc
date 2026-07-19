@@ -501,12 +501,12 @@ a{color:inherit;text-decoration:none}
     </div>
     <div class="col">
       <h5 data-i18n="foot.tools">Tools</h5>
-      <a href="tools/bedtime-calculator.html" data-i18n="t.bedtime">Bedtime</a>
-      <a href="tools/wake-up-calculator.html" data-i18n="t.wake">Wake-up</a>
-      <a href="tools/sleep-duration-calculator.html" data-i18n="t.duration">Duration</a>
-      <a href="tools/nap-calculator.html" data-i18n="t.nap">Nap</a>
-      <a href="tools/sleep-window-calculator.html" data-i18n="t.window">Sleep window</a>
-      <a href="tools/sleep-log.html" data-i18n="t.log">Sleep log</a>
+      <a href="tools/bedtime-calculator.html" data-i18n="tools.bedtime.name">Bedtime Calculator</a>
+      <a href="tools/wake-up-calculator.html" data-i18n="tools.wake.name">Wake-up Calculator</a>
+      <a href="tools/sleep-duration-calculator.html" data-i18n="tools.duration.name">Sleep Duration Calculator</a>
+      <a href="tools/nap-calculator.html" data-i18n="tools.nap.name">Nap Calculator</a>
+      <a href="tools/sleep-window-calculator.html" data-i18n="tools.window.name">Sleep Window Helper</a>
+      <a href="tools/sleep-log.html" data-i18n="tools.log.name">Sleep Log &amp; Trend</a>
     </div>
     <div class="col">
       <h5 data-i18n="foot.learn">Learn</h5>
@@ -541,7 +541,14 @@ const T = {
       cta:"Open sleep calculator", learn:"How sleep cycles work",
       trust:"🔒 Private by design — every calculation runs in your browser. No account, no data uploaded. 📚 Built on peer-reviewed sleep science."
     },
-    tools:{heading:"Free sleep & bedtime tools",sub:"No signup. Works offline in your browser. Switch language anytime."},
+    tools:{heading:"Free sleep & bedtime tools",sub:"No signup. Works offline in your browser. Switch language anytime.",
+      bedtime:{name:"Bedtime Calculator"},
+      wake:{name:"Wake-up Calculator"},
+      duration:{name:"Sleep Duration Calculator"},
+      nap:{name:"Nap Calculator"},
+      window:{name:"Sleep Window Helper"},
+      log:{name:"Sleep Log & Trend"}
+    },
     t:{bedtime:"Bedtime",wake:"Wake-up",duration:"Duration",nap:"Nap",window:"Sleep window",log:"Sleep log"},
     age:{teen:"Under 18",adult:"18–64 (adult)",senior:"65 and older"},
     bedtime:{
@@ -676,7 +683,14 @@ const T = {
       cta:"打开睡眠计算器", learn:"睡眠周期原理",
       trust:"🔒 隐私优先——所有计算都在你的浏览器本地完成，无需注册，数据不上传。📚 基于同行评审的睡眠科学。"
     },
-    tools:{heading:"免费睡眠与就寝工具",sub:"无需注册，浏览器本地运行，可随时切换语言。"},
+    tools:{heading:"免费睡眠与就寝工具",sub:"无需注册，浏览器本地运行，可随时切换语言。",
+      bedtime:{name:"就寝时间计算器"},
+      wake:{name:"起床时间计算器"},
+      duration:{name:"睡眠时长计算器"},
+      nap:{name:"小睡计算器"},
+      window:{name:"睡眠时段助手"},
+      log:{name:"睡眠记录与趋势"}
+    },
     t:{bedtime:"就寝时间",wake:"起床时间",duration:"睡眠时长",nap:"午睡",window:"睡眠窗口",log:"睡眠记录"},
     age:{teen:"18 岁以下",adult:"18–64 岁（成年人）",senior:"65 岁及以上"},
     bedtime:{
