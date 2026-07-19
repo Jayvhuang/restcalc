@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title data-i18n="title">Bedtime Calculator — What Time to Sleep to Wake Up Refreshed | Restcalc</title>
+<meta name="description" content="Free bedtime calculator. Enter the time you need to wake up and we count back in 90-minute sleep cycles to find the best time to go to bed. No signup.">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<link rel="canonical" href="https://restcalc.vercel.app/tools/bedtime-calculator.html">
+<meta property="og:title" content="Bedtime Calculator — Restcalc">
+<meta property="og:description" content="Enter your wake-up time and we count back in 90-minute sleep cycles to find the best bedtime.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://restcalc.vercel.app/tools/bedtime-calculator.html">
+<meta property="og:image" content="https://restcalc.vercel.app/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Bedtime Calculator — Restcalc">
+<meta name="twitter:description" content="Find the best time to go to bed using 90-minute sleep cycles.">
+<link rel="alternate" hreflang="en" href="https://restcalc.vercel.app/tools/bedtime-calculator.html">
+<link rel="alternate" hreflang="x-default" href="https://restcalc.vercel.app/tools/bedtime-calculator.html">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌙</text></svg>">
+<link rel="stylesheet" href="../styles.css">
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"WebPage",
+  "name":"Bedtime Calculator — Restcalc",
+  "description":"Free bedtime calculator that counts back from your wake-up time in 90-minute sleep cycles.",
+  "url":"https://restcalc.vercel.app/tools/bedtime-calculator.html",
+  "inLanguage":"en",
+  "isPartOf":{"@type":"WebSite","name":"Restcalc","url":"https://restcalc.vercel.app"}
+}
+</script>
+<script type="application/ld+json" id="faq-jsonld"></script>
+<!-- Google AdSense — Auto Ads (live, matches deployed site) -->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9666933731991095" crossorigin="anonymous"></script>
+<!-- Google Search Console verification (correct account linked to AdSense) -->
+<meta name="google-site-verification" content="tepUg_Xy4wyDKFBE_BpTGInZXeRqBPmHvfgQdINOVP4" />
+<!-- Google Analytics 4 -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-HQFQQLZNCS"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-HQFQQLZNCS');
+</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="wrap nav">
+    <a class="logo" href="../"><span class="moon">🌙</span><span>Rest</span>calc</a>
+    <nav class="nav-links">
+      <a href="../" data-i18n="nav.home">Home</a>
+      <a href="../#tools" data-i18n="nav.tools">All tools</a>
+      <a href="../#science" data-i18n="nav.science">How it works</a>
+      <a href="../#faq" data-i18n="nav.faq">FAQ</a>
+      <a href="../privacy.html" data-i18n="nav.privacy">Privacy</a>
+    </nav>
+    <span class="nav-spacer"></span>
+    <span class="lang-foot" style="margin-top:0">
+      <button id="langEn">EN</button>
+      <button id="langZh">中文</button>
+    </span>
+    <button class="btn icon" id="themeBtn" title="Toggle theme">🌗</button>
+  </div>
+</header>
+
+<main>
+  <section class="hero wrap">
+    <div class="moon-big">🌙</div>
+    <h1 data-i18n="h1">Bedtime Calculator</h1>
+    <p class="sub" data-i18n="sub">Find the best time to go to bed so you wake up refreshed — planned around your natural 90-minute sleep cycles.</p>
+  </section>
+
+  <section class="section wrap" id="tool">
+    <div class="card">
+      <h2 data-i18n="toolHeading">Bedtime Calculator</h2>
+      <p class="desc" data-i18n="toolDesc">Enter the time you need to wake up. We count back in 90-minute sleep cycles plus ~15 minutes to fall asleep.</p>
+      <div class="field">
+        <label for="bedtime-wake" data-i18n="wakeLabel">I need to wake up at</label>
+        <input type="time" id="bedtime-wake" value="07:00">
+      </div>
+      <div class="field">
+        <label for="bedtime-age" data-i18n="ageLabel">Your age group</label>
+        <select id="bedtime-age">
+          <option value="teen" data-i18n="age.teen">Under 18</option>
+          <option value="adult" selected data-i18n="age.adult">18–64 (adult)</option>
+          <option value="senior" data-i18n="age.senior">65 and older</option>
+        </select>
+      </div>
+      <div class="results" id="bedtime-results"></div>
+      <div class="res-note" id="bedtime-age-note"></div>
+      <div class="res-note" data-i18n="resNote">Times assume ~15 min to fall asleep. Earlier bedtimes give you more complete cycles.</div>
+    </div>
+  </section>
+
+  <section class="section wrap">
+    <div class="prose">
+      <h2 data-i18n="proseH1">How the bedtime calculator works</h2>
+      <p data-i18n="proseP1">A <strong>bedtime calculator</strong> takes the time you need to wake up and works backward through natural 90-minute sleep cycles. We add about 15 minutes to fall asleep, then subtract full cycles (4, 5 or 6) to show the bedtimes that land you on a cycle boundary. Wake at the end of a cycle and you surface during light sleep — the easiest point to get up.</p>
+      <p data-i18n="proseP2">If you have ever wondered <strong>"what time should I go to bed to wake up at 7am"</strong>, the answer is rarely a round number. It depends on how many complete cycles fit before your alarm. The calculator shows a few options so you can pick the one that matches your evening.</p>
+      <h2 data-i18n="proseH2">Why time your bedtime by sleep cycles?</h2>
+      <p data-i18n="proseP3">Sleep is not one continuous block. Your brain moves through roughly 90-minute cycles of light, deep and REM sleep, usually 4–6 per night. Waking mid-deep-sleep is what causes morning grogginess; waking between cycles feels natural. Planning bedtime around these boundaries is the core idea behind every tool on Restcalc, and it is grounded in sleep science such as the National Sleep Foundation's duration guidance (2022).</p>
+      <h3 data-i18n="proseH3">A few quick tips</h3>
+      <ul>
+        <li data-i18n="tip1">Earlier bedtimes give you more complete cycles before a fixed wake time.</li>
+        <li data-i18n="tip2">Keep a consistent wake time — it stabilizes your whole cycle.</li>
+        <li data-i18n="tip3">Aim to wake at a 90-minute boundary using the times above.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="section wrap" id="faq">
+    <div class="section-head">
+      <h2 data-i18n="faqHeading">Frequently asked questions about the Bedtime Calculator</h2>
+      <p data-i18n="faqSub">Everything you need to plan your bedtime confidently.</p>
+    </div>
+    <div class="faq" id="faq-list"></div>
+  </section>
+
+  <section class="section wrap">
+    <div class="section-head"><h2 data-i18n="exploreHeading">Explore more sleep tools</h2><p data-i18n="exploreSub">Each one plans sleep around your 90-minute cycles.</p></div>
+    <div class="tips-grid">
+      <a class="tip" href="wake-up-calculator.html"><div class="ico">⏰</div><h4 data-i18n="tools.wake.name">Wake-up Calculator</h4><p data-i18n="tools.wake.desc">Find the best time to wake up by sleep cycles.</p></a>
+      <a class="tip" href="sleep-duration-calculator.html"><div class="ico">📊</div><h4 data-i18n="tools.duration.name">Sleep Duration Calculator</h4><p data-i18n="tools.duration.desc">See total sleep, cycles and quality rating.</p></a>
+      <a class="tip" href="nap-calculator.html"><div class="ico">💤</div><h4 data-i18n="tools.nap.name">Nap Calculator</h4><p data-i18n="tools.nap.desc">Best window for a power nap or full-cycle nap.</p></a>
+      <a class="tip" href="sleep-window-calculator.html"><div class="ico">🪟</div><h4 data-i18n="tools.window.name">Sleep Window Helper</h4><p data-i18n="tools.window.desc">Plan bedtime inside your free hours.</p></a>
+      <a class="tip" href="sleep-log.html"><div class="ico">📈</div><h4 data-i18n="tools.log.name">Sleep Log &amp; Trend</h4><p data-i18n="tools.log.desc">Visualize your sleep over time.</p></a>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap foot-grid">
+    <div class="col">
+      <h5>🌙 Restcalc</h5>
+      <p style="color:var(--muted);font-size:13.5px;max-width:260px" data-i18n="footTag">A free sleep calculator and bedtime planner. Built for better mornings.</p>
+    </div>
+    <div class="col">
+      <h5 data-i18n="footTools">Tools</h5>
+      <a href="bedtime-calculator.html" data-i18n="tools.bedtime.name">Bedtime Calculator</a>
+      <a href="wake-up-calculator.html" data-i18n="tools.wake.name">Wake-up Calculator</a>
+      <a href="sleep-duration-calculator.html" data-i18n="tools.duration.name">Sleep Duration Calculator</a>
+      <a href="nap-calculator.html" data-i18n="tools.nap.name">Nap Calculator</a>
+      <a href="sleep-window-calculator.html" data-i18n="tools.window.name">Sleep Window Helper</a>
+      <a href="sleep-log.html" data-i18n="tools.log.name">Sleep Log &amp; Trend</a>
+    </div>
+    <div class="col">
+      <h5 data-i18n="footLearn">Learn</h5>
+      <a href="../#science" data-i18n="nav.science">How it works</a>
+      <a href="../#tips" data-i18n="nav.tips">Tips</a>
+      <a href="../#faq" data-i18n="nav.faq">FAQ</a>
+      <a href="../privacy.html" data-i18n="nav.privacy">Privacy</a>
+    </div>
+    <div class="col">
+      <h5 data-i18n="footSources">Sources</h5>
+      <a href="https://www.sleepfoundation.org/how-many-hours-of-sleep-do-you-need" target="_blank" rel="noopener">National Sleep Foundation (2022)</a>
+      <a href="https://en.wikipedia.org/wiki/Nathaniel_Kleitman" target="_blank" rel="noopener">Kleitman &amp; Aserinsky (1953)</a>
+      <a href="https://en.wikipedia.org/wiki/Why_We_Sleep" target="_blank" rel="noopener">Walker, Why We Sleep (2017)</a>
+    </div>
+  </div>
+  <div class="wrap disclaimer">
+    <span data-i18n="disc">Restcalc provides general sleep information for educational purposes only and is not a substitute for medical advice. If you have chronic sleep problems, consult a healthcare professional.</span>
+    <br>© <span id="year"></span> Restcalc. All rights reserved.
+  </div>
+</footer>
+
+<script>
+const T = {
+  en:{
+    title:"Bedtime Calculator — What Time to Sleep to Wake Up Refreshed | Restcalc",
+    metaDesc:"Free bedtime calculator. Enter the time you need to wake up and we count back in 90-minute sleep cycles to find the best time to go to bed. No signup.",
+    nav:{home:"Home",tools:"All tools",science:"How it works",tips:"Tips",faq:"FAQ",privacy:"Privacy"},
+    h1:"Bedtime Calculator",
+    sub:"Find the best time to go to bed so you wake up refreshed — planned around your natural 90-minute sleep cycles.",
+    toolHeading:"Bedtime Calculator",
+    toolDesc:"Enter the time you need to wake up. We count back in 90-minute sleep cycles plus ~15 minutes to fall asleep.",
+    wakeLabel:"I need to wake up at",
+    ageLabel:"Your age group",
+    age:{teen:"Under 18",adult:"18–64 (adult)",senior:"65 and older"},
+    resNote:"Times assume ~15 min to fall asleep. Earlier bedtimes give you more complete cycles.",
+    cycles:"cycles", prevEve:"previous evening",
+    ageNote:"Recommended for your age: about {range} (National Sleep Foundation, 2022).",
+    proseH1:"How the bedtime calculator works",
+    proseP1:"A <strong>bedtime calculator</strong> takes the time you need to wake up and works backward through natural 90-minute sleep cycles. We add about 15 minutes to fall asleep, then subtract full cycles (4, 5 or 6) to show the bedtimes that land you on a cycle boundary. Wake at the end of a cycle and you surface during light sleep — the easiest point to get up.",
+    proseP2:"If you have ever wondered <strong>\"what time should I go to bed to wake up at 7am\"</strong>, the answer is rarely a round number. It depends on how many complete cycles fit before your alarm. The calculator shows a few options so you can pick the one that matches your evening.",
+    proseH2:"Why time your bedtime by sleep cycles?",
+    proseP3:"Sleep is not one continuous block. Your brain moves through roughly 90-minute cycles of light, deep and REM sleep, usually 4–6 per night. Waking mid-deep-sleep is what causes morning grogginess; waking between cycles feels natural. Planning bedtime around these boundaries is the core idea behind every tool on Restcalc, and it is grounded in sleep science such as the National Sleep Foundation's duration guidance (2022).",
+    proseH3:"A few quick tips",
+    tip1:"Earlier bedtimes give you more complete cycles before a fixed wake time.",
+    tip2:"Keep a consistent wake time — it stabilizes your whole cycle.",
+    tip3:"Aim to wake at a 90-minute boundary using the times above.",
+    faqHeading:"Frequently asked questions about the Bedtime Calculator",
+    faqSub:"Everything you need to plan your bedtime confidently.",
+    faq:[
+      {q:"How does the bedtime calculator work?",a:"It takes the time you need to wake up and counts backward in 90-minute sleep cycles, adding about 15 minutes to fall asleep. Each result shows a bedtime that lands you on a cycle boundary so you wake during light sleep."},
+      {q:"Why 90-minute sleep cycles?",a:"Sleep cycles average about 90 minutes. Planning your bedtime on these boundaries helps you surface in light sleep rather than deep sleep, which reduces grogginess in the morning."},
+      {q:"How much sleep do I need?",a:"Most adults do best with 4–6 full cycles, about 7–9 hours in bed. The calculator shows options from 4 to 6 cycles so you can pick what fits your morning."},
+      {q:"What if the suggested bedtime is the previous evening?",a:"If you need a very early wake time, the earlier cycle options shift to the prior evening. That simply means you should go to bed sooner to get enough full cycles before your alarm."}
+    ],
+    exploreHeading:"Explore more sleep tools",
+    exploreSub:"Each one plans sleep around your 90-minute cycles.",
+    tools:{
+      bedtime:{name:"Bedtime Calculator",desc:"Enter the time you need to wake up. We count back in 90-minute sleep cycles plus ~15 minutes to fall asleep."},
+      wake:{name:"Wake-up Calculator",desc:"Enter when you plan to go to bed. We add sleep cycles to find the best moments to wake up."},
+      duration:{name:"Sleep Duration Calculator",desc:"Enter your bedtime and wake time to see total sleep, completed cycles, and a quality rating."},
+      nap:{name:"Nap Calculator",desc:"Enter the current time to see the best window for a refreshing power nap or a full-cycle nap."},
+      window:{name:"Sleep Window Helper",desc:"Choose the time range you are free to sleep. We find the best bedtimes that complete full 90-minute cycles and wake you inside your window."},
+      log:{name:"Sleep Log & Trend",desc:"Log a few nights — just your bedtime, wake time, and how you felt. We turn it into a visual trend using the 90-minute cycle model."}
+    },
+    footTag:"A free sleep calculator and bedtime planner. Built for better mornings.",
+    footTools:"Tools", footLearn:"Learn", footSources:"Sources",
+    disc:"Restcalc provides general sleep information for educational purposes only and is not a substitute for medical advice. If you have chronic sleep problems, consult a healthcare professional."
+  },
+  zh:{
+    title:"就寝时间计算器 — 该几点睡才能几点醒 | Restcalc",
+    metaDesc:"免费就寝时间计算器。输入你需要醒来的时间，我们按 90 分钟睡眠周期往回推算，找出最佳的就寝时间。无需注册。",
+    nav:{home:"首页",tools:"全部工具",science:"运作原理",tips:"建议",faq:"常见问题",privacy:"隐私"},
+    h1:"就寝时间计算器",
+    sub:"算出最佳的就寝时间，让你醒来神清气爽——围绕你天然的 90 分钟睡眠周期来规划。",
+    toolHeading:"就寝时间计算器",
+    toolDesc:"输入你需要起床的时间，我们按 90 分钟睡眠周期倒推，并预留约 15 分钟入睡时间。",
+    wakeLabel:"我需要在以下时间醒来",
+    ageLabel:"你的年龄段",
+    age:{teen:"18 岁以下",adult:"18–64 岁（成人）",senior:"65 岁及以上"},
+    resNote:"以上时间均预留约 15 分钟入睡。就寝越早，完整周期越多。",
+    cycles:"个周期", prevEve:"前一晚",
+    ageNote:"你这个年龄的建议：约 {range}（美国国家睡眠基金会，2022）。",
+    proseH1:"就寝时间计算器是如何运作的",
+    proseP1:"<strong>就寝时间计算器</strong>会取你需要醒来的时间，沿天然的 90 分钟睡眠周期往回推。我们预留约 15 分钟入睡，再减去完整的周期数（4、5 或 6），得出落在周期边界上的就寝时间。在一个周期结束时醒来，你正处于浅睡眠——最容易起床的时刻。",
+    proseP2:"如果你曾想过<strong>\"到底该几点睡才能在早上 7 点醒来\"</strong>，答案很少是一个整数。它取决于闹钟响起前能塞进多少个完整周期。计算器给出几个选项，你可以挑最符合你当晚安排的那一个。",
+    proseH2:"为什么按睡眠周期来安排就寝时间？",
+    proseP3:"睡眠不是一整块连续的时间。你的大脑大约每 90 分钟经历一轮浅睡、深睡与快速眼动（REM）睡眠，通常每晚 4–6 轮。在深睡中途醒来正是早晨昏沉的元凶；在周期间醒来则自然得多。围绕这些边界规划就寝，是 Restcalc 每个工具的核心思路，并建立在睡眠科学之上，例如美国国家睡眠基金会（2022）的时长建议。",
+    proseH3:"几个小建议",
+    tip1:"就寝越早，在固定醒来时间前能获得的完整周期越多。",
+    tip2:"保持固定的醒来时间——它能稳定你的整个周期。",
+    tip3:"尽量利用上面的时间，在 90 分钟边界上醒来。",
+    faqHeading:"关于就寝时间计算器的常见问题",
+    faqSub:"规划就寝所需的一切，都在这里。",
+    faq:[
+      {q:"就寝时间计算器是如何运作的？",a:"它取你需要醒来的时间，按 90 分钟睡眠周期往回推算，并预留约 15 分钟入睡。每个结果都是一个落在周期边界上的就寝时间，让你在浅睡眠中醒来。"},
+      {q:"为什么是 90 分钟睡眠周期？",a:"睡眠周期平均约 90 分钟。围绕这些边界安排就寝，能让你在浅睡而非深睡中醒来，从而减轻早晨的昏沉感。"},
+      {q:"我需要睡多久？",a:"多数成年人以 4–6 个完整周期为佳，约 7–9 小时在床时间。计算器提供 4 到 6 个周期的选项，方便你挑最贴合清晨安排的一个。"},
+      {q:"如果建议的就寝时间是前一天晚上怎么办？",a:"如果你需要非常早地醒来，较早的周期选项会移到前一天晚上。这仅仅意味着你应该更早入睡，才能在闹钟响前凑够足够的完整周期。"}
+    ],
+    exploreHeading:"探索更多睡眠工具",
+    exploreSub:"每一个都围绕你的 90 分钟睡眠周期来规划。",
+    tools:{
+      bedtime:{name:"就寝时间计算器",desc:"输入你需要起床的时间，我们按 90 分钟睡眠周期倒推，并预留约 15 分钟入睡时间。"},
+      wake:{name:"醒来时间计算器",desc:"输入你计划就寝的时间，我们叠加睡眠周期，找出最佳起床时刻。"},
+      duration:{name:"睡眠时长计算器",desc:"输入就寝与起床时间，查看总睡眠、完成的周期数以及质量评级。"},
+      nap:{name:"小睡计算器",desc:"输入当前时间，查看提神小憩或完整周期午睡的最佳窗口。"},
+      window:{name:"睡眠时段助手",desc:"选择你空闲可睡的时间范围，我们会找出能凑满 90 分钟完整周期、且落在该范围内的就寝时间。"},
+      log:{name:"睡眠记录与趋势",desc:"记录几个晚上——只需就寝时间、醒来时间和你的感受。我们把它变成可视化趋势，并显示你每晚的 90 分钟周期数。"}
+    },
+    footTag:"一款免费的睡眠计算器与就寝规划工具。为更清爽的早晨而打造。",
+    footTools:"工具", footLearn:"了解更多", footSources:"数据来源",
+    disc:"Restcalc 仅提供一般性睡眠信息，用作教育用途，不能替代医疗建议。如果你有长期睡眠问题，请咨询医疗专业人士。"
+  }
+};
+
+const FALL=15, CYCLE=90;
+const AGES={teen:{opts:[7,6,5],range:"8–10 hours per night",rangeZh:"每晚 8–10 小时"},adult:{opts:[6,5,4],range:"7–9 hours per night",rangeZh:"每晚 7–9 小时"},senior:{opts:[5,4],range:"7–8 hours per night",rangeZh:"每晚 7–8 小时"}};
+let lang=(new URLSearchParams(location.search).get('lang')==='zh')?'zh':(localStorage.getItem('restcalc-lang')||'en');
+
+function toMin(t){const a=t.split(':').map(Number);return a[0]*60+a[1];}
+function fmt12(min){min=((min%1440)+1440)%1440;let h=Math.floor(min/60),m=min%60;const ap=h>=12?'PM':'AM';h=h%12;if(h===0)h=12;return h+':'+String(m).padStart(2,'0')+' '+ap;}
+function setText(sel,html){const el=document.querySelector(sel);if(el)el.innerHTML=html;}
+
+function applyStatic(){
+  document.documentElement.lang=(lang==='zh')?'zh-CN':'en';
+  document.querySelectorAll('[data-i18n]').forEach(el=>{
+    const key=el.getAttribute('data-i18n');
+    let v=T[lang]; key.split('.').forEach(p=>v=v&&v[p]);
+    if(v!==undefined)el.innerHTML=v;
+  });
+  const md=document.querySelector('meta[name="description"]');
+  if(md)md.setAttribute('content',T[lang].metaDesc);
+  document.getElementById('langEn').classList.toggle('active',lang==='en');
+  document.getElementById('langZh').classList.toggle('active',lang==='zh');
+}
+
+function calcBedtime(){
+  const wake=toMin(document.getElementById('bedtime-wake').value);
+  const age=document.getElementById('bedtime-age').value;
+  const opts=AGES[age].opts;
+  const t=T[lang];
+  const html=opts.map(function(c){
+    const bed=wake-FALL-c*CYCLE;
+    const prev=(bed<0)||(bed<wake-CYCLE*6-FALL);
+    return '<div class="res-row"><span class="res-time">'+fmt12(bed)+'</span><span class="res-meta"><b>'+c+'</b> '+t.cycles+(prev?' <span class="pill">'+t.prevEve+'</span>':'')+'</span></div>';
+  }).join('');
+  document.getElementById('bedtime-results').innerHTML=html;
+  const range=(lang==='zh')?AGES[age].rangeZh:AGES[age].range;
+  setText('#bedtime-age-note', t.ageNote.replace('{range}', range));
+}
+
+function renderFAQ(){
+  const l=T[lang].faq;
+  document.getElementById('faq-list').innerHTML=l.map(function(x){
+    return '<div class="faq-item"><div class="faq-q">'+x.q+'<span class="chev">▾</span></div><div class="faq-a"><div>'+x.a+'</div></div></div>';
+  }).join('');
+  document.querySelectorAll('#faq-list .faq-item').forEach(function(it){
+    it.querySelector('.faq-q').addEventListener('click',function(){
+      const a=it.querySelector('.faq-a');
+      const open=it.classList.toggle('open');
+      a.style.maxHeight=open?a.scrollHeight+'px':null;
+    });
+  });
+  const ld={"@context":"https://schema.org","@type":"FAQPage","mainEntity":l.map(function(x){return {"@type":"Question","name":x.q,"acceptedAnswer":{"@type":"Answer","text":x.a}};})};
+  document.getElementById('faq-jsonld').textContent=JSON.stringify(ld);
+}
+
+function setLang(l){
+  lang=l;
+  localStorage.setItem('restcalc-lang',l);
+  const u=new URLSearchParams(location.search);
+  if(l==='zh')u.set('lang','zh'); else u.delete('lang');
+  history.replaceState(null,'',location.pathname+(u.toString()?'?'+u.toString():'')+location.hash);
+  applyStatic();
+  calcBedtime();
+  renderFAQ();
+}
+
+function bindLang(){
+  document.getElementById('langEn').addEventListener('click',function(){setLang('en');});
+  document.getElementById('langZh').addEventListener('click',function(){setLang('zh');});
+}
+function bindTheme(){
+  const saved=localStorage.getItem('restcalc-theme');
+  if(saved)document.documentElement.setAttribute('data-theme',saved);
+  const b=document.getElementById('themeBtn');
+  if(b)b.addEventListener('click',function(){
+    const cur=document.documentElement.getAttribute('data-theme');
+    const next=cur==='dark'?'light':'dark';
+    if(next==='dark')document.documentElement.setAttribute('data-theme','dark');
+    else document.documentElement.removeAttribute('data-theme');
+    localStorage.setItem('restcalc-theme',next);
+  });
+}
+
+function init(){
+  applyStatic();
+  bindLang();
+  bindTheme();
+  calcBedtime();
+  renderFAQ();
+  const y=document.getElementById('year'); if(y)y.textContent=new Date().getFullYear();
+}
+init();
+</script>
+</body>
+</html>
