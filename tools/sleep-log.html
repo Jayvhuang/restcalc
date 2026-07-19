@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sleep Log &amp; Trend Tracker — Visualize Your Sleep Cycles | Restcalc</title>
+<meta name="description" content="Free sleep log &amp; trend tracker. Record a few nights and see your average sleep, completed 90-minute cycles, regularity and refreshed mornings as a visual trend.">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<link rel="canonical" href="https://restcalc.vercel.app/tools/sleep-log.html">
+<meta property="og:title" content="Sleep Log &amp; Trend — Restcalc">
+<meta property="og:description" content="Record a few nights and visualize your sleep cycles and trends.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://restcalc.vercel.app/tools/sleep-log.html">
+<meta property="og:image" content="https://restcalc.vercel.app/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Sleep Log &amp; Trend — Restcalc">
+<meta name="twitter:description" content="Visualize your sleep over time.">
+<link rel="alternate" hreflang="en" href="https://restcalc.vercel.app/tools/sleep-log.html">
+<link rel="alternate" hreflang="x-default" href="https://restcalc.vercel.app/tools/sleep-log.html">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌙</text></svg>">
+<link rel="stylesheet" href="../styles.css">
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"WebPage",
+  "name":"Sleep Log & Trend Tracker — Restcalc",
+  "description":"Free sleep log and trend tracker that visualizes your 90-minute sleep cycles over time.",
+  "url":"https://restcalc.vercel.app/tools/sleep-log.html",
+  "inLanguage":"en",
+  "isPartOf":{"@type":"WebSite","name":"Restcalc","url":"https://restcalc.vercel.app"}
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"FAQPage",
+  "mainEntity":[
+    {"@type":"Question","name":"What does the sleep log track?","acceptedAnswer":{"@type":"Answer","text":"It records your bedtime, wake time and how you felt for several nights, then shows average sleep, average cycles, regularity and refreshed mornings as a trend."}},
+    {"@type":"Question","name":"Is my sleep data private?","acceptedAnswer":{"@type":"Answer","text":"Yes. Entries are saved only in your own browser (localStorage). They are never uploaded to us or any server, and clearing your browser data erases them."}},
+    {"@type":"Question","name":"How are cycles calculated in the log?","acceptedAnswer":{"@type":"Answer","text":"Each night uses the 90-minute model: time in bed minus ~15 minutes to fall asleep, divided by 90. It is an estimate, not measured sleep."}},
+    {"@type":"Question","name":"Why track sleep trends?","acceptedAnswer":{"@type":"Answer","text":"A few nights of data reveal patterns — short sleep, irregular bedtimes, or low refreshed mornings — that a single night hides. Small, consistent changes add up."}}
+  ]
+}
+</script>
+<!-- Google AdSense — Auto Ads (live, matches deployed site) -->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9666933731991095" crossorigin="anonymous"></script>
+<!-- Google Search Console verification (correct account linked to AdSense) -->
+<meta name="google-site-verification" content="tepUg_Xy4wyDKFBE_BpTGInZXeRqBPmHvfgQdINOVP4" />
+<!-- Google Analytics 4 -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-HQFQQLZNCS"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-HQFQQLZNCS');
+</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="wrap nav">
+    <a class="logo" href="../"><span class="moon">🌙</span><span>Rest</span>calc</a>
+    <nav class="nav-links">
+      <a href="../">Home</a>
+      <a href="../#tools">All tools</a>
+      <a href="../#science">How it works</a>
+      <a href="../#faq">FAQ</a>
+      <a href="../privacy.html">Privacy</a>
+    </nav>
+    <span class="nav-spacer"></span>
+    <button class="btn icon" id="themeBtn" title="Toggle theme">🌗</button>
+  </div>
+</header>
+
+<main>
+  <section class="hero wrap">
+    <div class="moon-big">📈</div>
+    <h1>Sleep Log &amp; Trend</h1>
+    <p class="sub">Log a few nights and watch your sleep cycles and consistency turn into a clear trend.</p>
+  </section>
+
+  <section class="section wrap" id="tool">
+    <div class="card">
+      <h2>Sleep Log &amp; Trend</h2>
+      <p class="desc">Log a few nights — just your bedtime, wake time, and how you felt. We turn it into a visual trend using the 90-minute cycle model.</p>
+      <div class="grid2">
+        <div class="field"><label for="log-days">Days to log (3–14)</label><input type="number" id="log-days" min="3" max="14" value="7"></div>
+        <div class="field"><label for="log-age">Your age group</label>
+          <select id="log-age"><option value="teen">Under 18</option><option value="adult" selected>18–64 (adult)</option><option value="senior">65 and older</option></select>
+        </div>
+      </div>
+      <div class="field" style="display:flex;gap:10px">
+        <button class="btn" id="log-save">Save entries</button>
+        <button class="btn" id="log-clear">Clear all</button>
+      </div>
+      <div class="log-cols">
+        <div class="log-head"><span>Date</span><span>Bedtime</span><span>Wake</span><span>Felt</span></div>
+        <div id="log-rows"></div>
+      </div>
+      <div class="res-note">Tip: fill from the most recent night back. Entries stay on this device only — nothing is uploaded.</div>
+      <h3 style="margin:22px 0 8px;font-size:16px">Your sleep over time</h3>
+      <div id="log-chart"></div>
+      <div id="log-legend"></div>
+      <div class="log-summary" id="log-summary"></div>
+      <div class="res-note" id="log-age-note" style="text-align:center"></div>
+    </div>
+  </section>
+
+  <section class="section wrap">
+    <div class="prose">
+      <h2>How the sleep log works</h2>
+      <p>A <strong>sleep log</strong> turns a handful of nights into something you can actually see. Enter your bedtime, wake time and how you felt for each night, and the tracker works out your total sleep, your completed 90-minute cycles, and a regularity score — then draws it as a trend.</p>
+      <p>One night tells you almost nothing. A week tells you whether you are short on sleep, whether your bedtimes wander, and how often you wake refreshed. That pattern is where the useful changes live.</p>
+      <h2>Privacy by design</h2>
+      <p>Everything stays in your own browser. Your entries are saved locally (localStorage) and are never uploaded to us or any server. Clear your browser data and they are gone. This is the same private-by-design approach used across every Restcalc tool.</p>
+      <h3>A few quick tips</h3>
+      <ul>
+        <li>Log at least 5–7 nights to see a real trend.</li>
+        <li>Keep bedtimes consistent — regularity matters as much as total hours.</li>
+        <li>Use the Bedtime and Wake-up tools to plan the next night.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="section wrap" id="faq">
+    <div class="section-head">
+      <h2>Frequently asked questions about the Sleep Log &amp; Trend</h2>
+      <p>Everything you need to track your sleep confidently.</p>
+    </div>
+    <div class="faq">
+      <div class="faq-item"><div class="faq-q">What does the sleep log track?<span class="chev">▾</span></div><div class="faq-a"><div>It records your bedtime, wake time and how you felt for several nights, then shows average sleep, average cycles, regularity and refreshed mornings as a trend.</div></div></div>
+      <div class="faq-item"><div class="faq-q">Is my sleep data private?<span class="chev">▾</span></div><div class="faq-a"><div>Yes. Entries are saved only in your own browser (localStorage). They are never uploaded to us or any server, and clearing your browser data erases them.</div></div></div>
+      <div class="faq-item"><div class="faq-q">How are cycles calculated in the log?<span class="chev">▾</span></div><div class="faq-a"><div>Each night uses the 90-minute model: time in bed minus ~15 minutes to fall asleep, divided by 90. It is an estimate, not measured sleep.</div></div></div>
+      <div class="faq-item"><div class="faq-q">Why track sleep trends?<span class="chev">▾</span></div><div class="faq-a"><div>A few nights of data reveal patterns — short sleep, irregular bedtimes, or low refreshed mornings — that a single night hides. Small, consistent changes add up.</div></div></div>
+    </div>
+  </section>
+
+  <section class="section wrap">
+    <div class="section-head"><h2>Explore more sleep tools</h2><p>Each one plans sleep around your 90-minute cycles.</p></div>
+    <div class="tips-grid">
+      <a class="tip" href="bedtime-calculator.html"><div class="ico">🛏️</div><h4>Bedtime Calculator</h4><p>Find the best time to go to bed.</p></a>
+      <a class="tip" href="wake-up-calculator.html"><div class="ico">⏰</div><h4>Wake-up Calculator</h4><p>Find the best time to wake up.</p></a>
+      <a class="tip" href="sleep-duration-calculator.html"><div class="ico">📊</div><h4>Sleep Duration Calculator</h4><p>See total sleep and cycles.</p></a>
+      <a class="tip" href="nap-calculator.html"><div class="ico">💤</div><h4>Nap Calculator</h4><p>Best window for a power nap.</p></a>
+      <a class="tip" href="sleep-window-calculator.html"><div class="ico">🪟</div><h4>Sleep Window Helper</h4><p>Plan bedtime inside your free hours.</p></a>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap foot-grid">
+    <div class="col">
+      <h5>🌙 Restcalc</h5>
+      <p style="color:var(--muted);font-size:13.5px;max-width:260px">A free sleep calculator and bedtime planner. Built for better mornings.</p>
+    </div>
+    <div class="col">
+      <h5>Tools</h5>
+      <a href="bedtime-calculator.html">Bedtime Calculator</a>
+      <a href="wake-up-calculator.html">Wake-up Calculator</a>
+      <a href="sleep-duration-calculator.html">Sleep Duration Calculator</a>
+      <a href="nap-calculator.html">Nap Calculator</a>
+      <a href="sleep-window-calculator.html">Sleep Window Helper</a>
+      <a href="sleep-log.html">Sleep Log &amp; Trend</a>
+    </div>
+    <div class="col">
+      <h5>Learn</h5>
+      <a href="../#science">How it works</a>
+      <a href="../#tips">Tips</a>
+      <a href="../#faq">FAQ</a>
+      <a href="../privacy.html">Privacy</a>
+    </div>
+    <div class="col">
+      <h5>Sources</h5>
+      <a href="https://www.sleepfoundation.org/how-many-hours-of-sleep-do-you-need" target="_blank" rel="noopener">National Sleep Foundation (2022)</a>
+      <a href="https://en.wikipedia.org/wiki/Nathaniel_Kleitman" target="_blank" rel="noopener">Kleitman &amp; Aserinsky (1953)</a>
+      <a href="https://en.wikipedia.org/wiki/Why_We_Sleep" target="_blank" rel="noopener">Walker, Why We Sleep (2017)</a>
+    </div>
+  </div>
+  <div class="wrap disclaimer">
+    Restcalc provides general sleep information for educational purposes only and is not a substitute for medical advice. If you have chronic sleep problems, consult a healthcare professional.
+    <br>© <span id="year"></span> Restcalc. All rights reserved.
+  </div>
+</footer>
+
+<script>
+const FALL=15, CYCLE=90;
+const AGES={teen:{opts:[7,6,5],range:"8–10 hours per night"},adult:{opts:[6,5,4],range:"7–9 hours per night"},senior:{opts:[5,4],range:"7–8 hours per night"}};
+const LOG_KEY='restcalc-log-tool';
+const STATE_COLORS=['#16a34a','#22b07d','#eab308','#f97316','#ef4444'];
+function toMin(t){const a=t.split(':').map(Number);return a[0]*60+a[1];}
+function getLog(){try{return JSON.parse(localStorage.getItem(LOG_KEY))||[];}catch(e){return [];}}
+function setLog(a){localStorage.setItem(LOG_KEY,JSON.stringify(a));}
+function logDays(){let v=parseInt(document.getElementById('log-days').value)||7;if(v<3)v=3;if(v>14)v=14;return v;}
+function logDateStr(d){const y=d.getFullYear(),m=String(d.getMonth()+1).padStart(2,'0'),da=String(d.getDate()).padStart(2,'0');return y+'-'+m+'-'+da;}
+function buildLogRows(){
+  const n=logDays();
+  const prev={};
+  document.querySelectorAll('#log-rows .log-row').forEach(function(r){
+    const dt=r.querySelector('.log-date').value;
+    prev[dt]={bed:r.querySelector('.log-bed').value,wake:r.querySelector('.log-wake').value,state:r.querySelector('.log-state').value};
+  });
+  const sm={};getLog().forEach(function(e){sm[e.date]=e;});
+  const today=new Date();let html='';
+  for(let r=0;r<n;r++){
+    const d=new Date(today);d.setDate(today.getDate()-r);const ds=logDateStr(d);
+    const s=prev[ds]||sm[ds]||{bed:'23:00',wake:'07:00',state:'0'};
+    html+='<div class="log-row">'
+      +'<input type="date" class="log-date" value="'+ds+'">'
+      +'<input type="time" class="log-bed" value="'+s.bed+'">'
+      +'<input type="time" class="log-wake" value="'+s.wake+'">'
+      +'<select class="log-state">'
+      +['Very refreshed','Refreshed','Okay','Sluggish','Groggy'].map(function(lbl,i){return '<option value="'+i+'"'+(s.state==i?' selected':'')+'>'+lbl+'</option>';}).join('')
+      +'</select></div>';
+  }
+  document.getElementById('log-rows').innerHTML=html;
+  document.querySelectorAll('#log-rows input,#log-rows select').forEach(function(el){el.addEventListener('input',renderLog);el.addEventListener('change',renderLog);});
+}
+function collectLog(){
+  const out=[];
+  document.querySelectorAll('#log-rows .log-row').forEach(function(r){
+    const date=r.querySelector('.log-date').value;
+    const bed=r.querySelector('.log-bed').value,wake=r.querySelector('.log-wake').value;
+    const state=parseInt(r.querySelector('.log-state').value)||0;
+    if(!date||!bed||!wake)return;
+    let b=toMin(bed),w=toMin(wake);if(w<=b)w+=1440;
+    const dur=w-b,asleep=Math.max(0,dur-FALL),cyc=asleep/CYCLE;
+    out.push({date:date,bed:bed,wake:wake,state:state,dur:dur,durH:dur/60,cyc:cyc});
+  });
+  out.sort(function(a,b){return a.date<b.date?-1:1;});
+  return out;
+}
+function logChart(entries,avgDur,age){
+  const W=720,H=340,padL=48,padR=48,padT=26,padB=48;
+  const pw=W-padL-padR,ph=H-padT-padB,yMaxH=12,yMaxC=8,n=entries.length;
+  const X=i=>n===1?padL+pw/2:padL+i*pw/(n-1);
+  const Yh=v=>padT+ph-(Math.min(v,yMaxH)/yMaxH)*ph;
+  const Yc=v=>padT+ph-(Math.min(v,yMaxC)/yMaxC)*ph;
+  let grid='';
+  for(let g=0;g<=12;g+=2){const gy=Yh(g);grid+='<line x1="'+padL+'" y1="'+gy.toFixed(1)+'" x2="'+(W-padR)+'" y2="'+gy.toFixed(1)+'" stroke="#e3e6f3"/>';grid+='<text x="'+(padL-7)+'" y="'+((gy+3.5).toFixed(1))+'" text-anchor="end" font-size="10" fill="#9aa1c0">'+g+'h</text>';}
+  let rlab='';
+  for(let g=0;g<=8;g+=2){const gy=Yc(g);rlab+='<text x="'+(W-padR+7)+'" y="'+((gy+3.5).toFixed(1))+'" text-anchor="start" font-size="10" fill="#6366f1">'+g+'</text>';}
+  const rec=AGES[age].opts;const recMin=rec[rec.length-1],recMax=rec[0];
+  const bandY=Yc(recMax),bandH=Yc(recMin)-Yc(recMax);
+  const band='<rect x="'+padL+'" y="'+bandY.toFixed(1)+'" width="'+pw.toFixed(1)+'" height="'+bandH.toFixed(1)+'" fill="#22b07d" opacity="0.10"/><text x="'+((W-padR-6).toFixed(1))+'" y="'+((bandY+12).toFixed(1))+'" text-anchor="end" font-size="10" fill="#138a5e">target '+recMin+'–'+recMax+' cycles</text>';
+  let bars='';
+  entries.forEach(function(e,i){
+    const cx=X(i),bw=n===1?40:Math.min(42,pw/n-10),bx=cx-bw/2,by=Yh(e.durH),bh=ph-(by-padT);
+    const col=STATE_COLORS[e.state]||'#94a3b8';
+    bars+='<rect x="'+bx.toFixed(1)+'" y="'+by.toFixed(1)+'" width="'+bw.toFixed(1)+'" height="'+Math.max(0,bh).toFixed(1)+'" rx="4" fill="'+col+'" opacity="0.9"><title>'+e.date+': '+e.durH.toFixed(1)+'h, '+e.cyc.toFixed(1)+' cycles</title></rect>';
+    bars+='<text x="'+cx.toFixed(1)+'" y="'+((by-7).toFixed(1))+'" text-anchor="middle" font-size="10" fill="#1c2138">'+e.durH.toFixed(1)+'h</text>';
+  });
+  let pts=[],line='';
+  entries.forEach(function(e,i){pts.push(X(i).toFixed(1)+','+Yc(e.cyc).toFixed(1));});
+  if(pts.length>1)line='<polyline points="'+pts.join(' ')+'" fill="none" stroke="#6366f1" stroke-width="2" stroke-linejoin="round"/>';
+  entries.forEach(function(e,i){
+    const cx=X(i),cy=Yc(e.cyc);
+    line+='<circle cx="'+cx.toFixed(1)+'" cy="'+cy.toFixed(1)+'" r="4" fill="#6366f1" stroke="#fff" stroke-width="1.5"><title>'+e.date+': '+e.cyc.toFixed(1)+' cycles</title></circle>';
+    line+='<text x="'+((cx+7).toFixed(1))+'" y="'+((cy+3.5).toFixed(1))+'" text-anchor="start" font-size="10" font-weight="700" fill="#6366f1">'+e.cyc.toFixed(1)+'</text>';
+  });
+  const step=n>14?2:1;let xlab='';
+  entries.forEach(function(e,i){if(i%step===0){const cx=X(i);xlab+='<text x="'+cx.toFixed(1)+'" y="'+(H-padB+16)+'" text-anchor="middle" font-size="10" fill="#9aa1c0">'+e.date.slice(5)+'</text>';}});
+  const ay=Yh(avgDur);
+  const avgLine='<line x1="'+padL+'" y1="'+ay.toFixed(1)+'" x2="'+(W-padR)+'" y2="'+ay.toFixed(1)+'" stroke="#1c2138" stroke-width="1.2" stroke-dasharray="5 4" opacity="0.45"/><text x="'+(padL+4)+'" y="'+((ay-5).toFixed(1))+'" font-size="9.5" fill="#6b7290">avg '+avgDur.toFixed(1)+'h</text>';
+  const axL='<text x="'+(padL+2)+'" y="'+(padT-10)+'" font-size="10.5" font-weight="700" fill="#6b7290">Sleep duration (h)</text>';
+  const axR='<text x="'+(W-padR)+'" y="'+(padT-10)+'" text-anchor="end" font-size="10.5" font-weight="700" fill="#6366f1">Cycles</text>';
+  return '<svg viewBox="0 0 '+W+' '+H+'" width="100%" role="img" aria-label="Sleep duration and cycles trend">'+grid+rlab+band+bars+line+avgLine+xlab+axL+axR+'</svg>';
+}
+function renderLog(){
+  const entries=collectLog();
+  const age=document.getElementById('log-age').value;
+  const box=document.getElementById('log-chart'),sum=document.getElementById('log-summary'),leg=document.getElementById('log-legend'),ageNote=document.getElementById('log-age-note');
+  if(entries.length===0){box.innerHTML='<div class="res-note" style="text-align:center;padding:34px 10px">Add your bedtime, wake time and how you woke for each night, then the chart builds itself.</div>';sum.innerHTML='';leg.innerHTML='';if(ageNote)ageNote.textContent='';return;}
+  const durs=entries.map(function(e){return e.durH;});
+  const avgDur=durs.reduce(function(a,b){return a+b;},0)/durs.length;
+  const avgCyc=entries.reduce(function(a,e){return a+e.cyc;},0)/entries.length;
+  const beds=entries.map(function(e){return toMin(e.bed);}).sort(function(a,b){return a-b;});
+  const mb=beds.reduce(function(a,b){return a+b;},0)/beds.length;
+  const sd=Math.sqrt(beds.reduce(function(a,b){return a+(b-mb)*(b-mb);},0)/beds.length);
+  const regKey=sd<30?'Steady':sd<75?'A bit irregular':'Irregular';
+  const fresh=entries.filter(function(e){return e.state===0;}).length/entries.length*100;
+  box.innerHTML=logChart(entries,avgDur,age);
+  sum.innerHTML='<div class="sum-card"><div class="num">'+avgDur.toFixed(1)+'h</div><div class="lbl">Avg sleep</div></div>'
+    +'<div class="sum-card"><div class="num">'+avgCyc.toFixed(1)+'</div><div class="lbl">Avg cycles</div></div>'
+    +'<div class="sum-card"><div class="num" style="font-size:18px">'+regKey+'</div><div class="lbl">Regularity</div></div>'
+    +'<div class="sum-card"><div class="num">'+fresh.toFixed(0)+'%</div><div class="lbl">Refreshed mornings</div></div>';
+  let legHtml='<div class="log-legend">';
+  legHtml+='<span><i style="background:#22b07d;opacity:.5"></i>Recommended zone</span>';
+  legHtml+='<span><i style="background:#6366f1;border-radius:50%"></i>Cycles (line)</span>';
+  ['Very refreshed','Refreshed','Okay','Sluggish','Groggy'].forEach(function(lbl,i){legHtml+='<span><i style="background:'+STATE_COLORS[i]+'"></i>'+lbl+'</span>';});
+  legHtml+='</div><div class="res-note">Cycle counts use the 90-minute model (time in bed minus ~15 min to fall asleep, divided by 90). This is an estimate, not measured sleep stages.</div>';
+  leg.innerHTML=legHtml;
+  if(ageNote)ageNote.innerHTML='Recommended for your age: about '+AGES[age].range+' (National Sleep Foundation, 2022).';
+}
+function bindLog(){
+  document.getElementById('log-days').addEventListener('change',function(){buildLogRows();renderLog();});
+  document.getElementById('log-days').addEventListener('input',function(){buildLogRows();renderLog();});
+  document.getElementById('log-age').addEventListener('change',renderLog);
+  document.getElementById('log-save').addEventListener('click',function(){
+    const e=collectLog();if(e.length===0){alert('No entries yet — fill the rows above first.');return;}
+    setLog(e);const b=document.getElementById('log-save');const t=b.textContent;b.textContent='Saved on this device ✓';setTimeout(function(){b.textContent=t;},1600);
+  });
+  document.getElementById('log-clear').addEventListener('click',function(){localStorage.removeItem(LOG_KEY);buildLogRows();renderLog();});
+}
+buildLogRows();bindLog();renderLog();
+
+(function(){
+  var saved=localStorage.getItem('restcalc-theme');
+  if(saved)document.documentElement.setAttribute('data-theme',saved);
+  var b=document.getElementById('themeBtn');
+  if(b)b.addEventListener('click',function(){
+    var cur=document.documentElement.getAttribute('data-theme');
+    var next=cur==='dark'?'light':'dark';
+    if(next==='dark')document.documentElement.setAttribute('data-theme','dark');
+    else document.documentElement.removeAttribute('data-theme');
+    localStorage.setItem('restcalc-theme',next);
+  });
+  var y=document.getElementById('year');if(y)y.textContent=new Date().getFullYear();
+  document.querySelectorAll('.faq-item').forEach(function(it){
+    it.querySelector('.faq-q').addEventListener('click',function(){
+      var a=it.querySelector('.faq-a');
+      var open=it.classList.toggle('open');
+      a.style.maxHeight=open?a.scrollHeight+'px':null;
+    });
+  });
+})();
+</script>
+</body>
+</html>
