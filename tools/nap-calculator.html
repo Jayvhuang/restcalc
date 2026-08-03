@@ -46,12 +46,12 @@
 </head><body>
 <header class="site-header">
   <div class="wrap nav">
-    <a class="logo" href="../"><span class="moon">🌙</span><span>Rest</span>calc</a>
+    <a class="logo" href="../index.html"><span class="moon">🌙</span><span>Rest</span>calc</a>
     <nav class="nav-links">
-      <a href="../" data-i18n="nav.home">Home</a>
-      <a href="../#tools" data-i18n="nav.tools">All tools</a>
-      <a href="../#science" data-i18n="nav.science">How it works</a>
-      <a href="../#faq" data-i18n="nav.faq">FAQ</a>
+      <a href="../index.html" data-i18n="nav.home">Home</a>
+      <a href="../index.html#tools" data-i18n="nav.tools">All tools</a>
+      <a href="../index.html#science" data-i18n="nav.science">How it works</a>
+      <a href="../index.html#faq" data-i18n="nav.faq">FAQ</a>
       <a href="../privacy.html" data-i18n="nav.privacy">Privacy</a>
     </nav>
     <span class="nav-spacer"></span>
@@ -108,7 +108,10 @@
       <a class="tip" href="sleep-duration-calculator.html"><div class="ico">📊</div><h4 data-i18n="tools.duration.name">x</h4><p data-i18n="tools.duration.desc">y</p></a>
       <a class="tip" href="sleep-window-calculator.html"><div class="ico">🪟</div><h4 data-i18n="tools.window.name">x</h4><p data-i18n="tools.window.desc">y</p></a>
       <a class="tip" href="sleep-log.html"><div class="ico">📈</div><h4 data-i18n="tools.log.name">x</h4><p data-i18n="tools.log.desc">y</p></a>
-    </div>
+      <a class="tip" href="caffeine-cutoff-calculator.html"><div class="ico">☕</div><h4 data-i18n="tools.caffeine.name">Caffeine Cutoff Calculator</h4><p data-i18n="tools.caffeine.desc">Enter your bedtime and sensitivity to find your last safe caffeine time.</p></a>
+      <a class="tip" href="breathing-timer.html"><div class="ico">🫁</div><h4 data-i18n="tools.breathing.name">Bedtime Breathing Timer</h4><p data-i18n="tools.breathing.desc">Follow a calm circle through 4-6, 4-7-8, or box breathing to relax before bed.</p></a>
+    <a class="tip" href="sleep-routine-checklist.html"><div class="ico">📋</div><h4 data-i18n="tools.checklist.name">Sleep Preparation Checklist</h4><p data-i18n="tools.checklist.desc">From afternoon caffeine cutoff to lights-out.</p></a>
+      </div>
   </section></main>
 
 <footer class="site-footer">
@@ -125,12 +128,15 @@
       <a href="nap-calculator.html" data-i18n="tools.nap.name">Nap Calculator</a>
       <a href="sleep-window-calculator.html" data-i18n="tools.window.name">Sleep Window Helper</a>
       <a href="sleep-log.html" data-i18n="tools.log.name">Sleep Log &amp; Trend</a>
+      <a href="breathing-timer.html" data-i18n="tools.breathing.name">Bedtime Breathing Timer</a>
+          <a href="caffeine-cutoff-calculator.html" data-i18n="tools.caffeine.name">Caffeine Cutoff Calculator</a>
+    <a href="sleep-routine-checklist.html" data-i18n="tools.checklist.name">Sleep Preparation Checklist</a>
     </div>
     <div class="col">
       <h5 data-i18n="footLearn">Learn</h5>
-      <a href="../#science" data-i18n="nav.science">How it works</a>
-      <a href="../#tips" data-i18n="nav.tips">Tips</a>
-      <a href="../#faq" data-i18n="nav.faq">FAQ</a>
+      <a href="../index.html#science" data-i18n="nav.science">How it works</a>
+      <a href="../index.html#tips" data-i18n="nav.tips">Tips</a>
+      <a href="../index.html#faq" data-i18n="nav.faq">FAQ</a>
       <a href="../privacy.html" data-i18n="nav.privacy">Privacy</a>
     </div>
     <div class="col">
@@ -179,7 +185,9 @@ const T = {
       "log": {
         "name": "Sleep Log & Trend",
         "desc": "Log a few nights — just your bedtime, wake time, and how you felt. We turn it into a visual trend using the 90-minute cycle model."
-      }
+      },
+      checklist:{name:"Sleep Preparation Checklist",desc:"Plan your whole day for better sleep — from afternoon caffeine cutoff to lights-out."},
+      "breathing": { "name": "Bedtime Breathing Timer", "desc": "Follow a calm circle through 4-6, 4-7-8, or box breathing to relax before bed." }
     },
     "footTag": "A free sleep calculator and bedtime planner. Built for better mornings.",
     "footTools": "Tools",
@@ -273,8 +281,14 @@ const T = {
       "log": {
         "name": "睡眠记录与趋势",
         "desc": "记录几个晚上——只需就寝时间、醒来时间和你的感受。我们把它变成可视化趋势，并显示你每晚的 90 分钟周期数。"
-      }
+      },
+      checklist:{name:"睡前准备清单",desc:"为更好睡眠规划一整天——从下午戒咖啡因到熄灯就寝。"},
+      "breathing": { "name": "睡前呼吸计时器", "desc": "跟随舒缓扩张的圆圈，用 4-6、4-7-8 或方块呼吸在睡前放松。" }
     },
+      "caffeine": {
+        "name": "咖啡因截止计算器",
+        "desc": "输入就寝时间与敏感度，找出你最后一杯的安全时刻。"
+      },
     "footTag": "一款免费的睡眠计算器与就寝规划工具。为更清爽的早晨而打造。",
     "footTools": "工具",
     "footLearn": "了解更多",
