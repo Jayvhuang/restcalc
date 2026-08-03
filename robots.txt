@@ -26,4 +26,4 @@ Allow: /
 User-agent: CCBot
 Allow: /
 
-Sitemap: https://restcalc.vercel.app/sitemap.xml
+Sitemap: https://www.rest-calc.com/sitemap.xml
