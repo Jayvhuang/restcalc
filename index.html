@@ -271,7 +271,7 @@ a{color:inherit;text-decoration:none}
   <div class="wrap nav">
     <a class="logo" href="#top"><span class="moon">🌙</span><span>Rest</span>calc</a>
     <nav class="nav-links">
-      <a href="#tools" data-i18n="nav.tools">Tools</a>
+      <a href="#tools" onclick="event.preventDefault();showView('tools');document.getElementById('tools').scrollIntoView({behavior:'smooth'});" data-i18n="nav.tools">Tools</a>
       <a href="#learn" data-i18n="nav.learn">Guides</a>
       <a href="#science" data-i18n="nav.science">How it works</a>
       <a href="#tips" data-i18n="nav.tips">Tips</a>
@@ -291,14 +291,33 @@ a{color:inherit;text-decoration:none}
     <h1 data-i18n="hero.title">Plan your sleep around your <span class="grad">body clock</span></h1>
     <p class="sub" data-i18n="hero.sub">Restcalc calculates the perfect bedtime or wake-up time using natural 90-minute sleep cycles, so you rise during light sleep — refreshed, not groggy.</p>
       <div class="hero-cta">
-      <button class="cta-primary" onclick="document.getElementById('tools').scrollIntoView()">⚡ <span data-i18n="hero.cta">Open sleep calculator</span></button>
-      <a class="cta-ghost" href="#faq" data-i18n="hero.learn">How sleep cycles work</a>
+      <button class="cta-primary" id="btnGuide">🌙 <span data-i18n="hero.guide">睡眠引导</span></button>
+      <button class="cta-ghost" id="btnCalc">⚡ <span data-i18n="hero.calc">睡眠计算器</span></button>
     </div>
     <p class="trust"><span data-i18n="hero.trust"></span></p>
   </section>
 
-  <!-- TOOLS -->
-  <section class="section wrap" id="tools">
+  <!-- VIEWS: Sleep Guide / Sleep Calculator -->
+  <div class="views">
+  <!-- GUIDE VIEW (睡眠引导) -->
+  <section class="section wrap view active" id="guide">
+    <div class="card bedwrap">
+      <div class="planner-bar">
+        <div class="field">
+          <label data-i18n="checklist.bedLabel">My bedtime is</label>
+          <input type="time" id="bedInput" value="23:00">
+        </div>
+      </div>
+      <p class="nowbadge" id="nowBadge"></p>
+      <p class="progress" id="progress"></p>
+      <div id="checklist"></div>
+      <div style="display:flex;gap:10px;margin-top:16px;">
+        <button class="btn-ghost" id="resetBtn" data-i18n="checklist.reset">Reset checklist</button>
+      </div>
+    </div>
+  </section>
+  <!-- CALCULATOR VIEW (睡眠计算器) -->
+  <section class="section wrap view" id="tools">
     <div class="section-head">
       <h2 data-i18n="tools.heading">Free sleep & bedtime tools</h2>
       <p data-i18n="tools.sub">No signup. Works offline in your browser. Switch language anytime.</p>
@@ -520,7 +539,8 @@ a{color:inherit;text-decoration:none}
     </div>
   </div>
 
-  </section>
+    </section>
+  </div><!-- /.views -->
 
   <!-- SCIENCE -->
   <section class="section wrap" id="science">
@@ -639,10 +659,12 @@ const T = {
     nav:{tools:"Tools",science:"How it works",tips:"Tips",faq:"FAQ",privacy:"Privacy"},
     hero:{
       title:'Plan your sleep around your <span class="grad">body clock</span>',
-      sub:"Restcalc calculates the perfect bedtime or wake-up time using natural 90-minute sleep cycles, so you rise during light sleep — refreshed, not groggy.",
+      sub:"Restcalc uses your natural 90-minute sleep cycles and an all-day plan to help clear your sleep obstacles and let you sleep well.",
       cta:"Open sleep calculator", learn:"How sleep cycles work",
+      guide:"Sleep Guide", calc:"Sleep Calculator",
       trust:"🔒 Private by design — every calculation runs in your browser. No account, no data uploaded. 📚 Built on peer-reviewed sleep science."
     },
+    checklist:{ bedLabel:"My bedtime is", reset:"Reset checklist", current:"Now: ", tooEarly:"Not yet — more than 8 hours before bed. Relax, your prep starts later.", progressDone:"All done — nice work. Sleep well 🌙" },
     tools:{heading:"Free sleep & bedtime tools",sub:"No signup. Works offline in your browser. Switch language anytime.",
       bedtime:{name:"Bedtime Calculator"},
       wake:{name:"Wake-up Calculator"},
@@ -806,10 +828,12 @@ const T = {
     nav:{tools:"工具",science:"原理",tips:"建议",faq:"常见问题",privacy:"隐私"},
     hero:{
       title:'顺应你的<span class="grad">生物钟</span>安排睡眠',
-      sub:"Restcalc 基于天然的 90 分钟睡眠周期，为你算出最佳就寝或起床时间，让你在浅睡中自然醒来——神清气爽，不再昏沉。",
+      sub:"Restcalc 基于天然的 90 分钟睡眠周期，利用全天计划的睡眠指引，帮助你清除睡眠障碍，睡个好觉",
       cta:"打开睡眠计算器", learn:"睡眠周期原理",
+      guide:"睡眠引导", calc:"睡眠计算器",
       trust:"🔒 隐私优先——所有计算都在你的浏览器本地完成，无需注册，数据不上传。📚 基于同行评审的睡眠科学。"
     },
+    checklist:{ bedLabel:"我的就寝时间是", reset:"重置清单", current:"当前：", tooEarly:"还没到——距就寝超过 8 小时。先放松，准备稍后开始。", progressDone:"全部完成——做得好，晚安 🌙" },
     tools:{heading:"免费睡眠与就寝工具",sub:"无需注册，浏览器本地运行，可随时切换语言。",
       bedtime:{name:"就寝时间计算器"},
       wake:{name:"起床时间计算器"},
@@ -1385,6 +1409,7 @@ function setLang(l){
   history.replaceState(null,'',location.pathname+(qs?'?'+qs:'')+location.hash);
   applyStatic();
   renderScience();renderTips();renderFAQ();renderAffiliate();
+  renderChecklist();
   // recompute current panel
   ['bedtime','wake','duration','nap','window','caffeine','breathing'].forEach(k=>window['calc'+k.charAt(0).toUpperCase()+k.slice(1)]());
   buildLogRows(); renderLog();
@@ -1415,6 +1440,222 @@ function makeStars(){
   box.innerHTML=s;
 }
 
+/* ============ Sleep Checklist (Guide view) ============ */
+const CL_PHASES = [
+  { id:'day', icon:'☀️', startBefore:9999,
+    title:{en:'During the day', zh:'白天'},
+    win:{en:'Set the foundation', zh:'打底'},
+    items:[
+      {id:'wake', icon:'⏰', t:{en:'Every morning', zh:'每天早晨'},
+        en:'Keep a fixed wake-up time — even on weekends.',
+        zh:'固定起床时间——连周末也尽量一致。',
+        why:{en:'A consistent wake time anchors your circadian rhythm and builds steady sleep pressure. Erratic mornings cause “social jetlag” that makes falling asleep harder.', zh:'固定起床时间能锚定昼夜节律、建立稳定的睡眠驱动力。起床反复无常会造成“社交时差”，让人更难入睡。'},
+        deep:{href:'tools/bedtime-calculator.html', tool:'bedtime'}},
+      {id:'sun', icon:'🌞', t:{en:'After waking', zh:'起床后'},
+        en:'Get natural light soon after waking.',
+        zh:'起床后尽快接触自然光。',
+        why:{en:'Morning and daytime light — especially blue-rich sunlight — sets your body clock and boosts daytime alertness, which improves night-time melatonin timing.', zh:'早晨与白天的光照（尤其富含蓝光的阳光）能校准生物钟、提升日间清醒度，进而改善夜间褪黑素分泌时机。'}},
+      {id:'move', icon:'🚶', t:{en:'Through the day', zh:'白天'},
+        en:'Stay moderately active or exercise during the day.',
+        zh:'白天保持适量活动或运动。',
+        why:{en:'Moderate daytime activity raises adenosine (sleep pressure) and is linked to more deep sleep. Just avoid intense workouts too close to bedtime.', zh:'白天适量活动会提升腺苷（睡眠驱动力），并有助于增加深睡；只是别在临睡前做剧烈运动。'}},
+      {id:'nap', icon:'😴', t:{en:'If you nap', zh:'若要午睡'},
+        en:'If you nap, keep it about 10–20 minutes and not too late.',
+        zh:'如果午睡，控制在约 10–20 分钟，不要太晚。',
+        why:{en:'A short nap restores alertness without sleep inertia and avoids stealing sleep pressure from the coming night. Long or late naps make it harder to fall asleep later.', zh:'短午睡能恢复清醒又不会昏沉，也避免削减当晚的睡眠驱动力。过长或过晚的午睡会让人更难入睡。'},
+        deep:{href:'tools/nap-calculator.html', tool:'nap'}}
+    ]
+  },
+  { id:'afternoon', icon:'☕', startBefore:360,
+    title:{en:'Afternoon', zh:'下午'},
+    win:{en:'Cut the stimulants', zh:'收住刺激物'},
+    items:[
+      {id:'caffeine', icon:'🥤', t:{en:'Caffeine', zh:'咖啡因'},
+        en:'Stop caffeine 6 hours earlier (coffee, tea, milk tea, cola, energy drinks). If sensitive or a long-term poor sleeper, stop earlier.',
+        zh:'提前 6 小时停止咖啡因（咖啡、茶、奶茶、可乐、能量饮料等）；若对咖啡因敏感或长期睡不好，请更早停止。',
+        why:{en:'Caffeine is fully absorbed by the stomach and small intestine within 45 minutes of intake. For a typical healthy adult, the typical half-life of caffeine is about 5 hours (the time to reduce by half). Depending on individual differences and sensitivity, it can extend beyond 10 hours. See the calculator for details.', zh:'咖啡因在摄取后 45 分钟内被胃和小肠完全吸收。一般健康成年人咖啡因的典型半衰期大约是 5 小时（即减少一半的时间）。因个体差异和敏感程度，有可能扩大到 10 小时以上。详情请参考计算器'},
+        deep:{href:'tools/caffeine-cutoff-calculator.html', tool:'caffeine'}}
+    ]
+  },
+  { id:'evening', icon:'🌆', startBefore:240,
+    title:{en:'Evening', zh:'晚上'},
+    win:{en:'Wind-down dinner', zh:'晚饭收尾'},
+    items:[
+      {id:'meal', icon:'🍽️', t:{en:'Diet', zh:'饮食'},
+        en:'Do not eat dinner too late, and do not eat too much.',
+        zh:'晚餐不要太晚，也不要过饱。',
+        why:{en:'A late or heavy meal keeps digestion active and can cause reflux and a rise in core temperature, all of which delay sleep onset.', zh:'太晚或太饱的晚餐会让消化持续活跃，可能引起反流、核心体温升高，都会推迟入睡。'}},
+      {id:'alcohol', icon:'🍷', t:{en:'Alcohol', zh:'酒精'},
+        en:'Avoid heavy drinking; do not use alcohol to fall asleep.',
+        zh:'避免大量饮酒，不要用酒精助眠。',
+        why:{en:'Alcohol may make you drowsy, but it fragments sleep architecture, suppresses REM, and causes rebound awakenings and bathroom trips — it is not real sleep.', zh:'酒精或许让人犯困，却会破坏睡眠结构、抑制 REM，并引发反弹式夜醒与起夜——那不是真正的睡眠。'}},
+      {id:'exercise', icon:'🏃', t:{en:'Exercise', zh:'运动'},
+        en:'Avoid vigorous or high-intensity exercise; gentle stretching is fine.',
+        zh:'避免剧烈或高强度运动，舒缓拉伸可以。',
+        why:{en:'Vigorous or high-intensity exercise raises core temperature and adrenaline and can delay sleep. Gentle stretching in the evening is fine.', zh:'剧烈或高强度运动会使核心体温与肾上腺素升高，可能推迟睡眠；晚间做舒缓拉伸则无妨。'}}
+    ]
+  },
+  { id:'pre2h', icon:'💡', startBefore:120,
+    title:{en:'2 hours before bed', zh:'睡前 2 小时'},
+    win:{en:'Start slowing', zh:'开始放慢'},
+    items:[
+      {id:'light', icon:'🔆', t:{en:'Light', zh:'灯光'},
+        en:'Dim the indoor lights.',
+        zh:'调暗室内灯光。',
+        why:{en:'Dimming lights — especially switching off bright overhead and blue light — lets melatonin rise and signals the body that wind-down has begun.', zh:'调暗灯光（尤其关掉刺眼的顶灯与蓝光）能让褪黑素上升，向身体发出“开始放松”的信号。'}},
+      {id:'bath', icon:'🛁', t:{en:'Bath', zh:'洗澡'},
+        en:'If you shower or bathe, schedule it about 1–2 hours before bed.',
+        zh:'如果要洗澡，尽量安排在睡前 1–2 小时。',
+        why:{en:'A warm bath or shower 1–2 hours before bed raises then drops your core temperature; that post-bath cool-down promotes sleepiness.', zh:'睡前 1–2 小时洗个温水澡或沐浴，会让核心体温先升后降；随后的降温有助于产生困意。'}},
+      {id:'cognitive', icon:'🧠', t:{en:'Lower cognitive load', zh:'降低认知负荷'},
+        en:'Stop working, complex decisions, intense study, and anxiety-provoking topics.',
+        zh:'停止处理工作、复杂决策、高强度学习和容易引发焦虑的事。',
+        why:{en:'Work, complex decisions, intense study, and anxiety-triggering topics activate the sympathetic nervous system and raise cortisol, making it hard to switch off.', zh:'处理工作、复杂决策、高强度学习或容易引发焦虑的话题，会激活交感神经系统、推高皮质醇，让人难以“关机”。'}}
+    ]
+  },
+  { id:'pre1h', icon:'📵', startBefore:60,
+    title:{en:'1 hour before bed', zh:'睡前 1 小时'},
+    win:{en:'Final wind-down', zh:'最后放松'},
+    items:[
+      {id:'screen', icon:'📱', t:{en:'Screens', zh:'屏幕'},
+        en:'Reduce or stop using screens.',
+        zh:'减少或不使用屏幕。',
+        why:{en:'Screens emit blue light that suppresses melatonin, and engaging content keeps the brain alert. Reducing screen time an hour before bed protects your sleep.', zh:'屏幕发出的蓝光会抑制褪黑素，而引人入胜的内容会让大脑保持警觉。睡前一小时减少屏幕使用，能保护你的睡眠。'}},
+      {id:'excite', icon:'🎮', t:{en:'Excitement', zh:'兴奋'},
+        en:'Avoid short videos, games, thrillers, stimulating novels, and heated debates.',
+        zh:'避免短视频、游戏、惊悚剧、刺激小说和激烈讨论。',
+        why:{en:'Short videos, games, thrillers, stimulating novels, and heated debates spike dopamine and arousal, pushing bedtime later.', zh:'短视频、游戏、惊悚剧、刺激小说或激烈讨论都会拉升多巴胺与兴奋度，把就寝时间越推越晚。'}},
+      {id:'water', icon:'💧', t:{en:'Hydration', zh:'喝水'},
+        en:'Avoid drinking large amounts of water.',
+        zh:'避免大量喝水。',
+        why:{en:'Large fluid intake close to bed increases the chance of waking to use the bathroom (nocturia), fragmenting your sleep.', zh:'睡前大量喝水会增加夜尿（nocturia）而打断睡眠，让人频频醒来。'}},
+      {id:'sleepaid', icon:'🧘', t:{en:'Sleep aids', zh:'助眠活动'},
+        en:'Put on comfortable clothes, do light stretching, read something relaxing, and try breathing exercises.',
+        zh:'换舒服衣服、轻拉伸、读轻松内容，做呼吸练习。',
+        why:{en:'Comfortable clothes, light stretching, a relaxing read, and breathing exercises shift you toward the parasympathetic “rest and digest” state and lower arousal.', zh:'换上舒服的衣服、轻拉伸、读点轻松的内容、做呼吸练习，能把你推向副交感神经主导的“休息消化”状态，降低兴奋度。'},
+        deep:{href:'tools/breathing-timer.html', tool:'breathing'}}
+    ]
+  },
+  { id:'beforebed', icon:'🛌', startBefore:15,
+    title:{en:'Before bed', zh:'上床前'},
+    win:{en:'Environment check', zh:'环境检查'},
+    items:[
+      {id:'dark', icon:'🌑', t:{en:'Light', zh:'光线'},
+        en:'Check that the room is dark enough.',
+        zh:'检查房间是否够暗。',
+        why:{en:'Darkness is the strongest trigger for melatonin. Check for light leaks (curtains, LEDs, phone) before settling in.', zh:'黑暗是褪黑素最强的触发器。躺下前检查是否有漏光（窗帘、指示灯、手机）。'}},
+      {id:'quiet', icon:'🔇', t:{en:'Sound', zh:'声音'},
+        en:'Check that it is quiet enough.',
+        zh:'检查是否安静。',
+        why:{en:'Noise disrupts sleep continuity. Earplugs or white noise can help if your environment is not quiet.', zh:'噪音会破坏睡眠的连续性。若环境不够安静，耳塞或白噪声能帮上忙。'}},
+      {id:'temp', icon:'🌡️', t:{en:'Temperature', zh:'温度'},
+        en:'Check that the temperature is comfortable.',
+        zh:'检查温度是否舒适。',
+        why:{en:'A slightly cool room (around 18–21°C / 65–70°F) supports the natural drop in core temperature needed to fall and stay asleep.', zh:'略偏凉的房间（约 18–21°C）有助于完成入睡与维持睡眠所需的体温下降。'}},
+      {id:'phone', icon:'📴', t:{en:'Phone', zh:'手机'},
+        en:'Keep the phone away from the bed and do not check the time.',
+        zh:'手机远离床，不要看时间。',
+        why:{en:'Keep the phone away from the bed and do not check the time. Clock-watching fuels anxiety, and the screen light delays sleep.', zh:'把手机放离床边，也不要看时间。盯着时钟会助长焦虑，而屏幕光照会推迟睡眠。'}}
+    ]
+  },
+  { id:'habit', icon:'🔁', startBefore:-1,
+    title:{en:'Ongoing habit', zh:'平时'},
+    win:{en:'Track & reinforce', zh:'记录与巩固'},
+    items:[
+      {id:'log', icon:'📈', t:{en:'Track', zh:'记录'},
+        en:'Log a week of sleep and look at your total weekly sleep.',
+        zh:'记录一周睡眠情况，看一周睡眠总量。',
+        why:{en:'Logging a week of sleep reveals your real total sleep, consistency, and patterns — the first step to improving them.', zh:'记录一周睡眠，能看清你真实的总睡眠量、规律与模式——这是改善睡眠的第一步。'},
+        deep:{href:'tools/sleep-log.html', tool:'log'}},
+      {id:'bedonly', icon:'🛏️', t:{en:'Environment', zh:'营造环境'},
+        en:'Keep the bed for sleeping only, building a bed-equals-sleep environment.',
+        zh:'床尽量只用于睡觉，营造床=睡眠的环境。',
+        why:{en:'Using the bed only for sleep (not work or scrolling) builds a conditioned response: bed = sleep. It is a core stimulus-control technique.', zh:'床只用来睡觉（不工作、不刷手机），能建立“床=睡眠”的条件反射。这是刺激控制法的核心。'}}
+    ]
+  }
+];
+const CL_KEY='restcalc-checklist';
+function clLoad(){try{return JSON.parse(localStorage.getItem(CL_KEY))||{};}catch(e){return {};}}
+function clSave(o){localStorage.setItem(CL_KEY,JSON.stringify(o));}
+function clDeep(it){
+  if(!it.deep)return '';
+  return '<a class="ideep" href="'+it.deep.href+(lang==='zh'?'?lang=zh':'')+'">'+T[lang].tools[it.deep.tool].name+' ↗</a>';
+}
+function renderChecklist(){
+  const saved=clLoad();
+  const wrap=document.getElementById('checklist'); if(!wrap)return;
+  wrap.innerHTML='';
+  CL_PHASES.forEach(ph=>{
+    const sec=document.createElement('div');
+    sec.className='phase'; sec.id='phase-'+ph.id;
+    const head=document.createElement('div');
+    head.className='phase-head';
+    head.innerHTML='<span class="pic">'+ph.icon+'</span><span class="pt">'+ph.title[lang]+'</span><span class="pw">'+ph.win[lang]+'</span>';
+    sec.appendChild(head);
+    const list=document.createElement('div'); list.className='items';
+    ph.items.forEach(it=>{
+      const row=document.createElement('label'); row.className='item'; row.dataset.id=it.id;
+      const cb='<input type="checkbox" '+(saved[it.id]?'checked':'')+'>';
+      let inner='<div class="ib"><div class="it">'+it.t[lang]+'</div><div class="ix">'+it[lang]+'</div>';
+      if(it.why) inner+='<div class="why">'+it.why[lang]+'</div>';
+      if(it.deep) inner+=clDeep(it);
+      inner+='</div>';
+      row.innerHTML=cb+inner;
+      const box=row.querySelector('input');
+      box.addEventListener('change',function(){
+        const s=clLoad(); s[it.id]=box.checked; clSave(s);
+        row.classList.toggle('done',box.checked);
+        clUpdateProgress();
+      });
+      if(saved[it.id]) row.classList.add('done');
+      list.appendChild(row);
+    });
+    sec.appendChild(list);
+    wrap.appendChild(sec);
+  });
+  clUpdateProgress();
+}
+function clAllIds(){let ids=[];CL_PHASES.forEach(p=>p.items.forEach(i=>ids.push(i.id)));return ids;}
+function clUpdateProgress(){
+  const saved=clLoad(); const ids=clAllIds();
+  const done=ids.filter(id=>saved[id]).length;
+  const el=document.getElementById('progress'); if(!el)return;
+  if(done===ids.length) el.textContent=T[lang].checklist.progressDone;
+  else el.textContent=done+' / '+ids.length;
+}
+function clMinutesOf(str){const p=str.split(':');return (+p[0])*60+(+p[1]);}
+function updateChecklistNow(){
+  const bedEl=document.getElementById('bedInput'); if(!bedEl)return;
+  const bedMin=clMinutesOf(bedEl.value||'23:00');
+  const now=new Date(); const nowMin=now.getHours()*60+now.getMinutes();
+  let mb=bedMin-nowMin;
+  if(mb>480){
+    CL_PHASES.forEach(ph=>{const sec=document.getElementById('phase-'+ph.id);if(sec)sec.classList.remove('active');});
+    const badge=document.getElementById('nowBadge');
+    if(badge)badge.textContent=T[lang].checklist.tooEarly;
+    return;
+  }
+  let activeId='day';
+  if(mb<=60) activeId='beforebed';
+  else if(mb<=120) activeId='pre1h';
+  else if(mb<=240) activeId='pre2h';
+  else if(mb<=360) activeId='afternoon';
+  CL_PHASES.forEach(ph=>{
+    const sec=document.getElementById('phase-'+ph.id);
+    if(sec) sec.classList.toggle('active',ph.id===activeId);
+  });
+  const badge=document.getElementById('nowBadge'); if(!badge)return;
+  const ph=CL_PHASES.find(p=>p.id===activeId);
+  if(ph) badge.innerHTML=T[lang].checklist.current+'<b>'+ph.title[lang]+'</b>';
+  else badge.textContent=T[lang].checklist.tooEarly;
+}
+function showView(name){
+  const map={guide:'view-guide', tools:'view-tools'};
+  const target=map[name]||('view-'+name);
+  document.querySelectorAll('.views .view').forEach(v=>v.classList.remove('active'));
+  const el=document.getElementById(target); if(el)el.classList.add('active');
+}
+
 /* ============ init ============ */
 function init(){
   document.getElementById('year').textContent=new Date().getFullYear();
@@ -1422,6 +1663,13 @@ function init(){
   renderScience();renderTips();renderFAQ();renderAffiliate();
   bindLang();bindTheme();setupTabs();
   try{ makeStars(); }catch(e){ console.error('stars',e); }
+  try{ renderChecklist(); }catch(e){ console.error('checklist',e); }
+  try{ updateChecklistNow(); }catch(e){}
+  setInterval(updateChecklistNow,30000);
+  const clBed=document.getElementById('bedInput'); if(clBed)clBed.addEventListener('input',updateChecklistNow);
+  const clReset=document.getElementById('resetBtn'); if(clReset)clReset.addEventListener('click',function(){localStorage.removeItem(CL_KEY);renderChecklist();});
+  const gBtn=document.getElementById('btnGuide'); if(gBtn)gBtn.addEventListener('click',function(){showView('guide');document.getElementById('guide').scrollIntoView({behavior:'smooth'});});
+  const cBtn=document.getElementById('btnCalc'); if(cBtn)cBtn.addEventListener('click',function(){showView('tools');document.getElementById('tools').scrollIntoView({behavior:'smooth'});});
   ['bedtime','wake','duration','nap','window','caffeine','breathing'].forEach(k=>{
     try{
       const fn=window['calc'+k.charAt(0).toUpperCase()+k.slice(1)];
