@@ -12,27 +12,27 @@ The site targets general adults who want better sleep, shift workers, students, 
 
 Each tool is a standalone page with its own calculator, explanation, and FAQ.
 
-- [Bedtime Calculator](https://restcalc.vercel.app/tools/bedtime-calculator.html): Enter the time you need to wake up. We count back in 90-minute sleep cycles plus ~15 minutes to fall asleep.
-- [Wake-up Calculator](https://restcalc.vercel.app/tools/wake-up-calculator.html): Enter when you plan to go to bed. We add sleep cycles to find the best moments to wake up.
-- [Sleep Duration Calculator](https://restcalc.vercel.app/tools/sleep-duration-calculator.html): Enter your bedtime and wake time to see total sleep, completed cycles, and a quality rating.
-- [Nap Calculator](https://restcalc.vercel.app/tools/nap-calculator.html): Enter the current time to see the best window for a refreshing power nap or a full-cycle nap.
-- [Sleep Window Helper](https://restcalc.vercel.app/tools/sleep-window-calculator.html): Choose the time range you are free to sleep. We find the bedtimes that complete full 90-minute cycles and keep you inside your window.
-- [Sleep Log & Trend](https://restcalc.vercel.app/tools/sleep-log.html): Log a few nights — just your bedtime, wake time, and how you felt. We turn it into a visual trend and show your 90-minute cycles each night.
-- [Caffeine Cutoff Calculator](https://restcalc.vercel.app/tools/caffeine-cutoff-calculator.html): Enter your planned bedtime and sensitivity (low / normal / high) to find the latest time to stop coffee, tea, or energy drinks so caffeine won't wreck your sleep.
-- [Bedtime Breathing Timer](https://restcalc.vercel.app/tools/breathing-timer.html): Follow a calm expanding circle through 4-6 relax, 4-7-8, or box breathing for 3–5 minutes to wind down before sleep.
-- [Sleep Preparation Checklist](https://restcalc.vercel.app/tools/sleep-routine-checklist.html): From your afternoon caffeine cutoff to lights-out — a full-day, evidence-based plan with a guided 30-minute wind-down.
+- [Bedtime Calculator](https://www.rest-calc.com/tools/bedtime-calculator.html): Enter the time you need to wake up. We count back in 90-minute sleep cycles plus ~15 minutes to fall asleep.
+- [Wake-up Calculator](https://www.rest-calc.com/tools/wake-up-calculator.html): Enter when you plan to go to bed. We add sleep cycles to find the best moments to wake up.
+- [Sleep Duration Calculator](https://www.rest-calc.com/tools/sleep-duration-calculator.html): Enter your bedtime and wake time to see total sleep, completed cycles, and a quality rating.
+- [Nap Calculator](https://www.rest-calc.com/tools/nap-calculator.html): Enter the current time to see the best window for a refreshing power nap or a full-cycle nap.
+- [Sleep Window Helper](https://www.rest-calc.com/tools/sleep-window-calculator.html): Choose the time range you are free to sleep. We find the bedtimes that complete full 90-minute cycles and keep you inside your window.
+- [Sleep Log & Trend](https://www.rest-calc.com/tools/sleep-log.html): Log a few nights — just your bedtime, wake time, and how you felt. We turn it into a visual trend and show your 90-minute cycles each night.
+- [Caffeine Cutoff Calculator](https://www.rest-calc.com/tools/caffeine-cutoff-calculator.html): Enter your planned bedtime and sensitivity (low / normal / high) to find the latest time to stop coffee, tea, or energy drinks so caffeine won't wreck your sleep.
+- [Bedtime Breathing Timer](https://www.rest-calc.com/tools/breathing-timer.html): Follow a calm expanding circle through 4-6 relax, 4-7-8, or box breathing for 3–5 minutes to wind down before sleep.
+- [Sleep Preparation Checklist](https://www.rest-calc.com/tools/sleep-routine-checklist.html): From your afternoon caffeine cutoff to lights-out — a full-day, evidence-based plan with a guided 30-minute wind-down.
 
 ## Articles
 
-- [How Caffeine Affects Your Sleep](https://restcalc.vercel.app/learn/caffeine-and-sleep.html): The half-life science, the 6 / 8 / 10–12 hour cutoff rule by sensitivity, hidden caffeine sources, and practical wind-down tips — with citations to the National Sleep Foundation and the Journal of Clinical Sleep Medicine (2013).
-- [Breathing for Sleep](https://restcalc.vercel.app/learn/breathing-for-sleep.html): How slow, paced breathing lowers arousal, why a longer exhale calms you, the 4-6 / 4-7-8 / box methods, and a no-hold option — with citations to the National Sleep Foundation and Cleveland Clinic.
-- [Bedtime Calculator](https://restcalc.vercel.app/learn/bedtime-calculator.html): Count back from your wake time in 90-minute cycles to find the best bedtime — why cycle timing beats guessing.
-- [Wake-up Calculator](https://restcalc.vercel.app/learn/wake-up-calculator.html): Add 90-minute cycles to your bedtime to find groggy-free wake times, and why the snooze button backfires.
-- [Sleep Duration Calculator](https://restcalc.vercel.app/learn/sleep-duration-calculator.html): Turn bedtime and wake time into total sleep, completed cycles, and a quality rating.
-- [Nap Calculator](https://restcalc.vercel.app/learn/nap-calculator.html): A 10–20 minute power nap vs a full 90-minute cycle, and why 30–60 minutes is the trap.
-- [Sleep Window Helper](https://restcalc.vercel.app/learn/sleep-window-calculator.html): Enter your free sleep range and find cycle-aligned bedtimes that fit inside it.
-- [Sleep Log](https://restcalc.vercel.app/learn/sleep-log.html): Why a week of data beats one night, and how consistency matters more than total hours.
-- [Sleep Checklist](https://restcalc.vercel.app/learn/sleep-routine-checklist.html): A full-day wind-down from afternoon caffeine cutoff to lights-out, with the caffeine half-life science.
+- [How Caffeine Affects Your Sleep](https://www.rest-calc.com/learn/caffeine-and-sleep.html): The half-life science, the 6 / 8 / 10–12 hour cutoff rule by sensitivity, hidden caffeine sources, and practical wind-down tips — with citations to the National Sleep Foundation and the Journal of Clinical Sleep Medicine (2013).
+- [Breathing for Sleep](https://www.rest-calc.com/learn/breathing-for-sleep.html): How slow, paced breathing lowers arousal, why a longer exhale calms you, the 4-6 / 4-7-8 / box methods, and a no-hold option — with citations to the National Sleep Foundation and Cleveland Clinic.
+- [Bedtime Calculator](https://www.rest-calc.com/learn/bedtime-calculator.html): Count back from your wake time in 90-minute cycles to find the best bedtime — why cycle timing beats guessing.
+- [Wake-up Calculator](https://www.rest-calc.com/learn/wake-up-calculator.html): Add 90-minute cycles to your bedtime to find groggy-free wake times, and why the snooze button backfires.
+- [Sleep Duration Calculator](https://www.rest-calc.com/learn/sleep-duration-calculator.html): Turn bedtime and wake time into total sleep, completed cycles, and a quality rating.
+- [Nap Calculator](https://www.rest-calc.com/learn/nap-calculator.html): A 10–20 minute power nap vs a full 90-minute cycle, and why 30–60 minutes is the trap.
+- [Sleep Window Helper](https://www.rest-calc.com/learn/sleep-window-calculator.html): Enter your free sleep range and find cycle-aligned bedtimes that fit inside it.
+- [Sleep Log](https://www.rest-calc.com/learn/sleep-log.html): Why a week of data beats one night, and how consistency matters more than total hours.
+- [Sleep Checklist](https://www.rest-calc.com/learn/sleep-routine-checklist.html): A full-day wind-down from afternoon caffeine cutoff to lights-out, with the caffeine half-life science.
 
 ## How Sleep Cycles Work
 
@@ -69,12 +69,12 @@ It may be timing, not duration. Waking mid-cycle can leave you groggy even after
 
 ## Languages
 
-- English (default, crawlable static content): https://restcalc.vercel.app/
+- English (default, crawlable static content): https://www.rest-calc.com/
 - 中文 (Chinese): available via an in-page language toggle on every page. Note: the Chinese text is rendered client-side, so the English version is the primary crawlable content for search engines and AI crawlers.
 
 ## Monetization & Affiliate Disclosure
 
-Restcalc participates in the Amazon Associates program. As an affiliate, the site may earn from qualifying purchases made through sponsored product links, at no extra cost to users. The site also displays Google AdSense ads. Affiliate and ad content do not affect tool results. See the Privacy Policy for details on cookies and data: https://restcalc.vercel.app/privacy.html
+Restcalc participates in the Amazon Associates program. As an affiliate, the site may earn from qualifying purchases made through sponsored product links, at no extra cost to users. The site also displays Google AdSense ads. Affiliate and ad content do not affect tool results. See the Privacy Policy for details on cookies and data: https://www.rest-calc.com/privacy.html
 
 ## Technical Notes
 
