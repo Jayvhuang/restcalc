@@ -271,7 +271,10 @@ a{color:inherit;text-decoration:none}
   <div class="wrap nav">
     <a class="logo" href="#top"><span class="moon">🌙</span><span>Rest</span>calc</a>
     <nav class="nav-links">
-      <a href="#tools" onclick="event.preventDefault();showView('tools');document.getElementById('tools').scrollIntoView({behavior:'smooth'});" data-i18n="nav.tools">Tools</a>
+      <div class="has-dropdown">
+        <a href="#tools" onclick="event.preventDefault();showView('tools');document.getElementById('tools').scrollIntoView({behavior:'smooth'});" data-i18n="nav.tools">Tools</a>
+        <div class="dropdown" id="toolDropdown"></div>
+      </div>
       <a href="#learn" data-i18n="nav.learn">Guides</a>
       <a href="#science" data-i18n="nav.science">How it works</a>
       <a href="#tips" data-i18n="nav.tips">Tips</a>
@@ -291,8 +294,8 @@ a{color:inherit;text-decoration:none}
     <h1 data-i18n="hero.title">Plan your sleep around your <span class="grad">body clock</span></h1>
     <p class="sub" data-i18n="hero.sub">Restcalc calculates the perfect bedtime or wake-up time using natural 90-minute sleep cycles, so you rise during light sleep — refreshed, not groggy.</p>
       <div class="hero-cta">
-      <button class="cta-primary" id="btnGuide">🌙 <span data-i18n="hero.guide">睡眠引导</span></button>
-      <button class="cta-ghost" id="btnCalc">⚡ <span data-i18n="hero.calc">睡眠计算器</span></button>
+      <button class="cta-primary active" id="btnGuide">🌙 <span data-i18n="hero.guide">睡眠引导</span></button>
+      <button class="cta-ghost" id="btnCalc">⚡ <span data-i18n="hero.calc">睡眠工具</span></button>
     </div>
     <p class="trust"><span data-i18n="hero.trust"></span></p>
   </section>
@@ -318,10 +321,6 @@ a{color:inherit;text-decoration:none}
   </section>
   <!-- CALCULATOR VIEW (睡眠计算器) -->
   <section class="section wrap view" id="tools">
-    <div class="section-head">
-      <h2 data-i18n="tools.heading">Free sleep & bedtime tools</h2>
-      <p data-i18n="tools.sub">No signup. Works offline in your browser. Switch language anytime.</p>
-    </div>
     <div class="tabs" id="tabs">
       <button class="tab active" data-tool="bedtime">🛏️ <span data-i18n="t.bedtime">Bedtime</span></button>
       <button class="tab" data-tool="wake">⏰ <span data-i18n="t.wake">Wake-up</span></button>
@@ -661,11 +660,11 @@ const T = {
       title:'Plan your sleep around your <span class="grad">body clock</span>',
       sub:"Restcalc uses your natural 90-minute sleep cycles and an all-day plan to help clear your sleep obstacles and let you sleep well.",
       cta:"Open sleep calculator", learn:"How sleep cycles work",
-      guide:"Sleep Guide", calc:"Sleep Calculator",
-      trust:"🔒 Private by design — every calculation runs in your browser. No account, no data uploaded. 📚 Built on peer-reviewed sleep science."
+      guide:"Sleep Guide", calc:"Sleep tools",
+      trust:"🔒 Private by design — every calculation runs locally in your browser. No account. Data never leaves your device. Multilingual."
     },
     checklist:{ bedLabel:"My bedtime is", reset:"Reset checklist", current:"Now: ", tooEarly:"Not yet — more than 8 hours before bed. Relax, your prep starts later.", progressDone:"All done — nice work. Sleep well 🌙" },
-    tools:{heading:"Free sleep & bedtime tools",sub:"No signup. Works offline in your browser. Switch language anytime.",
+    tools:{
       bedtime:{name:"Bedtime Calculator"},
       wake:{name:"Wake-up Calculator"},
       duration:{name:"Sleep Duration Calculator"},
@@ -830,11 +829,11 @@ const T = {
       title:'顺应你的<span class="grad">生物钟</span>安排睡眠',
       sub:"Restcalc 基于天然的 90 分钟睡眠周期，利用全天计划的睡眠指引，帮助你清除睡眠障碍，睡个好觉",
       cta:"打开睡眠计算器", learn:"睡眠周期原理",
-      guide:"睡眠引导", calc:"睡眠计算器",
-      trust:"🔒 隐私优先——所有计算都在你的浏览器本地完成，无需注册，数据不上传。📚 基于同行评审的睡眠科学。"
+      guide:"睡眠引导", calc:"睡眠工具",
+      trust:"🔒 隐私优先——所有计算都在你的浏览器本地运行，无需注册，数据不上传。多语言模式"
     },
     checklist:{ bedLabel:"我的就寝时间是", reset:"重置清单", current:"当前：", tooEarly:"还没到——距就寝超过 8 小时。先放松，准备稍后开始。", progressDone:"全部完成——做得好，晚安 🌙" },
-    tools:{heading:"免费睡眠与就寝工具",sub:"无需注册，浏览器本地运行，可随时切换语言。",
+    tools:{
       bedtime:{name:"就寝时间计算器"},
       wake:{name:"起床时间计算器"},
       duration:{name:"睡眠时长计算器"},
@@ -1652,6 +1651,25 @@ function updateChecklistNow(){
 function showView(name){
   document.querySelectorAll('.views .view').forEach(v=>v.classList.remove('active'));
   const el=document.getElementById(name); if(el)el.classList.add('active');
+  const g=document.getElementById('btnGuide'), c=document.getElementById('btnCalc');
+  if(g)g.classList.toggle('active',name==='guide');
+  if(c)c.classList.toggle('active',name==='tools');
+}
+function buildToolNav(){
+  const d=document.getElementById('toolDropdown'); if(!d)return;
+  const t=T[lang].tools;
+  const items=[
+    ['bedtime-calculator.html',t.bedtime.name],
+    ['wake-up-calculator.html',t.wake.name],
+    ['sleep-duration-calculator.html',t.duration.name],
+    ['nap-calculator.html',t.nap.name],
+    ['sleep-window-calculator.html',t.window.name],
+    ['sleep-log.html',t.log.name],
+    ['caffeine-cutoff-calculator.html',t.caffeine.name],
+    ['breathing-timer.html',t.breathing.name],
+    ['sleep-routine-checklist.html', lang==='zh'?'睡眠清单':'Sleep checklist']
+  ];
+  d.innerHTML=items.map(([f,n])=>'<a href="tools/'+f+'">'+n+'</a>').join('');
 }
 
 /* ============ init ============ */
@@ -1679,6 +1697,8 @@ function init(){
   });
   try{ bindBreathing(); }catch(e){ console.error('breathing',e); }
   buildLogRows(); bindLog(); renderLog();
+  try{ buildToolNav(); }catch(e){}
+  showView('guide');
 }
 document.addEventListener('DOMContentLoaded',init);
 </script>
