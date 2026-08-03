@@ -48,12 +48,12 @@
 <header class="site-header">
   <div class="wrap nav">
     <a class="logo" href="../index.html"><span class="moon">🌙</span><span>Rest</span>calc</a>
-    <nav class="nav-links">
+        <nav class="nav-links">
       <a href="../index.html" data-i18n="nav.home">Home</a>
-      <a href="../index.html#tools" data-i18n="nav.tools">All tools</a>
-      <a href="../index.html#science" data-i18n="nav.science">How it works</a>
-      <a href="../index.html#faq" data-i18n="nav.faq">FAQ</a>
-      <a href="../privacy.html" data-i18n="nav.privacy">Privacy</a>
+      <div class="has-dropdown">
+        <a href="../index.html#tools" data-i18n="nav.tools">All tools</a>
+        <div class="dropdown" id="toolDropdown"></div>
+      </div>
     </nav>
     <span class="nav-spacer"></span>
     <span class="lang-foot" style="margin-top:0">
@@ -150,7 +150,7 @@
   </section>
 
   <section class="section wrap">
-    <div class="section-head"><h2 data-i18n="exploreHeading">Explore more sleep tools</h2><p data-i18n="exploreSub">Each one plans sleep around your 90-minute cycles.</p></div>
+    <div class="section-head"><h2 data-i18n="exploreHeading">Explore more sleep tools</h2></div>
     <div class="tips-grid">
       <a class="tip" href="caffeine-cutoff-calculator.html"><div class="ico">☕</div><h4 data-i18n="tools.caffeine.name">Caffeine Cutoff Calculator</h4><p data-i18n="tools.caffeine.desc">Enter your bedtime and sensitivity to find your last safe caffeine time.</p></a>
       <a class="tip" href="bedtime-calculator.html"><div class="ico">🌙</div><h4 data-i18n="tools.bedtime.name">Bedtime Calculator</h4><p data-i18n="tools.bedtime.desc">Enter the time you need to wake up. We count back in 90-minute sleep cycles.</p></a>
@@ -159,7 +159,7 @@
       <a class="tip" href="nap-calculator.html"><div class="ico">💤</div><h4 data-i18n="tools.nap.name">Nap Calculator</h4><p data-i18n="tools.nap.desc">Enter the current time to see the best window for a refreshing power nap or a full-cycle nap.</p></a>
       <a class="tip" href="sleep-window-calculator.html"><div class="ico">🪟</div><h4 data-i18n="tools.window.name">Sleep Window Helper</h4><p data-i18n="tools.window.desc">Choose the time range you are free to sleep. We find the best bedtimes that complete full 90-minute cycles.</p></a>
       <a class="tip" href="sleep-log.html"><div class="ico">📈</div><h4 data-i18n="tools.log.name">Sleep Log &amp; Trend</h4><p data-i18n="tools.log.desc">Log a few nights and see your sleep as a visual trend.</p></a>
-    <a class="tip" href="sleep-routine-checklist.html"><div class="ico">📋</div><h4 data-i18n="tools.checklist.name">Sleep Preparation Checklist</h4><p data-i18n="tools.checklist.desc">From afternoon caffeine cutoff to lights-out.</p></a>
+    <a class="tip" href="sleep-routine-checklist.html"><div class="ico">📋</div><h4 data-i18n="tools.checklist.name">Sleep Guidance Checklist</h4><p data-i18n="tools.checklist.desc">From afternoon caffeine cutoff to lights-out.</p></a>
       </div>
   </section>
 </main>
@@ -180,7 +180,7 @@
       <a href="nap-calculator.html" data-i18n="tools.nap.name">Nap Calculator</a>
       <a href="sleep-window-calculator.html" data-i18n="tools.window.name">Sleep Window Helper</a>
       <a href="sleep-log.html" data-i18n="tools.log.name">Sleep Log &amp; Trend</a>
-    <a href="sleep-routine-checklist.html" data-i18n="tools.checklist.name">Sleep Preparation Checklist</a>
+    <a href="sleep-routine-checklist.html" data-i18n="tools.checklist.name">Sleep Guidance Checklist</a>
     </div>
     <div class="col">
       <h5 data-i18n="footLearn">Learn</h5>
@@ -236,7 +236,7 @@ const T = {
     exploreHeading:"Explore more sleep tools",
     exploreSub:"Each one plans sleep around your 90-minute cycles.",
     tools:{
-      checklist:{name:"Sleep Preparation Checklist",desc:"Plan your whole day for better sleep — from afternoon caffeine cutoff to lights-out."},
+      checklist:{name:"Sleep Guidance Checklist",desc:"Plan your whole day for better sleep — from afternoon caffeine cutoff to lights-out."},
       breathing:{name:"Bedtime Breathing Timer",desc:"Follow a calm circle through 4-6, 4-7-8, or box breathing to relax before bed."},
       caffeine:{name:"Caffeine Cutoff Calculator",desc:"Enter your bedtime and sensitivity to find your last safe caffeine time."},
       bedtime:{name:"Bedtime Calculator",desc:"Enter the time you need to wake up. We count back in 90-minute sleep cycles."},
@@ -283,7 +283,7 @@ const T = {
     exploreHeading:"探索更多睡眠工具",
     exploreSub:"每一个都围绕你的 90 分钟睡眠周期来规划。",
     tools:{
-      checklist:{name:"睡前准备清单",desc:"为更好睡眠规划一整天——从下午戒咖啡因到熄灯就寝。"},
+      checklist:{name:"睡眠引导清单",desc:"为更好睡眠规划一整天——从下午戒咖啡因到熄灯就寝。"},
       breathing:{name:"睡前放松呼吸计时器",desc:"跟着舒缓圆圈，用 4-6、4-7-8 或方块呼吸在睡前放松。"},
       caffeine:{name:"咖啡因截止计算器",desc:"输入就寝时间与敏感度，找出你最后一杯的安全时刻。"},
       bedtime:{name:"就寝时间计算器",desc:"输入你需要起床的时间，我们按 90 分钟睡眠周期倒推。"},
@@ -441,6 +441,7 @@ function setLang(l){
   if(l==='zh')u.set('lang','zh'); else u.delete('lang');
   history.replaceState(null,'',location.pathname+(u.toString()?'?'+u.toString():'')+location.hash);
   applyStatic();
+  buildToolNav();
   renderFAQ();
   if(!running){ document.getElementById('breathPhase').textContent=(lang==='zh')?LABEL_ZH.Ready:T[lang].ready; }
 }
@@ -462,8 +463,25 @@ function bindTheme(){
   });
 }
 
+function buildToolNav(){
+  const d=document.getElementById('toolDropdown'); if(!d)return;
+  const t=T[lang].tools;
+  const items=[
+    ['bedtime-calculator.html',t.bedtime.name],
+    ['wake-up-calculator.html',t.wake.name],
+    ['sleep-duration-calculator.html',t.duration.name],
+    ['nap-calculator.html',t.nap.name],
+    ['sleep-window-calculator.html',t.window.name],
+    ['sleep-log.html',t.log.name],
+    ['caffeine-cutoff-calculator.html',t.caffeine.name],
+    ['sleep-routine-checklist.html',t.checklist.name]
+  ];
+  d.innerHTML=items.map(function(it){return '<a href="'+it[0]+'">'+it[1]+'</a>';}).join('');
+}
+
 function init(){
   applyStatic();
+  buildToolNav();
   bindLang();
   bindTheme();
   renderFAQ();
