@@ -48,12 +48,12 @@
 <header class="site-header">
   <div class="wrap nav">
     <a class="logo" href="../index.html"><span class="moon">🌙</span><span>Rest</span>calc</a>
-    <nav class="nav-links">
+        <nav class="nav-links">
       <a href="../index.html" data-i18n="nav.home">Home</a>
-      <a href="../index.html#tools" data-i18n="nav.tools">All tools</a>
-      <a href="../index.html#science" data-i18n="nav.science">How it works</a>
-      <a href="../index.html#faq" data-i18n="nav.faq">FAQ</a>
-      <a href="../privacy.html" data-i18n="nav.privacy">Privacy</a>
+      <div class="has-dropdown">
+        <a href="../index.html#tools" data-i18n="nav.tools">All tools</a>
+        <div class="dropdown" id="toolDropdown"></div>
+      </div>
     </nav>
     <span class="nav-spacer"></span>
     <span class="lang-foot" style="margin-top:0">
@@ -118,7 +118,7 @@
   </section>
 
   <section class="section wrap">
-    <div class="section-head"><h2 data-i18n="exploreHeading">Explore more sleep tools</h2><p data-i18n="exploreSub">Each one plans sleep around your 90-minute cycles.</p></div>
+    <div class="section-head"><h2 data-i18n="exploreHeading">Explore more sleep tools</h2></div>
     <div class="tips-grid">
       <a class="tip" href="bedtime-calculator.html"><div class="ico">🌙</div><h4 data-i18n="tools.bedtime.name">Bedtime Calculator</h4><p data-i18n="tools.bedtime.desc">Enter the time you need to wake up. We count back in 90-minute sleep cycles.</p></a>
       <a class="tip" href="wake-up-calculator.html"><div class="ico">⏰</div><h4 data-i18n="tools.wake.name">Wake-up Calculator</h4><p data-i18n="tools.wake.desc">Enter when you plan to go to bed. We add sleep cycles to find the best moments to wake up.</p></a>
@@ -127,7 +127,7 @@
       <a class="tip" href="sleep-window-calculator.html"><div class="ico">🪟</div><h4 data-i18n="tools.window.name">Sleep Window Helper</h4><p data-i18n="tools.window.desc">Choose the time range you are free to sleep. We find the best bedtimes that complete full 90-minute cycles.</p></a>
       <a class="tip" href="sleep-log.html"><div class="ico">📈</div><h4 data-i18n="tools.log.name">Sleep Log &amp; Trend</h4><p data-i18n="tools.log.desc">Log a few nights and see your sleep as a visual trend.</p></a>
       <a class="tip" href="breathing-timer.html"><div class="ico">🫁</div><h4 data-i18n="tools.breathing.name">Bedtime Breathing Timer</h4><p data-i18n="tools.breathing.desc">Follow a calm circle through 4-6, 4-7-8, or box breathing to relax before bed.</p></a>
-    <a class="tip" href="sleep-routine-checklist.html"><div class="ico">📋</div><h4 data-i18n="tools.checklist.name">Sleep Preparation Checklist</h4><p data-i18n="tools.checklist.desc">From afternoon caffeine cutoff to lights-out.</p></a>
+    <a class="tip" href="sleep-routine-checklist.html"><div class="ico">📋</div><h4 data-i18n="tools.checklist.name">Sleep Guidance Checklist</h4><p data-i18n="tools.checklist.desc">From afternoon caffeine cutoff to lights-out.</p></a>
       </div>
   </section>
 </main>
@@ -148,7 +148,7 @@
       <a href="sleep-window-calculator.html" data-i18n="tools.window.name">Sleep Window Helper</a>
       <a href="sleep-log.html" data-i18n="tools.log.name">Sleep Log &amp; Trend</a>
       <a href="breathing-timer.html" data-i18n="tools.breathing.name">Bedtime Breathing Timer</a>
-    <a href="sleep-routine-checklist.html" data-i18n="tools.checklist.name">Sleep Preparation Checklist</a>
+    <a href="sleep-routine-checklist.html" data-i18n="tools.checklist.name">Sleep Guidance Checklist</a>
     </div>
     <div class="col">
       <h5 data-i18n="footLearn">Learn</h5>
@@ -220,7 +220,7 @@ const T = {
       nap:{name:"Nap Calculator",desc:"Enter the current time to see the best window for a refreshing power nap or a full-cycle nap."},
       window:{name:"Sleep Window Helper",desc:"Choose the time range you are free to sleep. We find the best bedtimes that complete full 90-minute cycles."},
       log:{name:"Sleep Log & Trend",desc:"Log a few nights and see your sleep as a visual trend."},
-      checklist:{name:"Sleep Preparation Checklist",desc:"Plan your whole day for better sleep — from afternoon caffeine cutoff to lights-out."},
+      checklist:{name:"Sleep Guidance Checklist",desc:"Plan your whole day for better sleep — from afternoon caffeine cutoff to lights-out."},
       breathing:{name:"Bedtime Breathing Timer",desc:"Follow a calm circle through 4-6, 4-7-8, or box breathing to relax before bed."}
     },
     footTag:"A free sleep calculator and bedtime planner. Built for better mornings.",
@@ -275,7 +275,7 @@ const T = {
       nap:{name:"小睡计算器",desc:"输入当前时间，查看提神小憩或完整周期午睡的最佳窗口。"},
       window:{name:"睡眠时段助手",desc:"选择你空闲可睡的时间范围，我们会找出能凑满 90 分钟完整周期的最佳就寝时间。"},
       log:{name:"睡眠记录与趋势",desc:"记录几个晚上，把你的睡眠变成可视化趋势。"},
-      checklist:{name:"睡前准备清单",desc:"为更好睡眠规划一整天——从下午戒咖啡因到熄灯就寝。"},
+      checklist:{name:"睡眠引导清单",desc:"为更好睡眠规划一整天——从下午戒咖啡因到熄灯就寝。"},
       breathing:{name:"Bedtime Breathing Timer",desc:"Follow a calm circle through 4-6, 4-7-8, or box breathing to relax before bed."}
     },
     footTag:"一款免费的睡眠计算器与就寝规划工具。为更清爽的早晨而打造。",
@@ -341,6 +341,7 @@ function setLang(l){
   if(l==='zh')u.set('lang','zh'); else u.delete('lang');
   history.replaceState(null,'',location.pathname+(u.toString()?'?'+u.toString():'')+location.hash);
   applyStatic();
+  buildToolNav();
   calcCaffeine();
   renderFAQ();
 }
@@ -362,8 +363,25 @@ function bindTheme(){
   });
 }
 
+function buildToolNav(){
+  const d=document.getElementById('toolDropdown'); if(!d)return;
+  const t=T[lang].tools;
+  const items=[
+    ['bedtime-calculator.html',t.bedtime.name],
+    ['wake-up-calculator.html',t.wake.name],
+    ['sleep-duration-calculator.html',t.duration.name],
+    ['nap-calculator.html',t.nap.name],
+    ['sleep-window-calculator.html',t.window.name],
+    ['sleep-log.html',t.log.name],
+    ['breathing-timer.html',t.breathing.name],
+    ['sleep-routine-checklist.html',t.checklist.name]
+  ];
+  d.innerHTML=items.map(function(it){return '<a href="'+it[0]+'">'+it[1]+'</a>';}).join('');
+}
+
 function init(){
   applyStatic();
+  buildToolNav();
   bindLang();
   bindTheme();
   calcCaffeine();
