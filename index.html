@@ -48,7 +48,9 @@
     {"@type":"ListItem","position":3,"name":"Sleep Duration Calculator","url":"https://restcalc.vercel.app/tools/sleep-duration-calculator.html"},
     {"@type":"ListItem","position":4,"name":"Nap Calculator","url":"https://restcalc.vercel.app/tools/nap-calculator.html"},
     {"@type":"ListItem","position":5,"name":"Sleep Window Helper","url":"https://restcalc.vercel.app/tools/sleep-window-calculator.html"},
-    {"@type":"ListItem","position":6,"name":"Sleep Log & Trend","url":"https://restcalc.vercel.app/tools/sleep-log.html"}
+    {"@type":"ListItem","position":6,"name":"Sleep Log & Trend","url":"https://restcalc.vercel.app/tools/sleep-log.html"},
+    {"@type":"ListItem","position":7,"name":"Caffeine Cutoff Calculator","url":"https://restcalc.vercel.app/tools/caffeine-cutoff-calculator.html"},
+    {"@type":"ListItem","position":8,"name":"Sleep Preparation Checklist","url":"https://restcalc.vercel.app/tools/sleep-routine-checklist.html"}
   ]
 }
 </script>
@@ -248,7 +250,7 @@ a{color:inherit;text-decoration:none}
 .sum-card .lbl{font-size:12.5px;color:var(--muted);margin-top:4px}
 @media(max-width:560px){.log-head,.log-row{grid-template-columns:1fr 1fr}.log-summary{grid-template-columns:1fr 1fr}}
 </style>
-  
+<link rel="stylesheet" href="styles.css">
 
 <!-- Google AdSense — Auto Ads (live, matches deployed site) -->
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9666933731991095" crossorigin="anonymous"></script>
@@ -269,6 +271,7 @@ a{color:inherit;text-decoration:none}
     <a class="logo" href="#top"><span class="moon">🌙</span><span>Rest</span>calc</a>
     <nav class="nav-links">
       <a href="#tools" data-i18n="nav.tools">Tools</a>
+      <a href="#learn" data-i18n="nav.learn">Guides</a>
       <a href="#science" data-i18n="nav.science">How it works</a>
       <a href="#tips" data-i18n="nav.tips">Tips</a>
       <a href="#faq" data-i18n="nav.faq">FAQ</a>
@@ -306,6 +309,8 @@ a{color:inherit;text-decoration:none}
       <button class="tab" data-tool="nap">💤 <span data-i18n="t.nap">Nap</span></button>
       <button class="tab" data-tool="window">🪟 <span data-i18n="t.window">Sleep window</span></button>
       <button class="tab" data-tool="log">📈 <span data-i18n="t.log">Sleep log</span></button>
+      <button class="tab" data-tool="caffeine">☕ <span data-i18n="t.caffeine">Caffeine</span></button>
+      <button class="tab" data-tool="breathing">🫁 <span data-i18n="t.breathing">Breathe</span></button>
     </div>
 
     <!-- Bedtime -->
@@ -440,6 +445,80 @@ a{color:inherit;text-decoration:none}
     </div>
 
     <!-- AdSense Auto Ads injects ad units automatically via the <head> snippet; no manual slot is needed. -->
+
+  <!-- Caffeine -->
+  <div class="panel card" id="panel-caffeine">
+    <h3 data-i18n="caffeine.title">Caffeine Cutoff Calculator</h3>
+    <p class="desc" data-i18n="caffeine.desc">Enter your planned bedtime and sensitivity. We work back to your last safe cup.</p>
+    <div class="field">
+      <label data-i18n="caffeine.bedLabel">I plan to sleep at</label>
+      <input type="time" id="caf-bed" value="23:00">
+    </div>
+    <div class="field">
+      <label data-i18n="caffeine.sensLabel">Caffeine sensitivity</label>
+      <select id="caf-sens">
+        <option value="low" data-i18n="caffeine.sens.low">Low (rarely affected)</option>
+        <option value="normal" selected data-i18n="caffeine.sens.normal">Normal</option>
+        <option value="high" data-i18n="caffeine.sens.high">High (very sensitive)</option>
+      </select>
+    </div>
+    <div class="results" id="caf-results"></div>
+    <div class="res-note" id="caf-note"></div>
+      <div class="res-note" data-i18n="caffeine.note">A guideline, not medical advice. Caffeine half-life varies between people.</div>
+  </div>
+
+  <!-- Breathing -->
+  <div class="panel card" id="panel-breathing">
+    <h3 data-i18n="breathing.title">Bedtime Breathing Timer</h3>
+    <p class="desc" data-i18n="breathing.desc">Choose a rhythm, press start, and breathe with the circle. Inhale as it grows, exhale as it shrinks.</p>
+    <div class="field" style="align-items:center">
+      <label data-i18n="breathing.patternLabel">Breathing rhythm</label>
+      <div class="seg" id="patternSeg" role="group" aria-label="breathing pattern">
+        <button type="button" data-p="relax" class="active" data-i18n="breathing.p.relax">4-6 relax</button>
+        <button type="button" data-p="478" data-i18n="breathing.p.478">4-7-8</button>
+        <button type="button" data-p="box" data-i18n="breathing.p.box">Box 4-4-4-4</button>
+        <button type="button" data-p="custom" data-i18n="breathing.p.custom">Custom</button>
+      </div>
+    </div>
+    <div class="field" id="customPatternField" style="display:none;flex-direction:column;align-items:center">
+      <div class="custom-grid">
+        <div class="cp-cell"><span class="cp-lab" data-i18n="breathing.cInLabel">Inhale</span><input type="number" id="cIn" min="1" max="30" value="4"></div>
+        <div class="cp-cell"><span class="cp-lab" data-i18n="breathing.cHoldLabel">Hold after inhale</span><input type="number" id="cHold" min="0" max="30" value="0"></div>
+        <div class="cp-cell"><span class="cp-lab" data-i18n="breathing.cOutLabel">Exhale</span><input type="number" id="cOut" min="1" max="30" value="6"></div>
+        <div class="cp-cell"><span class="cp-lab" data-i18n="breathing.cHold2Label">Hold after exhale</span><input type="number" id="cHold2" min="0" max="30" value="0"></div>
+      </div>
+      <p class="hint" data-i18n="breathing.customHint">Set a hold to 0 to skip it.</p>
+    </div>
+    <div class="field" style="align-items:center">
+      <label data-i18n="breathing.durLabel">Session length</label>
+      <div class="seg" id="durSeg" role="group" aria-label="session length">
+        <button type="button" data-d="3">3 min</button>
+        <button type="button" data-d="5" class="active">5 min</button>
+        <button type="button" data-d="15">15 min</button>
+        <button type="button" data-d="custom" data-i18n="breathing.durCustom">Custom</button>
+        <input type="number" id="cDur" min="1" max="120" value="10" class="seg-input" style="display:none">
+        <span class="seg-unit" id="cDurUnit" data-i18n="breathing.minutes" style="display:none">min</span>
+      </div>
+    </div>
+    <div class="breath-stage">
+      <div class="breath-ring">
+        <div class="breath-circle" id="breathCircle"></div>
+        <div class="breath-center">
+          <div class="breath-phase" id="breathPhase" data-i18n="breathing.ready">Ready</div>
+          <div class="breath-count" id="breathCount"></div>
+        </div>
+      </div>
+      <div class="breath-clock" id="breathClock">04:00</div>
+      <div class="breath-ctrls">
+        <div class="breath-btns">
+          <button class="btn-primary" id="startBtn" data-i18n="breathing.start">Start</button>
+          <button class="btn-ghost" id="stopBtn" data-i18n="breathing.stop">Stop</button>
+        </div>
+      </div>
+      <p class="hint" data-i18n="breathing.hint">Slow breathing is a relaxation aid. If breath-holding makes you light-headed, anxious, or uncomfortable, stop.</p>
+    </div>
+  </div>
+
   </section>
 
   <!-- SCIENCE -->
@@ -459,6 +538,25 @@ a{color:inherit;text-decoration:none}
       <p data-i18n="tips.sub">Small habits, big difference.</p>
     </div>
     <div class="tips-grid" id="tips-grid"></div>
+  </section>
+
+  <!-- LEARN / ARTICLES -->
+  <section class="section wrap" id="learn">
+    <div class="section-head">
+      <h2>Guides &amp; articles</h2>
+      <p>Short, practical explainers for each tool — read one, then try the calculator.</p>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:12px">
+      <a href="learn/bedtime-calculator.html" style="display:block;padding:14px 16px;border:1px solid var(--border);border-radius:12px;color:var(--text);text-decoration:none;background:var(--surface)"><b>Bedtime Calculator</b><br><span style="color:var(--muted);font-size:13px">What time should you go to bed?</span></a>
+      <a href="learn/wake-up-calculator.html" style="display:block;padding:14px 16px;border:1px solid var(--border);border-radius:12px;color:var(--text);text-decoration:none;background:var(--surface)"><b>Wake-up Calculator</b><br><span style="color:var(--muted);font-size:13px">When should you set the alarm?</span></a>
+      <a href="learn/sleep-duration-calculator.html" style="display:block;padding:14px 16px;border:1px solid var(--border);border-radius:12px;color:var(--text);text-decoration:none;background:var(--surface)"><b>Sleep Duration</b><br><span style="color:var(--muted);font-size:13px">Are you getting enough cycles?</span></a>
+      <a href="learn/nap-calculator.html" style="display:block;padding:14px 16px;border:1px solid var(--border);border-radius:12px;color:var(--text);text-decoration:none;background:var(--surface)"><b>Nap Calculator</b><br><span style="color:var(--muted);font-size:13px">How long should you nap?</span></a>
+      <a href="learn/sleep-window-calculator.html" style="display:block;padding:14px 16px;border:1px solid var(--border);border-radius:12px;color:var(--text);text-decoration:none;background:var(--surface)"><b>Sleep Window Helper</b><br><span style="color:var(--muted);font-size:13px">Best bedtime in your free hours</span></a>
+      <a href="learn/sleep-log.html" style="display:block;padding:14px 16px;border:1px solid var(--border);border-radius:12px;color:var(--text);text-decoration:none;background:var(--surface)"><b>Sleep Log</b><br><span style="color:var(--muted);font-size:13px">What a week of data tells you</span></a>
+      <a href="learn/sleep-routine-checklist.html" style="display:block;padding:14px 16px;border:1px solid var(--border);border-radius:12px;color:var(--text);text-decoration:none;background:var(--surface)"><b>Sleep Checklist</b><br><span style="color:var(--muted);font-size:13px">Build a full-day wind-down</span></a>
+      <a href="learn/caffeine-and-sleep.html" style="display:block;padding:14px 16px;border:1px solid var(--border);border-radius:12px;color:var(--text);text-decoration:none;background:var(--surface)"><b>Caffeine &amp; Sleep</b><br><span style="color:var(--muted);font-size:13px">The half-life science</span></a>
+      <a href="learn/breathing-for-sleep.html" style="display:block;padding:14px 16px;border:1px solid var(--border);border-radius:12px;color:var(--text);text-decoration:none;background:var(--surface)"><b>Breathing for Sleep</b><br><span style="color:var(--muted);font-size:13px">Slow breath to wind down</span></a>
+    </div>
   </section>
 
   <!-- FAQ -->
@@ -507,6 +605,9 @@ a{color:inherit;text-decoration:none}
       <a href="tools/nap-calculator.html" data-i18n="tools.nap.name">Nap Calculator</a>
       <a href="tools/sleep-window-calculator.html" data-i18n="tools.window.name">Sleep Window Helper</a>
       <a href="tools/sleep-log.html" data-i18n="tools.log.name">Sleep Log &amp; Trend</a>
+      <a href="tools/caffeine-cutoff-calculator.html" data-i18n="tools.caffeine.name">Caffeine Cutoff Calculator</a>
+      <a href="tools/breathing-timer.html" data-i18n="tools.breathing.name">Bedtime Breathing Timer</a>
+    <a href="tools/sleep-routine-checklist.html" data-i18n="tools.checklist.name">Sleep Preparation Checklist</a>
     </div>
     <div class="col">
       <h5 data-i18n="foot.learn">Learn</h5>
@@ -547,9 +648,11 @@ const T = {
       duration:{name:"Sleep Duration Calculator"},
       nap:{name:"Nap Calculator"},
       window:{name:"Sleep Window Helper"},
-      log:{name:"Sleep Log & Trend"}
+      log:{name:"Sleep Log & Trend"},
+      caffeine:{name:"Caffeine Cutoff Calculator"},
+      breathing:{name:"Bedtime Breathing Timer"}
     },
-    t:{bedtime:"Bedtime",wake:"Wake-up",duration:"Duration",nap:"Nap",window:"Sleep window",log:"Sleep log"},
+    t:{bedtime:"Bedtime",wake:"Wake-up",duration:"Duration",nap:"Nap",window:"Sleep window",log:"Sleep log",caffeine:"Caffeine",breathing:"Breathe"},
     age:{teen:"Under 18",adult:"18–64 (adult)",senior:"65 and older"},
     bedtime:{
       title:"Bedtime Calculator",
@@ -613,6 +716,29 @@ const T = {
       legendBand:"Recommended zone", legendCyc:"Sleep cycles (line)",
       recCyc:"target {a}–{b} cycles", axisDur:"Sleep duration (h)", axisCyc:"Cycles",
       cycNote:"Cycle counts use the 90-minute model (time in bed minus ~15 min to fall asleep, divided by 90). This is an estimate, not measured sleep stages."
+    },
+    caffeine:{
+      title:"Caffeine Cutoff Calculator",
+      desc:"Enter your planned bedtime and sensitivity. We work back to find the latest time to stop caffeine so it won't wreck your sleep.",
+      bedLabel:"I plan to sleep at",
+      sensLabel:"Caffeine sensitivity",
+      sens:{low:"Low (rarely affected)",normal:"Normal",high:"High (very sensitive)"},
+      note:"A guideline, not medical advice. Caffeine half-life varies between people.",
+      stop:"Stop caffeine", hours:"hours before bed", prev:"previous day",
+      noteBy:{low:"With low sensitivity, a 6-hour buffer is usually enough — but everyone is different, so notice how you feel.",normal:"For most people, stopping caffeine about 8 hours before bed keeps it from disrupting sleep.",high:"If you are highly sensitive, aim to stop 10–12 hours before bed; we show the 11-hour midpoint. Even afternoon coffee can linger."}
+    },
+    breathing:{
+      title:"Bedtime Breathing Timer",
+      desc:"Choose a rhythm, press start, and breathe with the circle. Inhale as it grows, exhale as it shrinks.",
+      patternLabel:"Breathing rhythm",
+      p:{relax:"4-6 relax","478":"4-7-8",box:"Box 4-4-4-4",custom:"Custom"},
+      cInLabel:"Inhale", cHoldLabel:"Hold after inhale", cOutLabel:"Exhale", cHold2Label:"Hold after exhale",
+      customHint:"Set a hold to 0 to skip it.",
+      durLabel:"Session length",
+      durCustom:"Custom", minutes:"min",
+      start:"Start", stop:"Stop", ready:"Ready",
+      hint:"Slow breathing is a relaxation aid. If breath-holding makes you light-headed, anxious, or uncomfortable, stop.",
+      phaseIn:"Inhale", phaseHold:"Hold", phaseOut:"Exhale", phaseDone:"Done"
     },
     sci:{
       heading:"How sleep cycles work",
@@ -689,9 +815,11 @@ const T = {
       duration:{name:"睡眠时长计算器"},
       nap:{name:"小睡计算器"},
       window:{name:"睡眠时段助手"},
-      log:{name:"睡眠记录与趋势"}
+      log:{name:"睡眠记录与趋势"},
+      caffeine:{name:"咖啡因截止计算器"},
+      breathing:{name:"睡前放松呼吸计时器"}
     },
-    t:{bedtime:"就寝时间",wake:"起床时间",duration:"睡眠时长",nap:"午睡",window:"睡眠窗口",log:"睡眠记录"},
+    t:{bedtime:"就寝时间",wake:"起床时间",duration:"睡眠时长",nap:"午睡",window:"睡眠窗口",log:"睡眠记录",caffeine:"咖啡因",breathing:"呼吸"},
     age:{teen:"18 岁以下",adult:"18–64 岁（成年人）",senior:"65 岁及以上"},
     bedtime:{
       title:"就寝时间计算器",
@@ -755,6 +883,29 @@ const T = {
       legendBand:"推荐区间", legendCyc:"睡眠周期（折线）",
       recCyc:"推荐 {a}–{b} 周期", axisDur:"睡眠时长（小时）", axisCyc:"周期数",
       cycNote:"周期数采用 90 分钟模型（在床时间减去约 15 分钟入睡，再除以 90）。这是估算，并非实测睡眠阶段。"
+    },
+    caffeine:{
+      title:"咖啡因截止计算器",
+      desc:"输入你计划的就寝时间与敏感度。我们往回推算你最后一杯的安全时刻。",
+      bedLabel:"我计划在以下时间入睡",
+      sensLabel:"咖啡因敏感度",
+      sens:{low:"低（很少受影响）",normal:"普通",high:"高（非常敏感）"},
+      note:"仅为参考，并非医疗建议。咖啡因半衰期因人而异。",
+      stop:"停止摄入咖啡因", hours:"小时前", prev:"前一天",
+      noteBy:{low:"若你对咖啡因不敏感，预留 6 小时通常足够——但因人而异，留意自己的身体感受。",normal:"对多数人来说，睡前约 8 小时停喝，能避免咖啡因干扰睡眠。",high:"若你高度敏感，目标是在睡前 10–12 小时停喝；这里取 11 小时的中点。哪怕下午的咖啡，也可能在体内残留。"}
+    },
+    breathing:{
+      title:"睡前放松呼吸计时器",
+      desc:"选一种节奏，按下开始，跟着圆圈一起呼吸。圆圈变大时吸气，缩小时呼气。",
+      patternLabel:"呼吸节奏",
+      p:{relax:"4-6 放松","478":"4-7-8",box:"方块 4-4-4-4",custom:"自定义"},
+      cInLabel:"吸气", cHoldLabel:"吸气后屏息", cOutLabel:"呼气", cHold2Label:"呼气后屏息",
+      customHint:"把屏息设为 0 即跳过。",
+      durLabel:"练习时长",
+      durCustom:"自定义", minutes:"分钟",
+      start:"开始", stop:"停止", ready:"准备",
+      hint:"缓慢呼吸只是放松辅助，若屏息让你头晕或焦虑或不适请停止。",
+      phaseIn:"吸气", phaseHold:"屏息", phaseOut:"呼气", phaseDone:"完成"
     },
     sci:{
       heading:"睡眠周期如何运作",
@@ -984,6 +1135,102 @@ function calcWindow(){
   document.getElementById('window-results').innerHTML=html;
 }
 
+/* ============ caffeine cutoff ============ */
+function calcCaffeine(){
+  const bed=toMin(document.getElementById('caf-bed').value);
+  const sens=document.getElementById('caf-sens').value;
+  const H={low:6,normal:8,high:11};
+  const h=H[sens];
+  let cut=bed-h*60;
+  const prev=(cut<0); if(prev)cut+=1440;
+  const t=T[lang].caffeine;
+  const html='<div class="res-row"><span class="res-time">'+fmt12(cut)+'</span><span class="res-meta"><b>'+t.stop+' '+h+' '+t.hours+'</b>'+(prev?' <span class="pill">'+t.prev+'</span>':'')+'</span></div>';
+  document.getElementById('caf-results').innerHTML=html;
+  setText('#caf-note', t.noteBy[sens]);
+}
+
+/* ============ bedtime breathing timer ============ */
+const B_MAX=1.55,B_MIN=0.675;
+const B_PATTERNS={
+  relax:[{l:'Inhale',d:4,expand:true},{l:'Exhale',d:6,expand:false}],
+  '478':[{l:'Inhale',d:4,expand:true},{l:'Hold',d:7,expand:true},{l:'Exhale',d:8,expand:false}],
+  box:[{l:'Inhale',d:4,expand:true},{l:'Hold',d:4,expand:true},{l:'Exhale',d:4,expand:false},{l:'Hold',d:4,expand:false}]
+};
+let bPat='relax', bDur=5, bCustomDur=false, bTimer=null, bRunning=false;
+function bCustomPhases(){
+  const inp=Math.max(1,+document.getElementById('cIn').value||4);
+  const h1=Math.max(0,+document.getElementById('cHold').value||0);
+  const out=Math.max(1,+document.getElementById('cOut').value||6);
+  const h2=Math.max(0,+document.getElementById('cHold2').value||0);
+  let p=[{l:'Inhale',d:inp,expand:true}];
+  if(h1>0)p.push({l:'Hold',d:h1,expand:true});
+  p.push({l:'Exhale',d:out,expand:false});
+  if(h2>0)p.push({l:'Hold',d:h2,expand:false});
+  return p;
+}
+function bPhaseList(){
+  let p;
+  if(bPat==='custom')p=bCustomPhases();
+  else p=B_PATTERNS[bPat].slice();
+  p.forEach(x=>x.s=x.expand?B_MAX:B_MIN);
+  return p.length?p:[{l:'Inhale',d:4,expand:true,s:B_MAX},{l:'Exhale',d:6,expand:false,s:B_MIN}];
+}
+function bFmt(s){s=Math.max(0,Math.round(s));const m=Math.floor(s/60),sec=s%60;return String(m).padStart(2,'0')+':'+String(sec).padStart(2,'0');}
+function bPhaseLabel(l){if(lang==='zh'){return ({Inhale:'吸气',Hold:'屏息',Exhale:'呼气',Ready:'准备',Done:'完成'})[l]||l;}return l;}
+function bSetPhase(ph,animate){const c=document.getElementById('breathCircle');c.style.transition='transform '+(animate||0)+'s ease-in-out';c.style.transform='scale('+ph.s+')';document.getElementById('breathPhase').textContent=bPhaseLabel(ph.l);}
+function bRenderSegs(){
+  document.querySelectorAll('#patternSeg button').forEach(b=>b.classList.toggle('active',b.getAttribute('data-p')===bPat));
+  document.querySelectorAll('#durSeg button').forEach(b=>{const d=b.getAttribute('data-d');b.classList.toggle('active',d==='custom'?bCustomDur:(+d===bDur));});
+}
+function calcBreathing(){
+  if(!bRunning){const ph=document.getElementById('breathPhase');if(ph)ph.textContent=bPhaseLabel('Ready');}
+  const clk=document.getElementById('breathClock');if(clk)clk.textContent=bFmt(bDur*60);
+  bRenderSegs();
+}
+function bStart(){
+  if(bRunning)return;
+  const list=bPhaseList();let total=bDur*60,elapsed=0,idx=0,pe=0;
+  bRunning=true;const sb=document.getElementById('startBtn');if(sb)sb.disabled=true;
+  const c=document.getElementById('breathCircle');c.style.transition='none';c.style.transform='scale('+B_MIN+')';void c.offsetWidth;
+  bSetPhase(list[0],list[0].d);
+  const clk=document.getElementById('breathClock');if(clk)clk.textContent=bFmt(total);
+  const bc=document.getElementById('breathCount');if(bc)bc.textContent='';
+  let last=performance.now();
+  bTimer=setInterval(function(){
+    const now=performance.now();const dt=(now-last)/1000;last=now;
+    elapsed+=dt;pe+=dt;
+    const ph=list[idx];
+    if(pe>=ph.d){pe-=ph.d;idx++;if(idx>=list.length)idx=0;bSetPhase(list[idx],list[idx].d);}
+    const cur=list[idx];
+    const shown=Math.max(1,Math.ceil(cur.d-pe-1e-6));
+    if(bc)bc.textContent=String(shown);
+    const r2=total-elapsed;if(clk)clk.textContent=bFmt(r2);
+    if(r2<=0){bStop();const phd=document.getElementById('breathPhase');if(phd)phd.textContent=bPhaseLabel('Done');if(clk)clk.textContent='00:00';if(bc)bc.textContent='';}
+  },50);
+}
+function bStop(){
+  if(bTimer){clearInterval(bTimer);bTimer=null;}
+  bRunning=false;const sb=document.getElementById('startBtn');if(sb)sb.disabled=false;
+  const ph=document.getElementById('breathPhase');if(ph)ph.textContent=bPhaseLabel('Ready');
+  const clk=document.getElementById('breathClock');if(clk)clk.textContent=bFmt(bDur*60);
+  const bc=document.getElementById('breathCount');if(bc)bc.textContent='';
+}
+function bindBreathing(){
+  const sb=document.getElementById('startBtn');if(sb)sb.addEventListener('click',bStart);
+  const xb=document.getElementById('stopBtn');if(xb)xb.addEventListener('click',bStop);
+  document.querySelectorAll('#patternSeg button').forEach(b=>b.addEventListener('click',function(){bPat=b.getAttribute('data-p');bRenderSegs();const cf=document.getElementById('customPatternField');if(cf)cf.style.display=(bPat==='custom')?'flex':'none';}));
+  document.querySelectorAll('#durSeg button').forEach(b=>b.addEventListener('click',function(){
+    const d=b.getAttribute('data-d');
+    if(d==='custom'){bCustomDur=true;bDur=Math.max(1,+document.getElementById('cDur').value||10);}
+    else{bCustomDur=false;bDur=+d;}
+    bRenderSegs();
+    const ci=document.getElementById('cDur');if(ci)ci.style.display=(d==='custom')?'inline-block':'none';
+    const cu=document.getElementById('cDurUnit');if(cu)cu.style.display=(d==='custom')?'inline':'none';
+    if(!bRunning){const clk=document.getElementById('breathClock');if(clk)clk.textContent=bFmt(bDur*60);}
+  }));
+  const cd=document.getElementById('cDur');if(cd)cd.addEventListener('input',function(){if(bCustomDur){bDur=Math.max(1,+cd.value||10);if(!bRunning){const clk=document.getElementById('breathClock');if(clk)clk.textContent=bFmt(bDur*60);}}});
+}
+
 /* ============ sleep log & trend ============ */
 const LOG_KEY='restcalc-log';
 function getLog(){ try{return JSON.parse(localStorage.getItem(LOG_KEY))||[];}catch(e){return [];} }
@@ -1122,7 +1369,7 @@ function setupTabs(){
   }));
   // hash on load
   const h=location.hash.replace('#','');
-  if(['bedtime','wake','duration','nap','window','log'].includes(h)){
+  if(['bedtime','wake','duration','nap','window','log','caffeine','breathing'].includes(h)){
     document.querySelector(`#tabs .tab[data-tool="${h}"]`).click();
   }
 }
@@ -1138,7 +1385,7 @@ function setLang(l){
   applyStatic();
   renderScience();renderTips();renderFAQ();renderAffiliate();
   // recompute current panel
-  ['bedtime','wake','duration','nap','window'].forEach(k=>window['calc'+k.charAt(0).toUpperCase()+k.slice(1)]());
+  ['bedtime','wake','duration','nap','window','caffeine','breathing'].forEach(k=>window['calc'+k.charAt(0).toUpperCase()+k.slice(1)]());
   buildLogRows(); renderLog();
 }
 function bindLang(){
@@ -1172,14 +1419,18 @@ function init(){
   document.getElementById('year').textContent=new Date().getFullYear();
   applyStatic();
   renderScience();renderTips();renderFAQ();renderAffiliate();
-  bindLang();bindTheme();setupTabs();makeStars();
-  ['bedtime','wake','duration','nap','window'].forEach(k=>{
-    const fn=window['calc'+k.charAt(0).toUpperCase()+k.slice(1)];
-    document.querySelectorAll('#panel-'+k+' input, #panel-'+k+' select').forEach(el=>{
-      el.addEventListener('input',fn); el.addEventListener('change',fn);
-    });
-    fn();
+  bindLang();bindTheme();setupTabs();
+  try{ makeStars(); }catch(e){ console.error('stars',e); }
+  ['bedtime','wake','duration','nap','window','caffeine','breathing'].forEach(k=>{
+    try{
+      const fn=window['calc'+k.charAt(0).toUpperCase()+k.slice(1)];
+      document.querySelectorAll('#panel-'+k+' input, #panel-'+k+' select').forEach(el=>{
+        el.addEventListener('input',fn); el.addEventListener('change',fn);
+      });
+      fn();
+    }catch(e){ console.error('tool '+k, e); }
   });
+  try{ bindBreathing(); }catch(e){ console.error('breathing',e); }
   buildLogRows(); bindLog(); renderLog();
 }
 document.addEventListener('DOMContentLoaded',init);
