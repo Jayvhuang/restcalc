@@ -3,17 +3,17 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title data-i18n="title">Sleep Checklist — Full-Day Plan for Better Sleep | Restcalc</title>
+<title data-i18n="title">Sleep Guidance Checklist — Full-Day Plan for Better Sleep | Restcalc</title>
 <meta name="description" content="A free, evidence-based sleep preparation checklist covering the whole day — from your morning wake-up and afternoon caffeine cutoff to lights-out — with the why behind each step and quick links to the right calculator.">
 <meta name="robots" content="index, follow, max-image-preview:large">
 <link rel="canonical" href="https://www.rest-calc.com/tools/sleep-routine-checklist.html">
-<meta property="og:title" content="Sleep Checklist — Restcalc">
+<meta property="og:title" content="Sleep Guidance Checklist — Restcalc">
 <meta property="og:description" content="From your morning wake-up and afternoon caffeine cutoff to lights-out — a full-day, evidence-based plan for better sleep, with the why behind each step.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://www.rest-calc.com/tools/sleep-routine-checklist.html">
 <meta property="og:image" content="https://www.rest-calc.com/og-image.png">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Sleep Checklist — Restcalc">
+<meta name="twitter:title" content="Sleep Guidance Checklist — Restcalc">
 <meta name="twitter:description" content="Plan your whole day for better sleep — a free, full-day checklist with the why behind each step and quick links to the right calculator.">
 <link rel="alternate" hreflang="en" href="https://www.rest-calc.com/tools/sleep-routine-checklist.html">
 <link rel="alternate" hreflang="x-default" href="https://www.rest-calc.com/tools/sleep-routine-checklist.html">
@@ -23,7 +23,7 @@
 {
   "@context":"https://schema.org",
   "@type":"WebPage",
-  "name":"Sleep Checklist — Restcalc",
+  "name":"Sleep Guidance Checklist — Restcalc",
   "description":"A free, evidence-based sleep preparation checklist covering the whole day — from your morning wake-up and afternoon caffeine cutoff to lights-out — with the why behind each step and quick links to the right calculator.",
   "url":"https://www.rest-calc.com/tools/sleep-routine-checklist.html",
   "inLanguage":"en",
@@ -78,12 +78,12 @@
 <header class="site-header">
   <div class="wrap nav">
     <a class="logo" href="../index.html"><span class="moon">🌙</span><span>Rest</span>calc</a>
-    <nav class="nav-links">
+        <nav class="nav-links">
       <a href="../index.html" data-i18n="nav.home">Home</a>
-      <a href="../index.html#tools" data-i18n="nav.tools">All tools</a>
-      <a href="../index.html#science" data-i18n="nav.science">How it works</a>
-      <a href="../index.html#faq" data-i18n="nav.faq">FAQ</a>
-      <a href="../privacy.html" data-i18n="nav.privacy">Privacy</a>
+      <div class="has-dropdown">
+        <a href="../index.html#tools" data-i18n="nav.tools">All tools</a>
+        <div class="dropdown" id="toolDropdown"></div>
+      </div>
     </nav>
     <span class="nav-spacer"></span>
     <span class="lang-foot" style="margin-top:0">
@@ -97,7 +97,7 @@
 <main>
   <section class="hero wrap">
     <div class="moon-big">📋</div>
-    <h1 data-i18n="h1">Sleep Checklist</h1>
+    <h1 data-i18n="h1">Sleep Guidance Checklist</h1>
     <p class="sub" data-i18n="sub">Better sleep starts long before you get into bed. Plan your whole day — from your afternoon caffeine cutoff to lights-out — check items off as you go.</p>
   </section>
 
@@ -138,7 +138,7 @@
   <section class="section wrap" id="faq">
     <div class="bedwrap">
       <div class="section-head">
-        <h2 data-i18n="faqHeading">Frequently asked questions about the Sleep Checklist</h2>
+        <h2 data-i18n="faqHeading">Frequently asked questions about the Sleep Guidance Checklist</h2>
         <p data-i18n="faqSub">How to use it without turning it into a chore.</p>
       </div>
       <div class="faq" id="faq-list"></div>
@@ -147,7 +147,7 @@
 
   <section class="section wrap">
     <div class="bedwrap">
-      <div class="section-head"><h2 data-i18n="exploreHeading">Explore more sleep tools</h2><p data-i18n="exploreSub">Each one plans sleep around your 90-minute cycles.</p></div>
+      <div class="section-head"><h2 data-i18n="exploreHeading">Explore more sleep tools</h2></div>
       <div class="tips-grid">
         <a class="tip" href="breathing-timer.html"><div class="ico">🧘</div><h4 data-i18n="tools.breathing.name">Bedtime Breathing Timer</h4><p data-i18n="tools.breathing.desc">Follow a calm circle through 4-6, 4-7-8, or box breathing to relax before bed.</p></a>
         <a class="tip" href="caffeine-cutoff-calculator.html"><div class="ico">☕</div><h4 data-i18n="tools.caffeine.name">Caffeine Cutoff Calculator</h4><p data-i18n="tools.caffeine.desc">Enter your bedtime and sensitivity to find your last safe caffeine time.</p></a>
@@ -170,7 +170,7 @@
     </div>
     <div class="col">
       <h5 data-i18n="footTools">Tools</h5>
-      <a href="sleep-routine-checklist.html" data-i18n="tools.checklist.name">Sleep Checklist</a>
+      <a href="sleep-routine-checklist.html" data-i18n="tools.checklist.name">Sleep Guidance Checklist</a>
       <a href="breathing-timer.html" data-i18n="tools.breathing.name">Bedtime Breathing Timer</a>
       <a href="caffeine-cutoff-calculator.html" data-i18n="tools.caffeine.name">Caffeine Cutoff Calculator</a>
       <a href="bedtime-calculator.html" data-i18n="tools.bedtime.name">Bedtime Calculator</a>
@@ -337,10 +337,10 @@ const PHASES = [
 const CHECK_KEY='restcalc-checklist';
 const T = {
   en:{
-    title:"Sleep Checklist — Full-Day Plan for Better Sleep | Restcalc",
+    title:"Sleep Guidance Checklist — Full-Day Plan for Better Sleep | Restcalc",
     metaDesc:"A free, evidence-based sleep checklist — from your morning wake-up and afternoon caffeine cutoff to lights-out. Plan the whole day, check items off, and use the quick links to the right calculator.",
     nav:{home:"Home",tools:"All tools",science:"How it works",tips:"Tips",faq:"FAQ",privacy:"Privacy"},
-    h1:"Sleep Checklist",
+    h1:"Sleep Guidance Checklist",
     sub:"Better sleep is built all day long. This checklist walks you from your morning wake-up and afternoon caffeine cutoff through lights-out — with the why behind each step and quick links to the right calculator. Check items off as you go.",
     bedLabel:"My bedtime is",
     reset:"Reset checklist",
@@ -355,7 +355,7 @@ const T = {
     tip3:"<strong>Light sets the clock.</strong> Morning and daytime light anchors your body clock; dim, warm light in the last hour before bed helps melatonin rise.",
     tip4:"<strong>Cool, dark, quiet.</strong> A bedroom around 18–21°C, with low light and low noise, supports deeper sleep.",
     proseNote:"This page is general education, not medical advice. For ongoing sleep problems, see a healthcare professional.",
-    faqHeading:"Frequently asked questions about the Sleep Checklist",
+    faqHeading:"Frequently asked questions about the Sleep Guidance Checklist",
     faqSub:"How to use it without turning it into a chore.",
     faq:[
       {q:"Do I have to do everything on the list?",a:"No. Treat it as a menu, not a rulebook. Pick what fits your day — just cutting the afternoon caffeine often helps. More stacked items mean better sleep, but any prep beats none. Tap the “why” under each step to see the evidence."},
@@ -367,7 +367,7 @@ const T = {
     exploreHeading:"Explore more sleep tools",
     exploreSub:"Each one plans sleep around your 90-minute cycles.",
     tools:{
-      checklist:{name:"Sleep Checklist",desc:"A full-day, evidence-based plan for better sleep — with the why behind each step and quick links to the right calculator."},
+      checklist:{name:"Sleep Guidance Checklist",desc:"A full-day, evidence-based plan for better sleep — with the why behind each step and quick links to the right calculator."},
       breathing:{name:"Bedtime Breathing Timer",desc:"Follow a calm circle through 4-6, 4-7-8, or box breathing to relax before bed."},
       caffeine:{name:"Caffeine Cutoff Calculator",desc:"Enter your bedtime and sensitivity to find your last safe caffeine time."},
       bedtime:{name:"Bedtime Calculator",desc:"Enter the time you need to wake up. We count back in 90-minute sleep cycles."},
@@ -382,10 +382,10 @@ const T = {
     disc:"Restcalc provides general sleep information for educational purposes only and is not a substitute for medical advice. If you have chronic sleep problems or breathing difficulties, consult a healthcare professional."
   },
   zh:{
-    title:"睡眠清单 — 覆盖全天的循证助眠计划 | Restcalc",
-    metaDesc:"一份免费的循证睡眠清单——从下午戒咖啡因到熄灯就寝。规划一整天，逐项勾选，并按需链接到对应计算器。",
+    title:"睡眠引导清单 — 覆盖全天的循证助眠计划 | Restcalc",
+    metaDesc:"一份免费的循证睡眠引导清单——从下午戒咖啡因到熄灯就寝。规划一整天，逐项勾选，并按需链接到对应计算器。",
     nav:{home:"首页",tools:"全部工具",science:"运作原理",tips:"建议",faq:"常见问题",privacy:"隐私"},
-    h1:"睡眠清单",
+    h1:"睡眠引导清单",
     sub:"好睡眠是一整天慢慢铺出来的。这份清单从你早晨起床、下午戒咖啡因，一路排到熄灯就寝——每一步都写明原因，并按需链接到对应计算器。边做边勾即可。",
     bedLabel:"我的就寝时间是",
     reset:"重置清单",
@@ -401,7 +401,7 @@ const T = {
     tip3:"<strong>光线设定时钟。</strong>早晨与白天的光照锚定你的生物钟；睡前最后一小时调暗、换暖光，助褪黑素上升。",
     tip4:"<strong>凉、暗、静。</strong>约 18–21°C、低光照、低噪音的卧室，更利深层睡眠。",
     proseNote:"本页仅为科普，非医疗建议。若有持续睡眠问题，请咨询医疗专业人士。",
-    faqHeading:"关于睡眠清单的常见问题",
+    faqHeading:"关于睡眠引导清单的常见问题",
     faqSub:"如何用它，又不把它变成负担。",
     faq:[
       {q:"清单上的每一条都要做吗？",a:"不必。把它当菜单，而非守则。挑适合你的一天去做——光是下午截止咖啡因，常常就有帮助。做得越多越好，但任何准备都胜过没有。点开每步下面的“原因”，能看到依据。"},
@@ -413,7 +413,7 @@ const T = {
     exploreHeading:"探索更多睡眠工具",
     exploreSub:"每一个都围绕你的 90 分钟睡眠周期来规划。",
     tools:{
-      checklist:{name:"睡眠清单",desc:"一份覆盖全天的循证助眠计划——每步写明原因，并按需链到对应计算器。"},
+      checklist:{name:"睡眠引导清单",desc:"一份覆盖全天的循证助眠计划——每步写明原因，并按需链到对应计算器。"},
       breathing:{name:"睡前放松呼吸计时器",desc:"跟着舒缓圆圈，用 4-6、4-7-8 或方块呼吸在睡前放松。"},
       caffeine:{name:"咖啡因截止计算器",desc:"输入就寝时间与敏感度，找出你最后一杯的安全时刻。"},
       bedtime:{name:"就寝时间计算器",desc:"输入你需要起床的时间，我们按 90 分钟睡眠周期倒推。"},
@@ -576,8 +576,25 @@ function bindTheme(){
 }
 
 /* ---------- init ---------- */
+function buildToolNav(){
+  const d=document.getElementById('toolDropdown'); if(!d)return;
+  const t=T[lang].tools;
+  const items=[
+    ['bedtime-calculator.html',t.bedtime.name],
+    ['wake-up-calculator.html',t.wake.name],
+    ['sleep-duration-calculator.html',t.duration.name],
+    ['nap-calculator.html',t.nap.name],
+    ['sleep-window-calculator.html',t.window.name],
+    ['sleep-log.html',t.log.name],
+    ['caffeine-cutoff-calculator.html',t.caffeine.name],
+    ['breathing-timer.html',t.breathing.name]
+  ];
+  d.innerHTML=items.map(function(it){return '<a href="'+it[0]+'">'+it[1]+'</a>';}).join('');
+}
+
 function init(){
   applyStatic();
+  buildToolNav();
   bindLang(); bindTheme();
   renderChecklist(); renderFAQ();
   updateNow();
