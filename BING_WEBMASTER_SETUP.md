@@ -12,7 +12,7 @@ restcalc 已经准备好了两样东西：
 
 1. 打开 https://www.bing.com/webmasters/
 2. 用 Microsoft 账号登录（没有就注册一个）。
-3. 添加站点：`https://restcalc.vercel.app`（以后买了自定义域名，再添加一次 `https://restcalc.com`）。
+3. 添加站点：`https://www.rest-calc.com`（以后买了自定义域名，再添加一次 `https://restcalc.com`）。
 4. 验证方式选 **「上传文件」或「元标记」**：
    - 上传文件：把 `indexnow.txt` 的内容就是验证 key 之一，但 Bing 要的是它自己生成的 `BingSiteAuth.xml` 风格文件。最简单是「元标记」——把 Bing 给的 `<meta>` 粘到 `index.html` 的 `<head>` 里（和已有的 GSC `<meta>` 放一起），重新部署即可。
    - 或者选「API」方式用 IndexNow key 验证（与 `indexnow.txt` 一致）。
@@ -20,7 +20,7 @@ restcalc 已经准备好了两样东西：
 ## 2. 提交 sitemap
 
 1. 左侧菜单 → **Sitemaps**。
-2. 提交 `https://restcalc.vercel.app/sitemap.xml`。
+2. 提交 `https://www.rest-calc.com/sitemap.xml`。
 3. 等 Bing 抓取（通常几分钟到几小时）。
 
 ## 3. 看 Recommendations（修基础问题）
@@ -36,7 +36,7 @@ restcalc 已经准备好了两样东西：
 
 ```bash
 cd /Users/jayv/CCAI/网站/restcalc
-node submit-indexnow.js            # 默认 HOST=restcalc.vercel.app
+node submit-indexnow.js            # 默认 HOST=www.rest-calc.com
 # 以后换了自定义域名：
 HOST=restcalc.com node submit-indexnow.js
 ```
@@ -45,7 +45,7 @@ HOST=restcalc.com node submit-indexnow.js
 
 ## 5. 验证 IndexNow key 可访问
 
-浏览器打开 `https://restcalc.vercel.app/indexnow.txt`，应只显示一行 32 位十六进制字符串，无任何多余字符。
+浏览器打开 `https://www.rest-calc.com/indexnow.txt`，应只显示一行 32 位十六进制字符串，无任何多余字符。
 
 ## 如果 Bing 一直不收录，按顺序排查
 
