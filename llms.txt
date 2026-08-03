@@ -24,15 +24,8 @@ Each tool is a standalone page with its own calculator, explanation, and FAQ.
 
 ## Articles
 
-- [How Caffeine Affects Your Sleep](https://www.rest-calc.com/learn/caffeine-and-sleep.html): The half-life science, the 6 / 8 / 10–12 hour cutoff rule by sensitivity, hidden caffeine sources, and practical wind-down tips — with citations to the National Sleep Foundation and the Journal of Clinical Sleep Medicine (2013).
-- [Breathing for Sleep](https://www.rest-calc.com/learn/breathing-for-sleep.html): How slow, paced breathing lowers arousal, why a longer exhale calms you, the 4-6 / 4-7-8 / box methods, and a no-hold option — with citations to the National Sleep Foundation and Cleveland Clinic.
-- [Bedtime Calculator](https://www.rest-calc.com/learn/bedtime-calculator.html): Count back from your wake time in 90-minute cycles to find the best bedtime — why cycle timing beats guessing.
-- [Wake-up Calculator](https://www.rest-calc.com/learn/wake-up-calculator.html): Add 90-minute cycles to your bedtime to find groggy-free wake times, and why the snooze button backfires.
-- [Sleep Duration Calculator](https://www.rest-calc.com/learn/sleep-duration-calculator.html): Turn bedtime and wake time into total sleep, completed cycles, and a quality rating.
-- [Nap Calculator](https://www.rest-calc.com/learn/nap-calculator.html): A 10–20 minute power nap vs a full 90-minute cycle, and why 30–60 minutes is the trap.
-- [Sleep Window Helper](https://www.rest-calc.com/learn/sleep-window-calculator.html): Enter your free sleep range and find cycle-aligned bedtimes that fit inside it.
-- [Sleep Log](https://www.rest-calc.com/learn/sleep-log.html): Why a week of data beats one night, and how consistency matters more than total hours.
-- [Sleep Checklist](https://www.rest-calc.com/learn/sleep-routine-checklist.html): A full-day wind-down from afternoon caffeine cutoff to lights-out, with the caffeine half-life science.
+- [The Sleep Revolution (R90 Sleep Method)](https://www.rest-calc.com/learn/sleep-revolution.html): A long-form explainer of Nick Littlehales' R90 sleep-cycle method — fixed wake time, chronotypes, the 16–18°C bedroom, pre-sleep and post-sleep routines, and why sleep quality beats duration. With citations to the National Sleep Foundation and sleep-science sources.
+- [All articles](https://www.rest-calc.com/learn/index.html): The Restcalc article hub.
 
 ## How Sleep Cycles Work
 
