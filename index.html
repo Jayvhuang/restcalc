@@ -1650,10 +1650,8 @@ function updateChecklistNow(){
   else badge.textContent=T[lang].checklist.tooEarly;
 }
 function showView(name){
-  const map={guide:'view-guide', tools:'view-tools'};
-  const target=map[name]||('view-'+name);
   document.querySelectorAll('.views .view').forEach(v=>v.classList.remove('active'));
-  const el=document.getElementById(target); if(el)el.classList.add('active');
+  const el=document.getElementById(name); if(el)el.classList.add('active');
 }
 
 /* ============ init ============ */
