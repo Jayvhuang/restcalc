@@ -2,172 +2,172 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
         xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://restcalc.vercel.app/</loc>
-    <xhtml:link rel="alternate" hreflang="en" href="https://restcalc.vercel.app/"/>
-    <xhtml:link rel="alternate" hreflang="zh" href="https://restcalc.vercel.app/?lang=zh"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://restcalc.vercel.app/"/>
+    <loc>https://www.rest-calc.com/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.rest-calc.com/"/>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://www.rest-calc.com/?lang=zh"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.rest-calc.com/"/>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
     <lastmod>2026-07-19</lastmod>
   </url>
   <url>
-    <loc>https://restcalc.vercel.app/privacy.html</loc>
-    <xhtml:link rel="alternate" hreflang="en" href="https://restcalc.vercel.app/privacy.html"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://restcalc.vercel.app/privacy.html"/>
+    <loc>https://www.rest-calc.com/privacy.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.rest-calc.com/privacy.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.rest-calc.com/privacy.html"/>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
     <lastmod>2026-07-19</lastmod>
   </url>
   <url>
-    <loc>https://restcalc.vercel.app/tools/bedtime-calculator.html</loc>
-    <xhtml:link rel="alternate" hreflang="en" href="https://restcalc.vercel.app/tools/bedtime-calculator.html"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://restcalc.vercel.app/tools/bedtime-calculator.html"/>
+    <loc>https://www.rest-calc.com/tools/bedtime-calculator.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.rest-calc.com/tools/bedtime-calculator.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.rest-calc.com/tools/bedtime-calculator.html"/>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <lastmod>2026-07-19</lastmod>
   </url>
   <url>
-    <loc>https://restcalc.vercel.app/tools/wake-up-calculator.html</loc>
-    <xhtml:link rel="alternate" hreflang="en" href="https://restcalc.vercel.app/tools/wake-up-calculator.html"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://restcalc.vercel.app/tools/wake-up-calculator.html"/>
+    <loc>https://www.rest-calc.com/tools/wake-up-calculator.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.rest-calc.com/tools/wake-up-calculator.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.rest-calc.com/tools/wake-up-calculator.html"/>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <lastmod>2026-07-19</lastmod>
   </url>
   <url>
-    <loc>https://restcalc.vercel.app/tools/sleep-duration-calculator.html</loc>
-    <xhtml:link rel="alternate" hreflang="en" href="https://restcalc.vercel.app/tools/sleep-duration-calculator.html"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://restcalc.vercel.app/tools/sleep-duration-calculator.html"/>
+    <loc>https://www.rest-calc.com/tools/sleep-duration-calculator.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.rest-calc.com/tools/sleep-duration-calculator.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.rest-calc.com/tools/sleep-duration-calculator.html"/>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <lastmod>2026-07-19</lastmod>
   </url>
   <url>
-    <loc>https://restcalc.vercel.app/tools/nap-calculator.html</loc>
-    <xhtml:link rel="alternate" hreflang="en" href="https://restcalc.vercel.app/tools/nap-calculator.html"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://restcalc.vercel.app/tools/nap-calculator.html"/>
+    <loc>https://www.rest-calc.com/tools/nap-calculator.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.rest-calc.com/tools/nap-calculator.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.rest-calc.com/tools/nap-calculator.html"/>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <lastmod>2026-07-19</lastmod>
   </url>
   <url>
-    <loc>https://restcalc.vercel.app/tools/sleep-window-calculator.html</loc>
-    <xhtml:link rel="alternate" hreflang="en" href="https://restcalc.vercel.app/tools/sleep-window-calculator.html"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://restcalc.vercel.app/tools/sleep-window-calculator.html"/>
+    <loc>https://www.rest-calc.com/tools/sleep-window-calculator.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.rest-calc.com/tools/sleep-window-calculator.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.rest-calc.com/tools/sleep-window-calculator.html"/>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <lastmod>2026-07-19</lastmod>
   </url>
   <url>
-    <loc>https://restcalc.vercel.app/tools/sleep-log.html</loc>
-    <xhtml:link rel="alternate" hreflang="en" href="https://restcalc.vercel.app/tools/sleep-log.html"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://restcalc.vercel.app/tools/sleep-log.html"/>
+    <loc>https://www.rest-calc.com/tools/sleep-log.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.rest-calc.com/tools/sleep-log.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.rest-calc.com/tools/sleep-log.html"/>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <lastmod>2026-07-19</lastmod>
   </url>
   <url>
-    <loc>https://restcalc.vercel.app/tools/caffeine-cutoff-calculator.html</loc>
-    <xhtml:link rel="alternate" hreflang="en" href="https://restcalc.vercel.app/tools/caffeine-cutoff-calculator.html"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://restcalc.vercel.app/tools/caffeine-cutoff-calculator.html"/>
+    <loc>https://www.rest-calc.com/tools/caffeine-cutoff-calculator.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.rest-calc.com/tools/caffeine-cutoff-calculator.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.rest-calc.com/tools/caffeine-cutoff-calculator.html"/>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <lastmod>2026-07-22</lastmod>
   </url>
   <url>
-    <loc>https://restcalc.vercel.app/learn/caffeine-and-sleep.html</loc>
-    <xhtml:link rel="alternate" hreflang="en" href="https://restcalc.vercel.app/learn/caffeine-and-sleep.html"/>
-    <xhtml:link rel="alternate" hreflang="zh" href="https://restcalc.vercel.app/learn/caffeine-and-sleep.html?lang=zh"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://restcalc.vercel.app/learn/caffeine-and-sleep.html"/>
+    <loc>https://www.rest-calc.com/learn/caffeine-and-sleep.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.rest-calc.com/learn/caffeine-and-sleep.html"/>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://www.rest-calc.com/learn/caffeine-and-sleep.html?lang=zh"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.rest-calc.com/learn/caffeine-and-sleep.html"/>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
     <lastmod>2026-07-22</lastmod>
   </url>
   <url>
-    <loc>https://restcalc.vercel.app/tools/breathing-timer.html</loc>
-    <xhtml:link rel="alternate" hreflang="en" href="https://restcalc.vercel.app/tools/breathing-timer.html"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://restcalc.vercel.app/tools/breathing-timer.html"/>
+    <loc>https://www.rest-calc.com/tools/breathing-timer.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.rest-calc.com/tools/breathing-timer.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.rest-calc.com/tools/breathing-timer.html"/>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <lastmod>2026-07-23</lastmod>
   </url>
   <url>
-    <loc>https://restcalc.vercel.app/learn/breathing-for-sleep.html</loc>
-    <xhtml:link rel="alternate" hreflang="en" href="https://restcalc.vercel.app/learn/breathing-for-sleep.html"/>
-    <xhtml:link rel="alternate" hreflang="zh" href="https://restcalc.vercel.app/learn/breathing-for-sleep.html?lang=zh"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://restcalc.vercel.app/learn/breathing-for-sleep.html"/>
+    <loc>https://www.rest-calc.com/learn/breathing-for-sleep.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.rest-calc.com/learn/breathing-for-sleep.html"/>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://www.rest-calc.com/learn/breathing-for-sleep.html?lang=zh"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.rest-calc.com/learn/breathing-for-sleep.html"/>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
     <lastmod>2026-07-23</lastmod>
   </url>
   <url>
-    <loc>https://restcalc.vercel.app/tools/sleep-routine-checklist.html</loc>
-    <xhtml:link rel="alternate" hreflang="en" href="https://restcalc.vercel.app/tools/sleep-routine-checklist.html"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://restcalc.vercel.app/tools/sleep-routine-checklist.html"/>
+    <loc>https://www.rest-calc.com/tools/sleep-routine-checklist.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.rest-calc.com/tools/sleep-routine-checklist.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.rest-calc.com/tools/sleep-routine-checklist.html"/>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <lastmod>2026-07-24</lastmod>
   </url>
 
   <url>
-    <loc>https://restcalc.vercel.app/learn/bedtime-calculator.html</loc>
-    <xhtml:link rel="alternate" hreflang="en" href="https://restcalc.vercel.app/learn/bedtime-calculator.html"/>
-    <xhtml:link rel="alternate" hreflang="zh" href="https://restcalc.vercel.app/learn/bedtime-calculator.html?lang=zh"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://restcalc.vercel.app/learn/bedtime-calculator.html"/>
+    <loc>https://www.rest-calc.com/learn/bedtime-calculator.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.rest-calc.com/learn/bedtime-calculator.html"/>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://www.rest-calc.com/learn/bedtime-calculator.html?lang=zh"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.rest-calc.com/learn/bedtime-calculator.html"/>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
     <lastmod>2026-08-03</lastmod>
   </url>
   <url>
-    <loc>https://restcalc.vercel.app/learn/wake-up-calculator.html</loc>
-    <xhtml:link rel="alternate" hreflang="en" href="https://restcalc.vercel.app/learn/wake-up-calculator.html"/>
-    <xhtml:link rel="alternate" hreflang="zh" href="https://restcalc.vercel.app/learn/wake-up-calculator.html?lang=zh"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://restcalc.vercel.app/learn/wake-up-calculator.html"/>
+    <loc>https://www.rest-calc.com/learn/wake-up-calculator.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.rest-calc.com/learn/wake-up-calculator.html"/>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://www.rest-calc.com/learn/wake-up-calculator.html?lang=zh"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.rest-calc.com/learn/wake-up-calculator.html"/>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
     <lastmod>2026-08-03</lastmod>
   </url>
   <url>
-    <loc>https://restcalc.vercel.app/learn/sleep-duration-calculator.html</loc>
-    <xhtml:link rel="alternate" hreflang="en" href="https://restcalc.vercel.app/learn/sleep-duration-calculator.html"/>
-    <xhtml:link rel="alternate" hreflang="zh" href="https://restcalc.vercel.app/learn/sleep-duration-calculator.html?lang=zh"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://restcalc.vercel.app/learn/sleep-duration-calculator.html"/>
+    <loc>https://www.rest-calc.com/learn/sleep-duration-calculator.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.rest-calc.com/learn/sleep-duration-calculator.html"/>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://www.rest-calc.com/learn/sleep-duration-calculator.html?lang=zh"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.rest-calc.com/learn/sleep-duration-calculator.html"/>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
     <lastmod>2026-08-03</lastmod>
   </url>
   <url>
-    <loc>https://restcalc.vercel.app/learn/nap-calculator.html</loc>
-    <xhtml:link rel="alternate" hreflang="en" href="https://restcalc.vercel.app/learn/nap-calculator.html"/>
-    <xhtml:link rel="alternate" hreflang="zh" href="https://restcalc.vercel.app/learn/nap-calculator.html?lang=zh"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://restcalc.vercel.app/learn/nap-calculator.html"/>
+    <loc>https://www.rest-calc.com/learn/nap-calculator.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.rest-calc.com/learn/nap-calculator.html"/>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://www.rest-calc.com/learn/nap-calculator.html?lang=zh"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.rest-calc.com/learn/nap-calculator.html"/>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
     <lastmod>2026-08-03</lastmod>
   </url>
   <url>
-    <loc>https://restcalc.vercel.app/learn/sleep-window-calculator.html</loc>
-    <xhtml:link rel="alternate" hreflang="en" href="https://restcalc.vercel.app/learn/sleep-window-calculator.html"/>
-    <xhtml:link rel="alternate" hreflang="zh" href="https://restcalc.vercel.app/learn/sleep-window-calculator.html?lang=zh"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://restcalc.vercel.app/learn/sleep-window-calculator.html"/>
+    <loc>https://www.rest-calc.com/learn/sleep-window-calculator.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.rest-calc.com/learn/sleep-window-calculator.html"/>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://www.rest-calc.com/learn/sleep-window-calculator.html?lang=zh"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.rest-calc.com/learn/sleep-window-calculator.html"/>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
     <lastmod>2026-08-03</lastmod>
   </url>
   <url>
-    <loc>https://restcalc.vercel.app/learn/sleep-log.html</loc>
-    <xhtml:link rel="alternate" hreflang="en" href="https://restcalc.vercel.app/learn/sleep-log.html"/>
-    <xhtml:link rel="alternate" hreflang="zh" href="https://restcalc.vercel.app/learn/sleep-log.html?lang=zh"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://restcalc.vercel.app/learn/sleep-log.html"/>
+    <loc>https://www.rest-calc.com/learn/sleep-log.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.rest-calc.com/learn/sleep-log.html"/>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://www.rest-calc.com/learn/sleep-log.html?lang=zh"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.rest-calc.com/learn/sleep-log.html"/>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
     <lastmod>2026-08-03</lastmod>
   </url>
   <url>
-    <loc>https://restcalc.vercel.app/learn/sleep-routine-checklist.html</loc>
-    <xhtml:link rel="alternate" hreflang="en" href="https://restcalc.vercel.app/learn/sleep-routine-checklist.html"/>
-    <xhtml:link rel="alternate" hreflang="zh" href="https://restcalc.vercel.app/learn/sleep-routine-checklist.html?lang=zh"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://restcalc.vercel.app/learn/sleep-routine-checklist.html"/>
+    <loc>https://www.rest-calc.com/learn/sleep-routine-checklist.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.rest-calc.com/learn/sleep-routine-checklist.html"/>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://www.rest-calc.com/learn/sleep-routine-checklist.html?lang=zh"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.rest-calc.com/learn/sleep-routine-checklist.html"/>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
     <lastmod>2026-08-03</lastmod>
