@@ -463,20 +463,20 @@ function bindTheme(){
   });
 }
 
+const TOOL_LIST=[
+  ['wake-up-calculator.html','Wake-up Calculator','醒来时间计算器'],
+  ['sleep-duration-calculator.html','Sleep Duration Calculator','睡眠时长计算器'],
+  ['nap-calculator.html','Nap Calculator','小睡计算器'],
+  ['sleep-window-calculator.html','Sleep Window Helper','睡眠时段助手'],
+  ['sleep-log.html','Sleep Log & Trend','睡眠记录与趋势'],
+  ['caffeine-cutoff-calculator.html','Caffeine Cutoff Calculator','咖啡因截止计算器'],
+  ['breathing-timer.html','Bedtime Breathing Timer','睡前呼吸计时器'],
+  ['sleep-routine-checklist.html','Sleep Guidance Checklist','睡眠引导清单']
+];
 function buildToolNav(){
   const d=document.getElementById('toolDropdown'); if(!d)return;
-  const t=T[lang].tools;
-  const items=[
-    ['bedtime-calculator.html',t.bedtime.name],
-    ['wake-up-calculator.html',t.wake.name],
-    ['sleep-duration-calculator.html',t.duration.name],
-    ['nap-calculator.html',t.nap.name],
-    ['sleep-window-calculator.html',t.window.name],
-    ['sleep-log.html',t.log.name],
-    ['caffeine-cutoff-calculator.html',t.caffeine.name],
-    ['sleep-routine-checklist.html',t.checklist.name]
-  ];
-  d.innerHTML=items.map(function(it){return '<a href="'+it[0]+'">'+it[1]+'</a>';}).join('');
+  const i=(lang==='zh')?2:1;
+  d.innerHTML=TOOL_LIST.map(function(it){return '<a href="'+it[0]+'">'+it[i]+'</a>';}).join('');
 }
 
 function init(){
