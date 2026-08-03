@@ -17,13 +17,13 @@
  *   HOST=restcalc.com node submit-indexnow.js   # submit for a custom domain
  *
  * Note: when you switch to a custom domain, update HOST (and the key file
- * stays the same — it is served at both restcalc.vercel.app and the new domain).
+ * stays the same — it is served at both www.rest-calc.com and the new domain).
  */
 
 const fs = require('fs');
 const path = require('path');
 
-const HOST = process.env.HOST || 'restcalc.vercel.app';
+const HOST = process.env.HOST || 'www.rest-calc.com';
 const KEY_FILE = path.join(__dirname, 'indexnow.txt');
 const SITEMAP = path.join(__dirname, 'sitemap.xml');
 const DRY_RUN = process.argv.includes('--dry-run');
