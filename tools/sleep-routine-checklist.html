@@ -73,10 +73,10 @@
   .item .ideep{display:inline-block;margin-top:6px;font-size:12.5px;color:var(--accent);text-decoration:none;}
   .item.done .ix{color:var(--muted);text-decoration:line-through;opacity:.7;}
   .phase-head{cursor:pointer;user-select:none;}
-  .phase-chev{font-size:13px;color:var(--muted);transition:transform .2s;margin-left:4px;}
+  .phase-chev{font-size:18px;color:var(--muted);transition:transform .2s;margin-left:4px;}
   .phase.collapsed .phase-chev{transform:rotate(-90deg);}
   .phase.collapsed .items{display:none;}
-  .phase-all{padding:5px 11px;border-radius:8px;border:0.5px solid var(--border);background:transparent;color:var(--muted);font-size:12px;cursor:pointer;white-space:nowrap;transition:.15s;}
+  .phase-all{margin-left:auto;padding:5px 11px;border-radius:8px;border:0.5px solid var(--border);background:transparent;color:var(--muted);font-size:12px;cursor:pointer;white-space:nowrap;transition:.15s;}
   .phase-all:hover{color:var(--accent);border-color:var(--accent);}
   .phase-all.all-done{color:var(--accent);border-color:var(--accent);}
 </style>
@@ -492,7 +492,7 @@ function renderChecklist(){
     sec.className='phase'; sec.id='phase-'+ph.id;
     const head=document.createElement('div');
     head.className='phase-head';
-    head.innerHTML='<span class="pic">'+ph.icon+'</span><span class="pt">'+ph.title[lang]+'</span><span class="pw">'+ph.win[lang]+'</span><button class="phase-all" type="button"></button><span class="phase-chev">▾</span>';
+    head.innerHTML='<span class="pic">'+ph.icon+'</span><span class="pt">'+ph.title[lang]+'</span><button class="phase-all" type="button"></button><span class="phase-chev">▾</span>';
     head.addEventListener('click',function(e){
       if(e.target.classList.contains('phase-all'))return;
       sec.classList.toggle('collapsed');
