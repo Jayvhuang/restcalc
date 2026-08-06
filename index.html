@@ -1692,6 +1692,7 @@ function init(){
   setInterval(updateChecklistNow,30000);
   const clBed=document.getElementById('bedInput'); if(clBed)clBed.addEventListener('input',updateChecklistNow);
   const clReset=document.getElementById('resetBtn'); if(clReset)clReset.addEventListener('click',function(){localStorage.removeItem(CL_KEY);renderChecklist();});
+  const clNow=document.getElementById('nowBadge'); if(clNow)clNow.addEventListener('click',function(){const a=document.querySelector('.phase.active'); if(a)a.scrollIntoView({behavior:'smooth',block:'start'});});
   const gBtn=document.getElementById('btnGuide'); if(gBtn)gBtn.addEventListener('click',function(){showView('guide');document.getElementById('guide').scrollIntoView({behavior:'smooth'});});
   const cBtn=document.getElementById('btnCalc'); if(cBtn)cBtn.addEventListener('click',function(){showView('tools');document.getElementById('tools').scrollIntoView({behavior:'smooth'});});
   ['bedtime','wake','duration','nap','window','caffeine','breathing'].forEach(k=>{
