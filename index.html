@@ -310,8 +310,8 @@ a{color:inherit;text-decoration:none}
           <label data-i18n="checklist.bedLabel">My bedtime is</label>
           <input type="time" id="bedInput" value="23:00">
         </div>
+        <p class="nowbadge" id="nowBadge" style="margin-left:auto"></p>
       </div>
-      <p class="nowbadge" id="nowBadge"></p>
       <p class="progress" id="progress"></p>
       <div id="checklist"></div>
       <div style="display:flex;gap:10px;margin-top:16px;">
@@ -647,7 +647,7 @@ const T = {
       guide:"Sleep Guide", calc:"Sleep tools",
       trust:"🔒 Private by design — every calculation runs locally in your browser. No account. Data never leaves your device. Multilingual."
     },
-    checklist:{ bedLabel:"My bedtime is", reset:"Reset checklist", current:"Now: ", tooEarly:"Not yet — more than 8 hours before bed. Relax, your prep starts later.", progressDone:"All done — nice work. Sleep well 🌙" },
+    checklist:{ bedLabel:"My bedtime is", reset:"Reset checklist", selectAll:"Select all", clearAll:"Clear all", current:"Now: ", tooEarly:"Not yet — more than 8 hours before bed. Relax, your prep starts later.", progressDone:"All done — nice work. Sleep well 🌙" },
     tools:{
       bedtime:{name:"Bedtime Calculator"},
       wake:{name:"Wake-up Calculator"},
@@ -817,7 +817,7 @@ const T = {
       guide:"睡眠引导", calc:"睡眠工具",
       trust:"🔒 隐私优先——所有计算都在你的浏览器本地运行，无需注册，数据不上传。多语言模式"
     },
-    checklist:{ bedLabel:"我的就寝时间是", reset:"重置清单", current:"当前：", tooEarly:"还没到——距就寝超过 8 小时。先放松，准备稍后开始。", progressDone:"全部完成——做得好，晚安 🌙" },
+    checklist:{ bedLabel:"我的就寝时间是", reset:"重置清单", selectAll:"全选", clearAll:"全不选", current:"当前：", tooEarly:"还没到——距就寝超过 8 小时。先放松，准备稍后开始。", progressDone:"全部完成——做得好，晚安 🌙" },
     tools:{
       bedtime:{name:"就寝时间计算器"},
       wake:{name:"起床时间计算器"},
@@ -1449,13 +1449,7 @@ const CL_PHASES = [
         en:'If you nap, keep it about 10–20 minutes and not too late.',
         zh:'如果午睡，控制在约 10–20 分钟，不要太晚。',
         why:{en:'A short nap restores alertness without sleep inertia and avoids stealing sleep pressure from the coming night. Long or late naps make it harder to fall asleep later.', zh:'短午睡能恢复清醒又不会昏沉，也避免削减当晚的睡眠驱动力。过长或过晚的午睡会让人更难入睡。'},
-        deep:{href:'tools/nap-calculator.html', tool:'nap'}}
-    ]
-  },
-  { id:'afternoon', icon:'☕', startBefore:360,
-    title:{en:'Afternoon', zh:'下午'},
-    win:{en:'Cut the stimulants', zh:'收住刺激物'},
-    items:[
+        deep:{href:'tools/nap-calculator.html', tool:'nap'}},
       {id:'caffeine', icon:'🥤', t:{en:'Caffeine', zh:'咖啡因'},
         en:'Stop caffeine 6 hours earlier (coffee, tea, milk tea, cola, energy drinks). If sensitive or a long-term poor sleeper, stop earlier.',
         zh:'提前 6 小时停止咖啡因（咖啡、茶、奶茶、可乐、能量饮料等）；若对咖啡因敏感或长期睡不好，请更早停止。',
@@ -1567,6 +1561,28 @@ function clDeep(it){
   if(!it.deep)return '';
   return '<a class="ideep" href="'+it.deep.href+(lang==='zh'?'?lang=zh':'')+'">'+T[lang].tools[it.deep.tool].name+' ↗</a>';
 }
+function clPhaseChecked(ph){
+  const s=clLoad(); let c=0; ph.items.forEach(it=>{if(s[it.id])c++;}); return c;
+}
+function clUpdatePhaseAllLabel(ph, sec){
+  const btn=sec.querySelector('.phase-all'); if(!btn)return;
+  const done=clPhaseChecked(ph), total=ph.items.length;
+  const allDone=done===total;
+  btn.textContent=allDone?T[lang].checklist.clearAll:T[lang].checklist.selectAll;
+  btn.classList.toggle('all-done',allDone);
+}
+function clTogglePhaseAll(ph, sec){
+  const s=clLoad();
+  const all=ph.items.filter(i=>s[i.id]).length===ph.items.length;
+  ph.items.forEach(it=>{ s[it.id]=!all; });
+  clSave(s);
+  ph.items.forEach(it=>{
+    const row=sec.querySelector('.item[data-id="'+it.id+'"]');
+    if(row){const box=row.querySelector('input'); if(box)box.checked=!all; row.classList.toggle('done',!all);}
+  });
+  clUpdatePhaseAllLabel(ph, sec);
+  clUpdateProgress();
+}
 function renderChecklist(){
   const saved=clLoad();
   const wrap=document.getElementById('checklist'); if(!wrap)return;
@@ -1576,7 +1592,13 @@ function renderChecklist(){
     sec.className='phase'; sec.id='phase-'+ph.id;
     const head=document.createElement('div');
     head.className='phase-head';
-    head.innerHTML='<span class="pic">'+ph.icon+'</span><span class="pt">'+ph.title[lang]+'</span><span class="pw">'+ph.win[lang]+'</span>';
+    head.innerHTML='<span class="pic">'+ph.icon+'</span><span class="pt">'+ph.title[lang]+'</span><button class="phase-all" type="button"></button><span class="phase-chev">▾</span>';
+    head.addEventListener('click',function(e){
+      if(e.target.classList.contains('phase-all'))return;
+      sec.classList.toggle('collapsed');
+    });
+    const allBtn=head.querySelector('.phase-all');
+    allBtn.addEventListener('click',function(e){ e.stopPropagation(); clTogglePhaseAll(ph, sec); });
     sec.appendChild(head);
     const list=document.createElement('div'); list.className='items';
     ph.items.forEach(it=>{
@@ -1591,12 +1613,14 @@ function renderChecklist(){
       box.addEventListener('change',function(){
         const s=clLoad(); s[it.id]=box.checked; clSave(s);
         row.classList.toggle('done',box.checked);
+        clUpdatePhaseAllLabel(ph, sec);
         clUpdateProgress();
       });
       if(saved[it.id]) row.classList.add('done');
       list.appendChild(row);
     });
     sec.appendChild(list);
+    clUpdatePhaseAllLabel(ph, sec);
     wrap.appendChild(sec);
   });
   clUpdateProgress();
@@ -1614,18 +1638,15 @@ function updateChecklistNow(){
   const bedEl=document.getElementById('bedInput'); if(!bedEl)return;
   const bedMin=clMinutesOf(bedEl.value||'23:00');
   const now=new Date(); const nowMin=now.getHours()*60+now.getMinutes();
-  let mb=bedMin-nowMin;
-  if(mb>480){
-    CL_PHASES.forEach(ph=>{const sec=document.getElementById('phase-'+ph.id);if(sec)sec.classList.remove('active');});
-    const badge=document.getElementById('nowBadge');
-    if(badge)badge.textContent=T[lang].checklist.tooEarly;
-    return;
-  }
-  let activeId='day';
-  if(mb<=60) activeId='beforebed';
-  else if(mb<=120) activeId='pre1h';
-  else if(mb<=240) activeId='pre2h';
-  else if(mb<=360) activeId='afternoon';
+  const nowH=now.getHours();
+  const toBed=(bedMin-nowMin+1440)%1440;
+  let activeId;
+  if(toBed===0) activeId='beforebed';
+  else if(toBed>1320) activeId='beforebed';
+  else if(toBed<=60) activeId='pre1h';
+  else if(toBed<=120) activeId='pre2h';
+  else if(nowH>=6 && nowH<18) activeId='day';
+  else activeId='evening';
   CL_PHASES.forEach(ph=>{
     const sec=document.getElementById('phase-'+ph.id);
     if(sec) sec.classList.toggle('active',ph.id===activeId);
