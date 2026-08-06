@@ -638,6 +638,7 @@ function init(){
   document.getElementById('resetBtn').addEventListener('click',function(){
     localStorage.removeItem(CHECK_KEY); renderChecklist();
   });
+  const clNow=document.getElementById('nowBadge'); if(clNow)clNow.addEventListener('click',function(){const a=document.querySelector('.phase.active'); if(a)a.scrollIntoView({behavior:'smooth',block:'start'});});
   const y=document.getElementById('year'); if(y)y.textContent=new Date().getFullYear();
 }
 init();
