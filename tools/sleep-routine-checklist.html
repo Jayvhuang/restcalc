@@ -72,6 +72,13 @@
   .item .why{font-size:11.5px;color:var(--muted);margin-top:5px;line-height:1.55;opacity:.82;border-left:2px solid var(--border);padding-left:9px;}
   .item .ideep{display:inline-block;margin-top:6px;font-size:12.5px;color:var(--accent);text-decoration:none;}
   .item.done .ix{color:var(--muted);text-decoration:line-through;opacity:.7;}
+  .phase-head{cursor:pointer;user-select:none;}
+  .phase-chev{font-size:13px;color:var(--muted);transition:transform .2s;margin-left:4px;}
+  .phase.collapsed .phase-chev{transform:rotate(-90deg);}
+  .phase.collapsed .items{display:none;}
+  .phase-all{padding:5px 11px;border-radius:8px;border:0.5px solid var(--border);background:transparent;color:var(--muted);font-size:12px;cursor:pointer;white-space:nowrap;transition:.15s;}
+  .phase-all:hover{color:var(--accent);border-color:var(--accent);}
+  .phase-all.all-done{color:var(--accent);border-color:var(--accent);}
 </style>
 </head>
 <body>
@@ -108,8 +115,8 @@
           <label data-i18n="bedLabel">My bedtime is</label>
           <input type="time" id="bedInput" value="23:00">
         </div>
+        <p class="nowbadge" id="nowBadge" style="margin-left:auto"></p>
       </div>
-      <p class="nowbadge" id="nowBadge"></p>
       <p class="progress" id="progress"></p>
 
       <div id="checklist"></div>
@@ -223,13 +230,7 @@ const PHASES = [
         en:'If you nap, keep it about 10–20 minutes and not too late.',
         zh:'如果午睡，控制在约 10–20 分钟，不要太晚。',
         why:{en:'A short nap restores alertness without sleep inertia and avoids stealing sleep pressure from the coming night. Long or late naps make it harder to fall asleep later.', zh:'短午睡能恢复清醒又不会昏沉，也避免削减当晚的睡眠驱动力。过长或过晚的午睡会让人更难入睡。'},
-        deep:{href:'nap-calculator.html', tool:'nap'}}
-    ]
-  },
-  { id:'afternoon', icon:'☕', startBefore:360,
-    title:{en:'Afternoon', zh:'下午'},
-    win:{en:'Cut the stimulants', zh:'收住刺激物'},
-    items:[
+        deep:{href:'nap-calculator.html', tool:'nap'}},
       {id:'caffeine', icon:'🥤', t:{en:'Caffeine', zh:'咖啡因'},
         en:'Stop caffeine 6 hours earlier (coffee, tea, milk tea, cola, energy drinks). If sensitive or a long-term poor sleeper, stop earlier.',
         zh:'提前 6 小时停止咖啡因（咖啡、茶、奶茶、可乐、能量饮料等）；若对咖啡因敏感或长期睡不好，请更早停止。',
@@ -344,6 +345,8 @@ const T = {
     sub:"Better sleep is built all day long. This checklist walks you from your morning wake-up and afternoon caffeine cutoff through lights-out — with the why behind each step and quick links to the right calculator. Check items off as you go.",
     bedLabel:"My bedtime is",
     reset:"Reset checklist",
+    selectAll:"Select all",
+    clearAll:"Clear all",
     tooEarly:"Not yet — more than 8 hours before bed. Relax, your prep starts later.",
     current:"Now: ",
     progressDone:"All done — nice work. Sleep well 🌙",
@@ -359,8 +362,8 @@ const T = {
     faqSub:"How to use it without turning it into a chore.",
     faq:[
       {q:"Do I have to do everything on the list?",a:"No. Treat it as a menu, not a rulebook. Pick what fits your day — just cutting the afternoon caffeine often helps. More stacked items mean better sleep, but any prep beats none. Tap the “why” under each step to see the evidence."},
-      {q:"When should I start?",a:"The list is built around your bedtime. The “current phase” badge shows where you are right now: daytime foundations, afternoon caffeine cutoff, evening wind-down, then the 2-hour and 1-hour pre-bed steps, the bedside check, and the ongoing weekly log."},
-      {q:"What does the “current phase” badge show?",a:"It reads your bedtime and the current time, then highlights the section you should be in right now — daytime foundations, the afternoon caffeine cutoff, the evening wind-down, the pre-bed steps, or the bedside check. It keeps the whole-day plan oriented to your own clock."},
+      {q:"When should I start?",a:"The list is built around your bedtime. The “current phase” badge shows where you are right now: daytime foundations (including your caffeine cutoff), evening wind-down, then the 2-hour and 1-hour pre-bed steps, the bedside check, and the ongoing weekly log."},
+      {q:"What does the “current phase” badge show?",a:"It reads your bedtime and the current time, then highlights the section you should be in right now — daytime foundations, the evening wind-down, the pre-bed steps, or the bedside check. It keeps the whole-day plan oriented to your own clock."},
       {q:"Are the tool links part of the plan?",a:"Yes. Steps that have a calculator — wake-up, nap, caffeine cutoff, breathing, and the sleep log — link straight to it, so you can act on the advice without leaving the flow."},
       {q:"Is this medical advice?",a:"No. It summarizes widely taught sleep-hygiene guidance for education. It does not diagnose or treat insomnia or any condition. For ongoing sleep problems, see a healthcare professional."}
     ],
@@ -389,6 +392,8 @@ const T = {
     sub:"好睡眠是一整天慢慢铺出来的。这份清单从你早晨起床、下午戒咖啡因，一路排到熄灯就寝——每一步都写明原因，并按需链接到对应计算器。边做边勾即可。",
     bedLabel:"我的就寝时间是",
     reset:"重置清单",
+    selectAll:"全选",
+    clearAll:"全不选",
     tooEarly:"还没到——距就寝超过 8 小时。先放松，准备稍后开始。",
     current:"当前：",
     progressDone:"全部完成——做得好，晚安 🌙",
@@ -405,8 +410,8 @@ const T = {
     faqSub:"如何用它，又不把它变成负担。",
     faq:[
       {q:"清单上的每一条都要做吗？",a:"不必。把它当菜单，而非守则。挑适合你的一天去做——光是下午截止咖啡因，常常就有帮助。做得越多越好，但任何准备都胜过没有。点开每步下面的“原因”，能看到依据。"},
-      {q:"我该什么时候开始？",a:"清单以你的就寝时间为准。顶部“当前阶段”徽标会显示你现在身处哪一段：白天打底、下午戒咖啡因、晚上收尾、睡前 2 小时与 1 小时、床边检查，以及平时每周记录。"},
-      {q:"“当前阶段”徽标是做什么的？",a:"它会读取你的就寝时间与当前时间，然后高亮你现在身处哪一段——白天打底、下午戒咖啡因、晚上收尾、睡前几步，或床边检查。让全天计划始终对准你自己的时钟。"},
+      {q:"我该什么时候开始？",a:"清单以你的就寝时间为准。顶部“当前阶段”徽标会显示你现在身处哪一段：白天打底（含咖啡因截止）、晚上收尾、睡前 2 小时与 1 小时、床边检查，以及平时每周记录。"},
+      {q:"“当前阶段”徽标是做什么的？",a:"它会读取你的就寝时间与当前时间，然后高亮你现在身处哪一段——白天打底、晚上收尾、睡前几步，或床边检查。让全天计划始终对准你自己的时钟。"},
       {q:"那些工具链接也是计划的一部分吗？",a:"是。有计算器的步骤——起床、午睡、咖啡因截止、呼吸、睡眠记录——都直接链过去，让你不离开流程就能把建议落实。"},
       {q:"这是医疗建议吗？",a:"不是。它仅为科普，总结广为人教的睡眠卫生指引，不诊断也不治疗失眠或任何状况。若有持续睡眠问题，请咨询医疗专业人士。"}
     ],
@@ -456,6 +461,28 @@ function deepLink(it){
   if(!it.deep)return '';
   return '<a class="ideep" href="'+it.deep.href+(lang==='zh'?'?lang=zh':'')+'">'+T[lang].tools[it.deep.tool].name+' ↗</a>';
 }
+function phaseCheckedCount(ph){
+  const s=loadChecks(); let c=0; ph.items.forEach(it=>{if(s[it.id])c++;}); return c;
+}
+function updatePhaseAllLabel(ph, sec){
+  const btn=sec.querySelector('.phase-all'); if(!btn)return;
+  const done=phaseCheckedCount(ph), total=ph.items.length;
+  const allDone=done===total;
+  btn.textContent=allDone?T[lang].clearAll:T[lang].selectAll;
+  btn.classList.toggle('all-done',allDone);
+}
+function togglePhaseAll(ph, sec){
+  const s=loadChecks();
+  const all=ph.items.filter(i=>s[i.id]).length===ph.items.length;
+  ph.items.forEach(it=>{ s[it.id]=!all; });
+  saveChecks(s);
+  ph.items.forEach(it=>{
+    const row=sec.querySelector('.item[data-id="'+it.id+'"]');
+    if(row){const box=row.querySelector('input'); if(box)box.checked=!all; row.classList.toggle('done',!all);}
+  });
+  updatePhaseAllLabel(ph, sec);
+  updateProgress();
+}
 function renderChecklist(){
   const saved=loadChecks();
   const wrap=document.getElementById('checklist');
@@ -465,7 +492,13 @@ function renderChecklist(){
     sec.className='phase'; sec.id='phase-'+ph.id;
     const head=document.createElement('div');
     head.className='phase-head';
-    head.innerHTML='<span class="pic">'+ph.icon+'</span><span class="pt">'+ph.title[lang]+'</span><span class="pw">'+ph.win[lang]+'</span>';
+    head.innerHTML='<span class="pic">'+ph.icon+'</span><span class="pt">'+ph.title[lang]+'</span><span class="pw">'+ph.win[lang]+'</span><button class="phase-all" type="button"></button><span class="phase-chev">▾</span>';
+    head.addEventListener('click',function(e){
+      if(e.target.classList.contains('phase-all'))return;
+      sec.classList.toggle('collapsed');
+    });
+    const allBtn=head.querySelector('.phase-all');
+    allBtn.addEventListener('click',function(e){ e.stopPropagation(); togglePhaseAll(ph, sec); });
     sec.appendChild(head);
     const list=document.createElement('div'); list.className='items';
     ph.items.forEach(it=>{
@@ -480,12 +513,14 @@ function renderChecklist(){
       box.addEventListener('change',function(){
         const s=loadChecks(); s[it.id]=box.checked; saveChecks(s);
         row.classList.toggle('done',box.checked);
+        updatePhaseAllLabel(ph, sec);
         updateProgress();
       });
       if(saved[it.id]) row.classList.add('done');
       list.appendChild(row);
     });
     sec.appendChild(list);
+    updatePhaseAllLabel(ph, sec);
     wrap.appendChild(sec);
   });
   updateProgress();
@@ -511,24 +546,24 @@ function updateNow(){
   const bedMin=minutesOf(document.getElementById('bedInput').value||'23:00');
   const now=new Date();
   const nowMin=now.getHours()*60+now.getMinutes();
-  let mb=bedMin-nowMin; // minutes before bed; <=0 means at/after bed
-  let activeId=null;
-  if(mb<=60) activeId='beforebed';
-  else if(mb<=120) activeId='pre1h';
-  else if(mb<=240) activeId='pre2h';
-  else if(mb<=360) activeId='afternoon';
-  else activeId='day';
+  const nowH=now.getHours();
+  // minutes until next bedtime (wraps overnight so late-night still maps right)
+  const toBed=(bedMin-nowMin+1440)%1440;
+  let activeId;
+  if(toBed===0) activeId='beforebed';          // exactly bedtime
+  else if(toBed>1320) activeId='beforebed';     // just passed bedtime (within 2h after)
+  else if(toBed<=60) activeId='pre1h';          // within 1h before bed
+  else if(toBed<=120) activeId='pre2h';         // within 2h before bed
+  else if(nowH>=6 && nowH<18) activeId='day';   // 6:00–18:00 daytime
+  else activeId='evening';                      // after 18:00 evening
   PHASES.forEach(ph=>{
     const sec=document.getElementById('phase-'+ph.id);
     if(sec) sec.classList.toggle('active',ph.id===activeId);
   });
   const badge=document.getElementById('nowBadge');
-  if(activeId){
-    const ph=PHASES.find(p=>p.id===activeId);
-    badge.innerHTML=T[lang].current+'<b>'+ph.title[lang]+'</b>';
-  } else {
-    badge.textContent=T[lang].tooEarly;
-  }
+  const ph=PHASES.find(p=>p.id===activeId);
+  if(ph) badge.innerHTML=T[lang].current+'<b>'+ph.title[lang]+'</b>';
+  else badge.textContent=T[lang].tooEarly;
 }
 
 
