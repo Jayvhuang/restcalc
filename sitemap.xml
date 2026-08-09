@@ -109,4 +109,13 @@
     <priority>0.7</priority>
     <lastmod>2026-08-03</lastmod>
   </url>
+  <url>
+    <loc>https://www.rest-calc.com/learn/sleep-exercise.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.rest-calc.com/learn/sleep-exercise.html"/>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://www.rest-calc.com/learn/sleep-exercise.html?lang=zh"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.rest-calc.com/learn/sleep-exercise.html"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <lastmod>2026-08-09</lastmod>
+  </url>
 </urlset>
