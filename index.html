@@ -656,6 +656,7 @@ const T = {
       window:{name:"Sleep Window Helper"},
       log:{name:"Sleep Log & Trend"},
       caffeine:{name:"Caffeine Cutoff Calculator"},
+      meal:{name:"Pre-Sleep Meal Calculator"},
       breathing:{name:"Bedtime Breathing Timer"},
       checklist:{name:"Sleep Guidance Checklist"}
     },
@@ -826,6 +827,7 @@ const T = {
       window:{name:"睡眠时段助手"},
       log:{name:"睡眠记录与趋势"},
       caffeine:{name:"咖啡因截止计算器"},
+      meal:{name:"睡前饮食计算器"},
       breathing:{name:"睡前放松呼吸计时器"},
       checklist:{name:"睡眠引导清单"}
     },
@@ -1463,8 +1465,9 @@ const CL_PHASES = [
     items:[
       {id:'meal', icon:'🍽️', t:{en:'Diet', zh:'饮食'},
         en:'Do not eat dinner too late or too much; aim to finish about 3 hours before bed.',
-        zh:'晚餐别太晚、别太饱；尽量在就寝前 3 小时吃完。',
-        why:{en:'The stomach needs roughly 3–4 hours to empty. Eating too late or too heavily keeps digestion active, which can cause reflux and raises core temperature — both delay sleep onset. A gap of 2–4 hours before bed is wise, with about 3 hours ideal for most people. Digestion slows with age: children and teens should finish by around 19:00, about 2 hours before bed, so nighttime growth-hormone release is not disrupted; adults do well eating 18:00–19:30, roughly 3 hours before sleep; older adults may take 4–6 hours to empty the stomach, so an earlier dinner (17:00–18:30) with no food in the 2–3 hours before bed helps prevent nighttime reflux.', zh:'食物在胃里约需 3–4 小时基本排空。吃得太晚、太饱，消化持续活跃，容易引起反流、推高核心体温，都会推迟入睡。一般建议在就寝前 2–4 小时（多数人以 3 小时为佳）吃完。年龄越大消化越慢：儿童、青少年宜在 19:00 前、睡前约 2 小时吃完，以免影响夜间生长激素分泌；中青年 18:00–19:30 用餐、距就寝约 3 小时较合适；老年人胃排空可延长到 4–6 小时，晚餐宜更早（17:00–18:30）、睡前 2–3 小时不进食，减少夜间反流。'}},
+        zh:'晚餐别太晚、别太饱；尽量在睡前 3 小时吃完。',
+        why:{en:'Food takes roughly 2–4 hours to empty from the stomach. Eating too late or too heavily keeps digestion active, which can cause reflux and raises core temperature — both delay sleep onset. See the pre-sleep meal calculator for details.', zh:'食物在胃里约需 2–4 小时基本排空。吃得太晚、太饱，消化持续活跃，容易引起反流、推高核心体温，都会推迟入睡。详情可根据参考睡前饮食计算器判断'},
+        deep:{href:'tools/meal-cutoff-calculator.html', tool:'meal'}},
       {id:'alcohol', icon:'🍷', t:{en:'Alcohol', zh:'酒精'},
         en:'Avoid heavy drinking; do not use alcohol to fall asleep.',
         zh:'避免大量饮酒，不要用酒精助眠。',
@@ -1675,6 +1678,7 @@ function buildToolNav(){
     ['sleep-window-calculator.html',t.window.name],
     ['sleep-log.html',t.log.name],
     ['caffeine-cutoff-calculator.html',t.caffeine.name],
+    ['meal-cutoff-calculator.html',t.meal.name],
     ['breathing-timer.html',t.breathing.name]
   ];
   d.innerHTML=items.map(([f,n])=>'<a href="tools/'+f+'">'+n+'</a>').join('');
