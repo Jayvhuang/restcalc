@@ -244,8 +244,9 @@ const PHASES = [
     items:[
       {id:'meal', icon:'🍽️', t:{en:'Diet', zh:'饮食'},
         en:'Do not eat dinner too late or too much; aim to finish about 3 hours before bed.',
-        zh:'晚餐别太晚、别太饱；尽量在就寝前 3 小时吃完。',
-        why:{en:'The stomach needs roughly 3–4 hours to empty. Eating too late or too heavily keeps digestion active, which can cause reflux and raises core temperature — both delay sleep onset. A gap of 2–4 hours before bed is wise, with about 3 hours ideal for most people. Digestion slows with age: children and teens should finish by around 19:00, about 2 hours before bed, so nighttime growth-hormone release is not disrupted; adults do well eating 18:00–19:30, roughly 3 hours before sleep; older adults may take 4–6 hours to empty the stomach, so an earlier dinner (17:00–18:30) with no food in the 2–3 hours before bed helps prevent nighttime reflux.', zh:'食物在胃里约需 3–4 小时基本排空。吃得太晚、太饱，消化持续活跃，容易引起反流、推高核心体温，都会推迟入睡。一般建议在就寝前 2–4 小时（多数人以 3 小时为佳）吃完。年龄越大消化越慢：儿童、青少年宜在 19:00 前、睡前约 2 小时吃完，以免影响夜间生长激素分泌；中青年 18:00–19:30 用餐、距就寝约 3 小时较合适；老年人胃排空可延长到 4–6 小时，晚餐宜更早（17:00–18:30）、睡前 2–3 小时不进食，减少夜间反流。'}},
+        zh:'晚餐别太晚、别太饱；尽量在睡前 3 小时吃完。',
+        why:{en:'Food takes roughly 2–4 hours to empty from the stomach. Eating too late or too heavily keeps digestion active, which can cause reflux and raises core temperature — both delay sleep onset. See the pre-sleep meal calculator for details.', zh:'食物在胃里约需 2–4 小时基本排空。吃得太晚、太饱，消化持续活跃，容易引起反流、推高核心体温，都会推迟入睡。详情可根据参考睡前饮食计算器判断'},
+        deep:{href:'meal-cutoff-calculator.html', tool:'meal'}},
       {id:'alcohol', icon:'🍷', t:{en:'Alcohol', zh:'酒精'},
         en:'Avoid heavy drinking; do not use alcohol to fall asleep.',
         zh:'避免大量饮酒，不要用酒精助眠。',
@@ -373,6 +374,7 @@ const T = {
       checklist:{name:"Sleep Guidance Checklist",desc:"A full-day, evidence-based plan for better sleep — with the why behind each step and quick links to the right calculator."},
       breathing:{name:"Bedtime Breathing Timer",desc:"Follow a calm circle through 4-6, 4-7-8, or box breathing to relax before bed."},
       caffeine:{name:"Caffeine Cutoff Calculator",desc:"Enter your bedtime and sensitivity to find your last safe caffeine time."},
+      meal:{name:"Pre-Sleep Meal Calculator",desc:"Enter your bedtime and what you ate to find the latest time to finish eating."},
       bedtime:{name:"Bedtime Calculator",desc:"Enter the time you need to wake up. We count back in 90-minute sleep cycles."},
       wake:{name:"Wake-up Calculator",desc:"Enter when you plan to go to bed. We add sleep cycles to find the best moments to wake up."},
       duration:{name:"Sleep Duration Calculator",desc:"Enter your bedtime and wake time to see total sleep, completed cycles, and a quality rating."},
@@ -421,6 +423,7 @@ const T = {
       checklist:{name:"睡眠引导清单",desc:"一份覆盖全天的循证助眠计划——每步写明原因，并按需链到对应计算器。"},
       breathing:{name:"睡前放松呼吸计时器",desc:"跟着舒缓圆圈，用 4-6、4-7-8 或方块呼吸在睡前放松。"},
       caffeine:{name:"咖啡因截止计算器",desc:"输入就寝时间与敏感度，找出你最后一杯的安全时刻。"},
+      meal:{name:"睡前饮食计算器",desc:"输入就寝时间与晚餐类型，算出最晚该在几点吃完。"},
       bedtime:{name:"就寝时间计算器",desc:"输入你需要起床的时间，我们按 90 分钟睡眠周期倒推。"},
       wake:{name:"醒来时间计算器",desc:"输入你计划就寝的时间，我们叠加睡眠周期找出最佳起床时刻。"},
       duration:{name:"睡眠时长计算器",desc:"输入就寝与起床时间，查看总睡眠、完成的周期数以及质量评级。"},
@@ -618,6 +621,7 @@ const TOOL_LIST=[
   ['sleep-window-calculator.html','Sleep Window Helper','睡眠时段助手'],
   ['sleep-log.html','Sleep Log & Trend','睡眠记录与趋势'],
   ['caffeine-cutoff-calculator.html','Caffeine Cutoff Calculator','咖啡因截止计算器'],
+  ['meal-cutoff-calculator.html','Pre-Sleep Meal Calculator','睡前饮食计算器'],
   ['breathing-timer.html','Bedtime Breathing Timer','睡前呼吸计时器'],
   ['sleep-routine-checklist.html','Sleep Guidance Checklist','睡眠引导清单']
 ];
