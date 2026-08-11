@@ -222,10 +222,10 @@ const PHASES = [
         en:'Get natural light soon after waking.',
         zh:'起床后尽快接触自然光。',
         why:{en:'Morning and daytime light — especially blue-rich sunlight — sets your body clock and boosts daytime alertness, which improves night-time melatonin timing.', zh:'早晨与白天的光照（尤其富含蓝光的阳光）能校准生物钟、提升日间清醒度，进而改善夜间褪黑素分泌时机。'}},
-      {id:'move', icon:'🚶', t:{en:'Through the day', zh:'白天'},
+      {id:'move', icon:'🚶', t:{en:'Exercise', zh:'运动'},
         en:'Stay moderately active or exercise during the day.',
         zh:'白天保持适量活动或运动。',
-        why:{en:'Moderate daytime activity raises adenosine (sleep pressure) and is linked to more deep sleep. Just avoid intense workouts too close to bedtime.', zh:'白天适量活动会提升腺苷（睡眠驱动力），并有助于增加深睡；只是别在临睡前做剧烈运动。'}},
+        why:{en:'Staying active or exercising during the day — with a bit of intensity — raises adenosine (sleep pressure) and helps increase deep sleep.', zh:'白天有一定强度的适量活动会提升腺苷（睡眠驱动力），并有助于增加深睡；'}},
       {id:'nap', icon:'😴', t:{en:'If you nap', zh:'若要午睡'},
         en:'If you nap, keep it about 10–20 minutes and not too late.',
         zh:'如果午睡，控制在约 10–20 分钟，不要太晚。',
@@ -243,17 +243,17 @@ const PHASES = [
     win:{en:'Wind-down dinner', zh:'晚饭收尾'},
     items:[
       {id:'meal', icon:'🍽️', t:{en:'Diet', zh:'饮食'},
-        en:'Do not eat dinner too late, and do not eat too much.',
-        zh:'晚餐不要太晚，也不要过饱。',
-        why:{en:'A late or heavy meal keeps digestion active and can cause reflux and a rise in core temperature, all of which delay sleep onset.', zh:'太晚或太饱的晚餐会让消化持续活跃，可能引起反流、核心体温升高，都会推迟入睡。'}},
+        en:'Do not eat dinner too late or too much; aim to finish about 3 hours before bed.',
+        zh:'晚餐别太晚、别太饱；尽量在就寝前 3 小时吃完。',
+        why:{en:'The stomach needs roughly 3–4 hours to empty. Eating too late or too heavily keeps digestion active, which can cause reflux and raises core temperature — both delay sleep onset. A gap of 2–4 hours before bed is wise, with about 3 hours ideal for most people. Digestion slows with age: children and teens should finish by around 19:00, about 2 hours before bed, so nighttime growth-hormone release is not disrupted; adults do well eating 18:00–19:30, roughly 3 hours before sleep; older adults may take 4–6 hours to empty the stomach, so an earlier dinner (17:00–18:30) with no food in the 2–3 hours before bed helps prevent nighttime reflux.', zh:'食物在胃里约需 3–4 小时基本排空。吃得太晚、太饱，消化持续活跃，容易引起反流、推高核心体温，都会推迟入睡。一般建议在就寝前 2–4 小时（多数人以 3 小时为佳）吃完。年龄越大消化越慢：儿童、青少年宜在 19:00 前、睡前约 2 小时吃完，以免影响夜间生长激素分泌；中青年 18:00–19:30 用餐、距就寝约 3 小时较合适；老年人胃排空可延长到 4–6 小时，晚餐宜更早（17:00–18:30）、睡前 2–3 小时不进食，减少夜间反流。'}},
       {id:'alcohol', icon:'🍷', t:{en:'Alcohol', zh:'酒精'},
         en:'Avoid heavy drinking; do not use alcohol to fall asleep.',
         zh:'避免大量饮酒，不要用酒精助眠。',
         why:{en:'Alcohol may make you drowsy, but it fragments sleep architecture, suppresses REM, and causes rebound awakenings and bathroom trips — it is not real sleep.', zh:'酒精或许让人犯困，却会破坏睡眠结构、抑制 REM，并引发反弹式夜醒与起夜——那不是真正的睡眠。'}},
-      {id:'exercise', icon:'🏃', t:{en:'Exercise', zh:'运动'},
-        en:'Avoid vigorous or high-intensity exercise; gentle stretching is fine.',
-        zh:'避免剧烈或高强度运动，舒缓拉伸可以。',
-        why:{en:'Vigorous or high-intensity exercise raises core temperature and adrenaline and can delay sleep. Gentle stretching in the evening is fine.', zh:'剧烈或高强度运动会使核心体温与肾上腺素升高，可能推迟睡眠；晚间做舒缓拉伸则无妨。'}}
+      {id:'exercise', icon:'🏃', t:{en:'Relaxing activities', zh:'放松活动'},
+        en:'Try a walk, massage, stretching, standing meditation, or gentle yoga. Avoid high-intensity exercise.',
+        zh:'可进行散步，按摩，拉伸，站桩，放松类瑜伽等活动；避免高强度运动。',
+        why:{en:'Gentle activities relax body and mind and help you fall asleep. Vigorous or high-intensity exercise raises core temperature and adrenaline and can delay sleep.', zh:'舒缓类活动能放松身心，帮助入眠；剧烈或高强度运动会使核心体温与肾上腺素升高，可能推迟睡眠；'}}
     ]
   },
   { id:'pre2h', icon:'💡', startBefore:120,
@@ -291,9 +291,9 @@ const PHASES = [
         zh:'避免大量喝水。',
         why:{en:'Large fluid intake close to bed increases the chance of waking to use the bathroom (nocturia), fragmenting your sleep.', zh:'睡前大量喝水会增加夜尿（nocturia）而打断睡眠，让人频频醒来。'}},
       {id:'sleepaid', icon:'🧘', t:{en:'Sleep aids', zh:'助眠活动'},
-        en:'Put on comfortable clothes, do light stretching, read something relaxing, and try breathing exercises.',
-        zh:'换舒服衣服、轻拉伸、读轻松内容，做呼吸练习。',
-        why:{en:'Comfortable clothes, light stretching, a relaxing read, and breathing exercises shift you toward the parasympathetic “rest and digest” state and lower arousal.', zh:'换上舒服的衣服、轻拉伸、读点轻松的内容、做呼吸练习，能把你推向副交感神经主导的“休息消化”状态，降低兴奋度。'},
+        en:'Put on comfortable clothes and do whatever wind-down activity suits you.',
+        zh:'换舒服衣服，做一些适合自己的助眠活动。',
+        why:{en:'Wind-down activities shift you toward the parasympathetic “rest” state and lower arousal. Options include light stretching, sleep yoga, reading a paper book, free writing, gentle self-massage, breathing exercises — find what works for you.', zh:'助眠能把你推向副交感神经主导的“休息”状态，降低兴奋度。可选的助眠有：轻拉伸、睡眠瑜伽，阅读纸质书、自由书写，轻柔抚摸按摩身体，做呼吸练习，总之找到适合你的。'},
         deep:{href:'breathing-timer.html', tool:'breathing'}}
     ]
   },
@@ -424,7 +424,7 @@ const T = {
       bedtime:{name:"就寝时间计算器",desc:"输入你需要起床的时间，我们按 90 分钟睡眠周期倒推。"},
       wake:{name:"醒来时间计算器",desc:"输入你计划就寝的时间，我们叠加睡眠周期找出最佳起床时刻。"},
       duration:{name:"睡眠时长计算器",desc:"输入就寝与起床时间，查看总睡眠、完成的周期数以及质量评级。"},
-      nap:{name:"小睡计算器",desc:"输入当前时间，查看提神小憩或完整周期午睡的最佳窗口。"},
+      nap:{name:"午睡计算器",desc:"输入当前时间，查看提神小憩或完整周期午睡的最佳窗口。"},
       window:{name:"睡眠时段助手",desc:"选择你空闲可睡的时间范围，我们会找出能凑满 90 分钟完整周期的最佳就寝时间。"},
       log:{name:"睡眠记录与趋势",desc:"记录几个晚上，把你的睡眠变成可视化趋势。"}
     },
@@ -614,7 +614,7 @@ function bindTheme(){
 const TOOL_LIST=[
   ['wake-up-calculator.html','Wake-up Calculator','醒来时间计算器'],
   ['sleep-duration-calculator.html','Sleep Duration Calculator','睡眠时长计算器'],
-  ['nap-calculator.html','Nap Calculator','小睡计算器'],
+  ['nap-calculator.html','Nap Calculator','午睡计算器'],
   ['sleep-window-calculator.html','Sleep Window Helper','睡眠时段助手'],
   ['sleep-log.html','Sleep Log & Trend','睡眠记录与趋势'],
   ['caffeine-cutoff-calculator.html','Caffeine Cutoff Calculator','咖啡因截止计算器'],
