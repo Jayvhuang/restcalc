@@ -19,6 +19,7 @@ Each tool is a standalone page with its own calculator, explanation, and FAQ.
 - [Sleep Window Helper](https://www.rest-calc.com/tools/sleep-window-calculator.html): Choose the time range you are free to sleep. We find the bedtimes that complete full 90-minute cycles and keep you inside your window.
 - [Sleep Log & Trend](https://www.rest-calc.com/tools/sleep-log.html): Log a few nights — just your bedtime, wake time, and how you felt. We turn it into a visual trend and show your 90-minute cycles each night.
 - [Caffeine Cutoff Calculator](https://www.rest-calc.com/tools/caffeine-cutoff-calculator.html): Enter your planned bedtime and sensitivity (low / normal / high) to find the latest time to stop coffee, tea, or energy drinks so caffeine won't wreck your sleep.
+- [Pre-Sleep Meal Calculator](https://www.rest-calc.com/tools/meal-cutoff-calculator.html): Enter your planned bedtime and what you ate (normal dinner, heavy/oily dinner, light low-fat snack, or reflux/heartburn/high-blood-sugar/pregnancy) to find the latest time you should finish eating, plus a recommended eating window before bed.
 - [Bedtime Breathing Timer](https://www.rest-calc.com/tools/breathing-timer.html): Follow a calm expanding circle through 4-6 relax, 4-7-8, or box breathing for 3–5 minutes to wind down before sleep.
 - [Sleep Guidance Checklist](https://www.rest-calc.com/tools/sleep-routine-checklist.html): From your afternoon caffeine cutoff to lights-out — a full-day, evidence-based plan with a guided 30-minute wind-down.
 
