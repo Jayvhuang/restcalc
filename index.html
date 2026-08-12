@@ -42,7 +42,7 @@
   "@context": "https://schema.org",
   "@type": "ItemList",
   "name": "Restcalc Sleep Tools",
-  "numberOfItems": 6,
+  "numberOfItems": 9,
   "itemListElement": [
     {"@type":"ListItem","position":1,"name":"Bedtime Calculator","url":"https://www.rest-calc.com/tools/bedtime-calculator.html"},
     {"@type":"ListItem","position":2,"name":"Wake-up Calculator","url":"https://www.rest-calc.com/tools/wake-up-calculator.html"},
@@ -51,7 +51,8 @@
     {"@type":"ListItem","position":5,"name":"Sleep Window Helper","url":"https://www.rest-calc.com/tools/sleep-window-calculator.html"},
     {"@type":"ListItem","position":6,"name":"Sleep Log & Trend","url":"https://www.rest-calc.com/tools/sleep-log.html"},
     {"@type":"ListItem","position":7,"name":"Caffeine Cutoff Calculator","url":"https://www.rest-calc.com/tools/caffeine-cutoff-calculator.html"},
-    {"@type":"ListItem","position":8,"name":"Sleep Guidance Checklist","url":"https://www.rest-calc.com/tools/sleep-routine-checklist.html"}
+    {"@type":"ListItem","position":8,"name":"Pre-Sleep Meal Calculator","url":"https://www.rest-calc.com/tools/meal-cutoff-calculator.html"},
+    {"@type":"ListItem","position":9,"name":"Sleep Guidance Checklist","url":"https://www.rest-calc.com/tools/sleep-routine-checklist.html"}
   ]
 }
 </script>
@@ -162,6 +163,8 @@ a{color:inherit;text-decoration:none}
 .pill{display:inline-block;font-size:11px;font-weight:700;padding:3px 9px;border-radius:999px;
   background:var(--accent-soft);color:var(--accent);margin-left:6px}
 .res-note{font-size:12.5px;color:var(--muted);margin-top:4px}
+.res-sub{font-size:13.5px;color:var(--text);font-weight:600;padding:10px 16px;border-radius:12px;
+  background:var(--accent-soft);margin-bottom:10px}
 .big-stat{text-align:center;padding:24px;border-radius:var(--radius);background:linear-gradient(135deg,var(--accent-soft),transparent);margin-top:6px}
 .big-stat .num{font-size:40px;font-weight:800;background:linear-gradient(120deg,var(--accent),var(--accent-2));
   -webkit-background-clip:text;background-clip:text;color:transparent;font-variant-numeric:tabular-nums}
@@ -329,6 +332,7 @@ a{color:inherit;text-decoration:none}
       <button class="tab" data-tool="window">🪟 <span data-i18n="t.window">Sleep window</span></button>
       <button class="tab" data-tool="log">📈 <span data-i18n="t.log">Sleep log</span></button>
       <button class="tab" data-tool="caffeine">☕ <span data-i18n="t.caffeine">Caffeine</span></button>
+      <button class="tab" data-tool="meal">🍽️ <span data-i18n="t.meal">Diet</span></button>
       <button class="tab" data-tool="breathing">🫁 <span data-i18n="t.breathing">Breathe</span></button>
     </div>
 
@@ -486,6 +490,29 @@ a{color:inherit;text-decoration:none}
       <div class="res-note" data-i18n="caffeine.note">A guideline, not medical advice. Caffeine half-life varies between people.</div>
   </div>
 
+  <!-- Pre-Sleep Meal -->
+  <div class="panel card" id="panel-meal">
+    <h3 data-i18n="meal.title">Pre-Sleep Meal Calculator</h3>
+    <p class="desc" data-i18n="meal.desc">Enter your planned bedtime and what you are eating. We work back to the latest time you should finish.</p>
+    <div class="field">
+      <label data-i18n="meal.bedLabel">I plan to sleep at</label>
+      <input type="time" id="meal-bed" value="23:00">
+    </div>
+    <div class="field">
+      <label data-i18n="meal.typeLabel">What are you eating?</label>
+      <select id="meal-type">
+        <option value="normal" selected data-i18n="meal.type.normal">Normal dinner</option>
+        <option value="heavy" data-i18n="meal.type.heavy">Heavy, oily, or meat-heavy dinner</option>
+        <option value="snack" data-i18n="meal.type.snack">Light snack (low-fat, low-sugar)</option>
+        <option value="reflux" data-i18n="meal.type.reflux">Reflux, heartburn, high blood sugar, or pregnancy</option>
+      </select>
+    </div>
+    <div class="results" id="meal-results"></div>
+    <div class="res-note" id="meal-note"></div>
+    <div class="res-note" data-i18n="meal.note">A guideline, not medical advice. Digestion speed varies between people.</div>
+    <div class="res-note"><a href="tools/meal-cutoff-calculator.html" data-i18n="meal.more">Read the full guide: why late eating hurts sleep →</a></div>
+  </div>
+
   <!-- Breathing -->
   <div class="panel card" id="panel-breathing">
     <h3 data-i18n="breathing.title">Bedtime Breathing Timer</h3>
@@ -608,6 +635,7 @@ a{color:inherit;text-decoration:none}
       <a href="tools/sleep-window-calculator.html" data-i18n="tools.window.name">Sleep Window Helper</a>
       <a href="tools/sleep-log.html" data-i18n="tools.log.name">Sleep Log &amp; Trend</a>
       <a href="tools/caffeine-cutoff-calculator.html" data-i18n="tools.caffeine.name">Caffeine Cutoff Calculator</a>
+      <a href="tools/meal-cutoff-calculator.html" data-i18n="tools.meal.name">Pre-Sleep Meal Calculator</a>
       <a href="tools/breathing-timer.html" data-i18n="tools.breathing.name">Bedtime Breathing Timer</a>
     <a href="tools/sleep-routine-checklist.html" data-i18n="tools.checklist.name">Sleep Guidance Checklist</a>
     </div>
@@ -660,7 +688,7 @@ const T = {
       breathing:{name:"Bedtime Breathing Timer"},
       checklist:{name:"Sleep Guidance Checklist"}
     },
-    t:{bedtime:"Bedtime",wake:"Wake-up",duration:"Duration",nap:"Nap",window:"Sleep window",log:"Sleep log",caffeine:"Caffeine",breathing:"Breathe"},
+    t:{bedtime:"Bedtime",wake:"Wake-up",duration:"Duration",nap:"Nap",window:"Sleep window",log:"Sleep log",caffeine:"Caffeine",meal:"Diet",breathing:"Breathe"},
     age:{teen:"Under 18",adult:"18–64 (adult)",senior:"65 and older"},
     bedtime:{
       title:"Bedtime Calculator",
@@ -734,6 +762,17 @@ const T = {
       note:"A guideline, not medical advice. Caffeine half-life varies between people.",
       stop:"Stop caffeine", hours:"hours before bed", prev:"previous day",
       noteBy:{low:"With low sensitivity, a 6-hour buffer is usually enough — but everyone is different, so notice how you feel.",normal:"For most people, stopping caffeine about 8 hours before bed keeps it from disrupting sleep.",high:"If you are highly sensitive, aim to stop 10–12 hours before bed; we show the 11-hour midpoint. Even afternoon coffee can linger."}
+    },
+    meal:{
+      title:"Pre-Sleep Meal Calculator",
+      desc:"Enter your planned bedtime and what you are eating. We work back to the latest time you should finish eating.",
+      bedLabel:"I plan to sleep at",
+      typeLabel:"What are you eating?",
+      type:{normal:"Normal dinner",heavy:"Heavy, oily, or meat-heavy dinner",snack:"Light snack (low-fat, low-sugar)",reflux:"Reflux, heartburn, high blood sugar, or pregnancy"},
+      note:"A guideline, not medical advice. Digestion speed varies between people.",
+      more:"Read the full guide: why late eating hurts sleep →",
+      window:"Best eating window: {a} – {b} (finish by {b} at the latest)",
+      prev:"previous day"
     },
     breathing:{
       title:"Bedtime Breathing Timer",
@@ -831,7 +870,7 @@ const T = {
       breathing:{name:"睡前放松呼吸计时器"},
       checklist:{name:"睡眠引导清单"}
     },
-    t:{bedtime:"就寝时间",wake:"起床时间",duration:"睡眠时长",nap:"午睡",window:"睡眠窗口",log:"睡眠记录",caffeine:"咖啡因",breathing:"呼吸"},
+    t:{bedtime:"就寝时间",wake:"起床时间",duration:"睡眠时长",nap:"午睡",window:"睡眠窗口",log:"睡眠记录",caffeine:"咖啡因",meal:"饮食",breathing:"呼吸"},
     age:{teen:"18 岁以下",adult:"18–64 岁（成年人）",senior:"65 岁及以上"},
     bedtime:{
       title:"就寝时间计算器",
@@ -905,6 +944,17 @@ const T = {
       note:"仅为参考，并非医疗建议。咖啡因半衰期因人而异。",
       stop:"停止摄入咖啡因", hours:"小时前", prev:"前一天",
       noteBy:{low:"若你对咖啡因不敏感，预留 6 小时通常足够——但因人而异，留意自己的身体感受。",normal:"对多数人来说，睡前约 8 小时停喝，能避免咖啡因干扰睡眠。",high:"若你高度敏感，目标是在睡前 10–12 小时停喝；这里取 11 小时的中点。哪怕下午的咖啡，也可能在体内残留。"}
+    },
+    meal:{
+      title:"睡前饮食计算器",
+      desc:"输入你计划的就寝时间与这一餐的类型。我们往回推算你最迟该几点吃完。",
+      bedLabel:"我计划在以下时间入睡",
+      typeLabel:"你吃的是什么？",
+      type:{normal:"普通晚餐",heavy:"较油腻、肉多、量大的晚餐",snack:"少量加餐（非高脂高糖）",reflux:"有胃酸反流、烧心、高血糖或怀孕"},
+      note:"仅为参考，并非医疗建议。消化速度因人而异。",
+      more:"阅读完整原理：为什么吃太晚会影响睡眠 →",
+      window:"建议进食区间：{a} – {b}（最迟 {b} 前吃完）",
+      prev:"前一天"
     },
     breathing:{
       title:"睡前放松呼吸计时器",
@@ -1161,6 +1211,28 @@ function calcCaffeine(){
   setText('#caf-note', t.noteBy[sens]);
 }
 
+/* ============ pre-sleep meal cutoff ============ */
+const MEALS={
+  normal:{min:2,max:3,note:{en:'A standard dinner is usually cleared in about 3 hours. Finishing 2–3 hours before bed keeps digestion from competing with sleep.',zh:'普通晚餐通常约 3 小时可排空。睡前 2–3 小时吃完，可避免消化与睡眠互相干扰。'}},
+  heavy:{min:3,max:4,note:{en:'Fatty and protein-rich meals slow gastric emptying, so give yourself 3–4 hours before lying down.',zh:'油腻、高蛋白的饭菜会拖慢胃排空，请预留 3–4 小时再躺下。'}},
+  snack:{min:1,max:2,note:{en:'A small, light snack is easier to digest — 1–2 hours of buffer is usually enough.',zh:'少量、清淡的加餐更易消化，通常预留 1–2 小时就够。'}},
+  reflux:{min:3,max:4,note:{en:'Lying down soon after eating worsens reflux and blood-sugar swings. Aim to finish 3–4 hours before bed.',zh:'吃完不久就躺下会加重反流与血糖波动。目标是睡前 3–4 小时吃完。'}}
+};
+function calcMeal(){
+  const bed=toMin(document.getElementById('meal-bed').value||'23:00');
+  const type=document.getElementById('meal-type').value||'normal';
+  const m=MEALS[type]||MEALS.normal;
+  let latest=bed-m.min*60, earliest=bed-m.max*60;
+  const prevL=(latest<0), prevE=(earliest<0);
+  if(prevL)latest+=1440;
+  if(prevE)earliest+=1440;
+  const t=T[lang].meal;
+  const html='<div class="res-row"><span class="res-time">'+fmt12(latest)+'</span><span class="res-meta"><b>'+t.type[type]+'</b>'+(prevL?' <span class="pill">'+t.prev+'</span>':'')+'</span></div>'+
+    '<div class="res-sub">'+t.window.replace('{a}',fmt12(earliest)).replace(/\{b\}/g,fmt12(latest))+'</div>';
+  document.getElementById('meal-results').innerHTML=html;
+  setText('#meal-note', m.note[lang]);
+}
+
 /* ============ bedtime breathing timer ============ */
 const B_MAX=1.55,B_MIN=0.675;
 const B_PATTERNS={
@@ -1381,7 +1453,7 @@ function setupTabs(){
   }));
   // hash on load
   const h=location.hash.replace('#','');
-  if(['bedtime','wake','duration','nap','window','log','caffeine','breathing'].includes(h)){
+  if(['bedtime','wake','duration','nap','window','log','caffeine','meal','breathing'].includes(h)){
     document.querySelector(`#tabs .tab[data-tool="${h}"]`).click();
   }
 }
@@ -1699,7 +1771,7 @@ function init(){
   const clNow=document.getElementById('nowBadge'); if(clNow)clNow.addEventListener('click',function(){const a=document.querySelector('.phase.active'); if(a)a.scrollIntoView({behavior:'smooth',block:'start'});});
   const gBtn=document.getElementById('btnGuide'); if(gBtn)gBtn.addEventListener('click',function(){showView('guide');document.getElementById('guide').scrollIntoView({behavior:'smooth'});});
   const cBtn=document.getElementById('btnCalc'); if(cBtn)cBtn.addEventListener('click',function(){showView('tools');document.getElementById('tools').scrollIntoView({behavior:'smooth'});});
-  ['bedtime','wake','duration','nap','window','caffeine','breathing'].forEach(k=>{
+  ['bedtime','wake','duration','nap','window','caffeine','meal','breathing'].forEach(k=>{
     try{
       const fn=window['calc'+k.charAt(0).toUpperCase()+k.slice(1)];
       document.querySelectorAll('#panel-'+k+' input, #panel-'+k+' select').forEach(el=>{
