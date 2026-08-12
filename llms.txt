@@ -27,6 +27,7 @@ Each tool is a standalone page with its own calculator, explanation, and FAQ.
 
 - [Which Exercise Helps You Sleep Best? A Study of 1,348 People](https://www.rest-calc.com/learn/sleep-exercise.html): A 2025 BMJ Evidence-Based Medicine network meta-analysis of 22 RCTs with 1,348 insomnia patients ranks the best sleep-promoting exercises — yoga > tai chi > walking/jogging — with mechanisms (GABA, parasympathetic activation, cortisol/melatonin) and a practical exercise-for-sleep plan. Fully referenced.
 - [The Sleep Revolution (R90 Sleep Method)](https://www.rest-calc.com/learn/sleep-revolution.html): A long-form explainer of Nick Littlehales' R90 sleep-cycle method — fixed wake time, chronotypes, the 16–18°C bedroom, pre-sleep and post-sleep routines, and why sleep quality beats duration. With citations to the National Sleep Foundation and sleep-science sources.
+- [《我们为什么要睡觉？》深度解读 (Why We Sleep)](https://www.rest-calc.com/learn/why-we-sleep.html): 马修·沃克《Why We Sleep》逐节拆解——两套睡眠系统（昼夜节律与腺苷）、NREM/REM 睡眠结构、睡眠剥夺对大脑与身体的代价、梦的情感疗愈与创造力功能、现代生活三大睡眠阻碍，以及 12 条健康睡眠小贴士。
 - [All articles](https://www.rest-calc.com/learn/index.html): The Restcalc article hub.
 
 ## How Sleep Cycles Work
