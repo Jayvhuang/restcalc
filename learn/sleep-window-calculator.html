@@ -16,10 +16,10 @@
 <meta name="twitter:title" content="Sleep Window Helper — Restcalc">
 <meta name="twitter:description" content="Find the best bedtime inside the hours you are actually free to sleep.">
 <link rel="alternate" hreflang="en" href="https://www.rest-calc.com/learn/sleep-window-calculator.html">
-<link rel="alternate" hreflang="zh" href="https://www.rest-calc.com/learn/sleep-window-calculator.html?lang=zh">
+<link rel="alternate" hreflang="zh-Hans" href="https://www.rest-calc.com/zh/learn/sleep-window-calculator.html">
 <link rel="alternate" hreflang="x-default" href="https://www.rest-calc.com/learn/sleep-window-calculator.html">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌙</text></svg>">
-<link rel="stylesheet" href="../styles.css">
+<link rel="stylesheet" href="/styles.css">
 <script type="application/ld+json">
 {
   "@context":"https://schema.org",
@@ -55,10 +55,7 @@
       <a href="../privacy.html" data-i18n="nav.privacy">Privacy</a>
     </nav>
     <span class="nav-spacer"></span>
-    <span class="lang-foot" style="margin-top:0">
-      <button id="langEn">EN</button>
-      <button id="langZh">中文</button>
-    </span>
+    <span class="lang-foot" id="lang-switch" style="margin-top:0"></span>
     <button class="btn icon" id="themeBtn" title="Toggle theme">🌗</button>
   </div>
 </header>
@@ -229,7 +226,7 @@ const T = {
     }
   }
 };
-let lang=(new URLSearchParams(location.search).get('lang')==='zh')?'zh':(localStorage.getItem('restcalc-lang')||'en');
+let lang='en';
 function applyStatic(){
   document.documentElement.lang=(lang==='zh')?'zh-CN':'en';
   document.querySelectorAll('[data-i18n]').forEach(el=>{
@@ -239,8 +236,6 @@ function applyStatic(){
   });
   const md=document.querySelector('meta[name="description"]');
   if(md)md.setAttribute('content',T[lang].metaDesc);
-  const le=document.getElementById('langEn'); if(le)le.classList.toggle('active',lang==='en');
-  const lz=document.getElementById('langZh'); if(lz)lz.classList.toggle('active',lang==='zh');
 }
 function setLang(l){
   lang=l;
@@ -268,9 +263,10 @@ function bindTheme(){
 }
 function init(){
   document.getElementById('year').textContent=new Date().getFullYear();
-  applyStatic(); bindLang(); bindTheme();
+  applyStatic(); bindTheme();
 }
 document.addEventListener('DOMContentLoaded',init);
 </script>
+<script src="/i18n.js"></script>
 </body>
 </html>
