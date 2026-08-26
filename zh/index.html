@@ -317,8 +317,9 @@ a{color:inherit;text-decoration:none}
       </div>
       <p class="progress" id="progress"></p>
       <div id="checklist"></div>
-      <div style="display:flex;gap:10px;margin-top:16px;">
+      <div style="display:flex;gap:10px;margin-top:16px;flex-wrap:wrap;">
         <button class="btn-ghost" id="resetBtn" data-i18n="checklist.reset">重置清单</button>
+        <button class="btn-ghost" id="copyBtn" data-i18n="checklist.copyList">📋 复制清单</button>
       </div>
     </div>
   </section>
@@ -672,7 +673,7 @@ const T = {
       guide:"Sleep Guide", calc:"Sleep tools",
       trust:"🔒 Private by design — every calculation runs locally in your browser. No account. Data never leaves your device. Multilingual."
     },
-    checklist:{ bedLabel:"My bedtime is", reset:"Reset checklist", selectAll:"Select all", clearAll:"Clear all", current:"Now: ", tooEarly:"Not yet — more than 8 hours before bed. Relax, your prep starts later.", progressDone:"All done — nice work. Sleep well 🌙" },
+    checklist:{ bedLabel:"My bedtime is", reset:"Reset checklist", copyList:"📋 Copy checklist", copied:"Copied ✓", copyBed:"My bedtime: ", selectAll:"Select all", clearAll:"Clear all", current:"Now: ", tooEarly:"Not yet — more than 8 hours before bed. Relax, your prep starts later.", progressDone:"All done — nice work. Sleep well 🌙" },
     tools:{
       bedtime:{name:"Bedtime Calculator"},
       wake:{name:"Wake-up Calculator"},
@@ -854,7 +855,7 @@ const T = {
       guide:"睡眠引导", calc:"睡眠工具",
       trust:"🔒 隐私优先——所有计算都在你的浏览器本地运行，无需注册，数据不上传。多语言模式"
     },
-    checklist:{ bedLabel:"我的就寝时间是", reset:"重置清单", selectAll:"全选", clearAll:"全不选", current:"当前：", tooEarly:"还没到——距就寝超过 8 小时。先放松，准备稍后开始。", progressDone:"全部完成——做得好，晚安 🌙" },
+    checklist:{ bedLabel:"我的就寝时间是", reset:"重置清单", copyList:"📋 复制清单", copied:"已复制 ✓", copyBed:"我的就寝时间：", selectAll:"全选", clearAll:"全不选", current:"当前：", tooEarly:"还没到——距就寝超过 8 小时。先放松，准备稍后开始。", progressDone:"全部完成——做得好，晚安 🌙" },
     tools:{
       bedtime:{name:"就寝时间计算器"},
       wake:{name:"起床时间计算器"},
@@ -1472,6 +1473,34 @@ function makeStars(){
 }
 
 /* ============ Sleep Checklist (Guide view) ============ */
+/* ---------- copy checklist as Markdown (home) ---------- */
+function clBuildChecklistText(){
+  const bedEl=document.getElementById('bedInput'); const bed=bedEl?(bedEl.value||'23:00'):'23:00';
+  let out='# '+T[lang].tools.checklist.name+'\n'+T[lang].checklist.copyBed+bed+'\n\n';
+  CL_PHASES.forEach(function(ph){
+    out+='## '+ph.icon+' '+ph.title[lang]+'\n';
+    ph.items.forEach(function(it){
+      out+='- [ ] '+it.icon+' **'+it.t[lang]+'** — '+it[lang]+'\n';
+    });
+    out+='\n';
+  });
+  return out.trim();
+}
+function clFallbackCopy(txt){
+  const ta=document.createElement('textarea');
+  ta.value=txt; ta.style.position='fixed'; ta.style.opacity='0';
+  document.body.appendChild(ta); ta.select();
+  try{document.execCommand('copy');}catch(e){}
+  document.body.removeChild(ta);
+}
+function clCopyChecklist(){
+  const txt=clBuildChecklistText();
+  const btn=document.getElementById('copyBtn');
+  const done=function(){ if(btn){ btn.innerHTML=T[lang].checklist.copied; setTimeout(function(){ btn.innerHTML=T[lang].checklist.copyList; },1800); } };
+  if(navigator.clipboard&&navigator.clipboard.writeText){
+    navigator.clipboard.writeText(txt).then(done).catch(function(){ clFallbackCopy(txt); done(); });
+  } else { clFallbackCopy(txt); done(); }
+}
 const CL_PHASES = [
   { id:'day', icon:'☀️', startBefore:9999,
     title:{en:'During the day', zh:'白天'},
@@ -1738,6 +1767,7 @@ function init(){
   setInterval(updateChecklistNow,30000);
   const clBed=document.getElementById('bedInput'); if(clBed)clBed.addEventListener('input',updateChecklistNow);
   const clReset=document.getElementById('resetBtn'); if(clReset)clReset.addEventListener('click',function(){localStorage.removeItem(CL_KEY);renderChecklist();});
+  const clCopy=document.getElementById('copyBtn'); if(clCopy)clCopy.addEventListener('click',clCopyChecklist);
   const clNow=document.getElementById('nowBadge'); if(clNow)clNow.addEventListener('click',function(){const a=document.querySelector('.phase.active'); if(a)a.scrollIntoView({behavior:'smooth',block:'start'});});
   const gBtn=document.getElementById('btnGuide'); if(gBtn)gBtn.addEventListener('click',function(){showView('guide');document.getElementById('guide').scrollIntoView({behavior:'smooth'});});
   const cBtn=document.getElementById('btnCalc'); if(cBtn)cBtn.addEventListener('click',function(){showView('tools');document.getElementById('tools').scrollIntoView({behavior:'smooth'});});
