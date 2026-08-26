@@ -234,18 +234,6 @@ function applyStatic(){
   const md=document.querySelector('meta[name="description"]');
   if(md)md.setAttribute('content',T[lang].metaDesc);
 }
-function setLang(l){
-  lang=l;
-  localStorage.setItem('restcalc-lang',l);
-  const u=new URLSearchParams(location.search);
-  if(l==='zh')u.set('lang','zh'); else u.delete('lang');
-  history.replaceState(null,'',location.pathname+(u.toString()?'?'+u.toString():'')+location.hash);
-  applyStatic();
-}
-function bindLang(){
-  const e=document.getElementById('langEn'); if(e)e.addEventListener('click',()=>setLang('en'));
-  const z=document.getElementById('langZh'); if(z)z.addEventListener('click',()=>setLang('zh'));
-}
 function bindTheme(){
   const saved=localStorage.getItem('restcalc-theme');
   if(saved)document.documentElement.setAttribute('data-theme',saved);
