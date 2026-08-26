@@ -430,22 +430,6 @@ function renderFAQ(){
   document.getElementById('faq-jsonld').textContent=JSON.stringify(ld);
 }
 
-function setLang(l){
-  lang=l;
-  localStorage.setItem('restcalc-lang',l);
-  const u=new URLSearchParams(location.search);
-  if(l==='zh')u.set('lang','zh'); else u.delete('lang');
-  history.replaceState(null,'',location.pathname+(u.toString()?'?'+u.toString():'')+location.hash);
-  applyStatic();
-  buildToolNav();
-  renderFAQ();
-  if(!running){ document.getElementById('breathPhase').textContent=(lang==='zh')?LABEL_ZH.Ready:T[lang].ready; }
-}
-
-function bindLang(){
-  document.getElementById('langEn').addEventListener('click',function(){setLang('en');});
-  document.getElementById('langZh').addEventListener('click',function(){setLang('zh');});
-}
 function bindTheme(){
   const saved=localStorage.getItem('restcalc-theme');
   if(saved)document.documentElement.setAttribute('data-theme',saved);
