@@ -119,8 +119,9 @@
 
       <div id="checklist"></div>
 
-      <div style="display:flex;gap:10px;margin-top:16px;">
+      <div style="display:flex;gap:10px;margin-top:16px;flex-wrap:wrap;">
         <button class="btn-ghost" id="resetBtn" data-i18n="reset">Reset checklist</button>
+        <button class="btn-ghost" id="copyBtn" data-i18n="copyList">📋 Copy checklist</button>
       </div>
     </div>
   </section>
@@ -344,6 +345,9 @@ const T = {
     sub:"Better sleep is built all day long. This checklist walks you from your morning wake-up and afternoon caffeine cutoff through lights-out — with the why behind each step and quick links to the right calculator. Check items off as you go.",
     bedLabel:"My bedtime is",
     reset:"Reset checklist",
+    copyList:"📋 Copy checklist",
+    copied:"Copied ✓",
+    copyBed:"My bedtime: ",
     selectAll:"Select all",
     clearAll:"Clear all",
     tooEarly:"Not yet — more than 8 hours before bed. Relax, your prep starts later.",
@@ -539,6 +543,35 @@ function updateProgress(){
   else el.textContent=done+' / '+ids.length;
 }
 
+/* ---------- copy checklist as Markdown ---------- */
+function buildChecklistText(){
+  const bed=document.getElementById('bedInput').value||'23:00';
+  let out='# '+T[lang].h1+'\n'+T[lang].copyBed+bed+'\n\n';
+  PHASES.forEach(function(ph){
+    out+='## '+ph.icon+' '+ph.title[lang]+'\n';
+    ph.items.forEach(function(it){
+      out+='- [ ] '+it.icon+' **'+it.t[lang]+'** — '+it[lang]+'\n';
+    });
+    out+='\n';
+  });
+  return out.trim();
+}
+function fallbackCopy(txt){
+  const ta=document.createElement('textarea');
+  ta.value=txt; ta.style.position='fixed'; ta.style.opacity='0';
+  document.body.appendChild(ta); ta.select();
+  try{document.execCommand('copy');}catch(e){}
+  document.body.removeChild(ta);
+}
+function copyChecklist(){
+  const txt=buildChecklistText();
+  const btn=document.getElementById('copyBtn');
+  const done=function(){ if(btn){ btn.innerHTML=T[lang].copied; setTimeout(function(){ btn.innerHTML=T[lang].copyList; },1800); } };
+  if(navigator.clipboard&&navigator.clipboard.writeText){
+    navigator.clipboard.writeText(txt).then(done).catch(function(){ fallbackCopy(txt); done(); });
+  } else { fallbackCopy(txt); done(); }
+}
+
 /* ---------- live current-phase badge (静中有动) ---------- */
 function minutesOf(str){const p=str.split(':');return (+p[0])*60+(+p[1]);}
 function updateNow(){
@@ -625,6 +658,8 @@ function init(){
   document.getElementById('resetBtn').addEventListener('click',function(){
     localStorage.removeItem(CHECK_KEY); renderChecklist();
   });
+  const cBtn=document.getElementById('copyBtn');
+  if(cBtn)cBtn.addEventListener('click',copyChecklist);
   const clNow=document.getElementById('nowBadge'); if(clNow)clNow.addEventListener('click',function(){const a=document.querySelector('.phase.active'); if(a)a.scrollIntoView({behavior:'smooth',block:'start'});});
   const y=document.getElementById('year'); if(y)y.textContent=new Date().getFullYear();
 }
