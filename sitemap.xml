@@ -4,135 +4,451 @@
   <url>
     <loc>https://www.rest-calc.com/</loc>
     <xhtml:link rel="alternate" hreflang="en" href="https://www.rest-calc.com/"/>
-    <xhtml:link rel="alternate" hreflang="zh" href="https://www.rest-calc.com/?lang=zh"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://www.rest-calc.com/zh"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://www.rest-calc.com/"/>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
-    <lastmod>2026-07-19</lastmod>
+    <lastmod>2026-08-26</lastmod>
+  </url>
+  <url>
+    <loc>https://www.rest-calc.com/zh</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.rest-calc.com/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://www.rest-calc.com/zh"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.rest-calc.com/"/>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+    <lastmod>2026-08-26</lastmod>
   </url>
   <url>
     <loc>https://www.rest-calc.com/privacy.html</loc>
     <xhtml:link rel="alternate" hreflang="en" href="https://www.rest-calc.com/privacy.html"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://www.rest-calc.com/zh/privacy.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://www.rest-calc.com/privacy.html"/>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
-    <lastmod>2026-07-19</lastmod>
+    <lastmod>2026-08-26</lastmod>
+  </url>
+  <url>
+    <loc>https://www.rest-calc.com/zh/privacy.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.rest-calc.com/privacy.html"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://www.rest-calc.com/zh/privacy.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.rest-calc.com/privacy.html"/>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+    <lastmod>2026-08-26</lastmod>
   </url>
   <url>
     <loc>https://www.rest-calc.com/tools/bedtime-calculator.html</loc>
     <xhtml:link rel="alternate" hreflang="en" href="https://www.rest-calc.com/tools/bedtime-calculator.html"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://www.rest-calc.com/zh/tools/bedtime-calculator.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://www.rest-calc.com/tools/bedtime-calculator.html"/>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
-    <lastmod>2026-07-19</lastmod>
+    <lastmod>2026-08-26</lastmod>
+  </url>
+  <url>
+    <loc>https://www.rest-calc.com/zh/tools/bedtime-calculator.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.rest-calc.com/tools/bedtime-calculator.html"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://www.rest-calc.com/zh/tools/bedtime-calculator.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.rest-calc.com/tools/bedtime-calculator.html"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <lastmod>2026-08-26</lastmod>
   </url>
   <url>
     <loc>https://www.rest-calc.com/tools/wake-up-calculator.html</loc>
     <xhtml:link rel="alternate" hreflang="en" href="https://www.rest-calc.com/tools/wake-up-calculator.html"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://www.rest-calc.com/zh/tools/wake-up-calculator.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://www.rest-calc.com/tools/wake-up-calculator.html"/>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
-    <lastmod>2026-07-19</lastmod>
+    <lastmod>2026-08-26</lastmod>
+  </url>
+  <url>
+    <loc>https://www.rest-calc.com/zh/tools/wake-up-calculator.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.rest-calc.com/tools/wake-up-calculator.html"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://www.rest-calc.com/zh/tools/wake-up-calculator.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.rest-calc.com/tools/wake-up-calculator.html"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <lastmod>2026-08-26</lastmod>
   </url>
   <url>
     <loc>https://www.rest-calc.com/tools/sleep-duration-calculator.html</loc>
     <xhtml:link rel="alternate" hreflang="en" href="https://www.rest-calc.com/tools/sleep-duration-calculator.html"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://www.rest-calc.com/zh/tools/sleep-duration-calculator.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://www.rest-calc.com/tools/sleep-duration-calculator.html"/>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
-    <lastmod>2026-07-19</lastmod>
+    <lastmod>2026-08-26</lastmod>
+  </url>
+  <url>
+    <loc>https://www.rest-calc.com/zh/tools/sleep-duration-calculator.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.rest-calc.com/tools/sleep-duration-calculator.html"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://www.rest-calc.com/zh/tools/sleep-duration-calculator.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.rest-calc.com/tools/sleep-duration-calculator.html"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <lastmod>2026-08-26</lastmod>
   </url>
   <url>
     <loc>https://www.rest-calc.com/tools/nap-calculator.html</loc>
     <xhtml:link rel="alternate" hreflang="en" href="https://www.rest-calc.com/tools/nap-calculator.html"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://www.rest-calc.com/zh/tools/nap-calculator.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://www.rest-calc.com/tools/nap-calculator.html"/>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
-    <lastmod>2026-07-19</lastmod>
+    <lastmod>2026-08-26</lastmod>
+  </url>
+  <url>
+    <loc>https://www.rest-calc.com/zh/tools/nap-calculator.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.rest-calc.com/tools/nap-calculator.html"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://www.rest-calc.com/zh/tools/nap-calculator.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.rest-calc.com/tools/nap-calculator.html"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <lastmod>2026-08-26</lastmod>
   </url>
   <url>
     <loc>https://www.rest-calc.com/tools/sleep-window-calculator.html</loc>
     <xhtml:link rel="alternate" hreflang="en" href="https://www.rest-calc.com/tools/sleep-window-calculator.html"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://www.rest-calc.com/zh/tools/sleep-window-calculator.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://www.rest-calc.com/tools/sleep-window-calculator.html"/>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
-    <lastmod>2026-07-19</lastmod>
+    <lastmod>2026-08-26</lastmod>
+  </url>
+  <url>
+    <loc>https://www.rest-calc.com/zh/tools/sleep-window-calculator.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.rest-calc.com/tools/sleep-window-calculator.html"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://www.rest-calc.com/zh/tools/sleep-window-calculator.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.rest-calc.com/tools/sleep-window-calculator.html"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <lastmod>2026-08-26</lastmod>
   </url>
   <url>
     <loc>https://www.rest-calc.com/tools/sleep-log.html</loc>
     <xhtml:link rel="alternate" hreflang="en" href="https://www.rest-calc.com/tools/sleep-log.html"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://www.rest-calc.com/zh/tools/sleep-log.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://www.rest-calc.com/tools/sleep-log.html"/>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
-    <lastmod>2026-07-19</lastmod>
+    <lastmod>2026-08-26</lastmod>
+  </url>
+  <url>
+    <loc>https://www.rest-calc.com/zh/tools/sleep-log.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.rest-calc.com/tools/sleep-log.html"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://www.rest-calc.com/zh/tools/sleep-log.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.rest-calc.com/tools/sleep-log.html"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <lastmod>2026-08-26</lastmod>
   </url>
   <url>
     <loc>https://www.rest-calc.com/tools/caffeine-cutoff-calculator.html</loc>
     <xhtml:link rel="alternate" hreflang="en" href="https://www.rest-calc.com/tools/caffeine-cutoff-calculator.html"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://www.rest-calc.com/zh/tools/caffeine-cutoff-calculator.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://www.rest-calc.com/tools/caffeine-cutoff-calculator.html"/>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
-    <lastmod>2026-07-22</lastmod>
+    <lastmod>2026-08-26</lastmod>
+  </url>
+  <url>
+    <loc>https://www.rest-calc.com/zh/tools/caffeine-cutoff-calculator.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.rest-calc.com/tools/caffeine-cutoff-calculator.html"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://www.rest-calc.com/zh/tools/caffeine-cutoff-calculator.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.rest-calc.com/tools/caffeine-cutoff-calculator.html"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <lastmod>2026-08-26</lastmod>
   </url>
   <url>
     <loc>https://www.rest-calc.com/tools/meal-cutoff-calculator.html</loc>
     <xhtml:link rel="alternate" hreflang="en" href="https://www.rest-calc.com/tools/meal-cutoff-calculator.html"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://www.rest-calc.com/zh/tools/meal-cutoff-calculator.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://www.rest-calc.com/tools/meal-cutoff-calculator.html"/>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
-    <lastmod>2026-08-11</lastmod>
+    <lastmod>2026-08-26</lastmod>
+  </url>
+  <url>
+    <loc>https://www.rest-calc.com/zh/tools/meal-cutoff-calculator.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.rest-calc.com/tools/meal-cutoff-calculator.html"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://www.rest-calc.com/zh/tools/meal-cutoff-calculator.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.rest-calc.com/tools/meal-cutoff-calculator.html"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <lastmod>2026-08-26</lastmod>
   </url>
   <url>
     <loc>https://www.rest-calc.com/tools/breathing-timer.html</loc>
     <xhtml:link rel="alternate" hreflang="en" href="https://www.rest-calc.com/tools/breathing-timer.html"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://www.rest-calc.com/zh/tools/breathing-timer.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://www.rest-calc.com/tools/breathing-timer.html"/>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
-    <lastmod>2026-07-23</lastmod>
+    <lastmod>2026-08-26</lastmod>
+  </url>
+  <url>
+    <loc>https://www.rest-calc.com/zh/tools/breathing-timer.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.rest-calc.com/tools/breathing-timer.html"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://www.rest-calc.com/zh/tools/breathing-timer.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.rest-calc.com/tools/breathing-timer.html"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <lastmod>2026-08-26</lastmod>
   </url>
   <url>
     <loc>https://www.rest-calc.com/tools/sleep-routine-checklist.html</loc>
     <xhtml:link rel="alternate" hreflang="en" href="https://www.rest-calc.com/tools/sleep-routine-checklist.html"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://www.rest-calc.com/zh/tools/sleep-routine-checklist.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://www.rest-calc.com/tools/sleep-routine-checklist.html"/>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
-    <lastmod>2026-07-24</lastmod>
+    <lastmod>2026-08-26</lastmod>
   </url>
-
+  <url>
+    <loc>https://www.rest-calc.com/zh/tools/sleep-routine-checklist.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.rest-calc.com/tools/sleep-routine-checklist.html"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://www.rest-calc.com/zh/tools/sleep-routine-checklist.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.rest-calc.com/tools/sleep-routine-checklist.html"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <lastmod>2026-08-26</lastmod>
+  </url>
   <url>
     <loc>https://www.rest-calc.com/learn/index.html</loc>
     <xhtml:link rel="alternate" hreflang="en" href="https://www.rest-calc.com/learn/index.html"/>
-    <xhtml:link rel="alternate" hreflang="zh" href="https://www.rest-calc.com/learn/index.html?lang=zh"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://www.rest-calc.com/zh/learn/index.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://www.rest-calc.com/learn/index.html"/>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
-    <lastmod>2026-08-03</lastmod>
+    <lastmod>2026-08-26</lastmod>
   </url>
   <url>
-    <loc>https://www.rest-calc.com/learn/sleep-revolution.html</loc>
-    <xhtml:link rel="alternate" hreflang="en" href="https://www.rest-calc.com/learn/sleep-revolution.html"/>
-    <xhtml:link rel="alternate" hreflang="zh" href="https://www.rest-calc.com/learn/sleep-revolution.html?lang=zh"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.rest-calc.com/learn/sleep-revolution.html"/>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-    <lastmod>2026-08-03</lastmod>
-  </url>
-  <url>
-    <loc>https://www.rest-calc.com/learn/sleep-exercise.html</loc>
-    <xhtml:link rel="alternate" hreflang="en" href="https://www.rest-calc.com/learn/sleep-exercise.html"/>
-    <xhtml:link rel="alternate" hreflang="zh" href="https://www.rest-calc.com/learn/sleep-exercise.html?lang=zh"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.rest-calc.com/learn/sleep-exercise.html"/>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-    <lastmod>2026-08-09</lastmod>
+    <loc>https://www.rest-calc.com/zh/learn/index.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.rest-calc.com/learn/index.html"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://www.rest-calc.com/zh/learn/index.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.rest-calc.com/learn/index.html"/>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+    <lastmod>2026-08-26</lastmod>
   </url>
   <url>
     <loc>https://www.rest-calc.com/learn/why-we-sleep.html</loc>
     <xhtml:link rel="alternate" hreflang="en" href="https://www.rest-calc.com/learn/why-we-sleep.html"/>
-    <xhtml:link rel="alternate" hreflang="zh" href="https://www.rest-calc.com/learn/why-we-sleep.html?lang=zh"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://www.rest-calc.com/zh/learn/why-we-sleep.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://www.rest-calc.com/learn/why-we-sleep.html"/>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
-    <lastmod>2026-08-12</lastmod>
+    <lastmod>2026-08-26</lastmod>
+  </url>
+  <url>
+    <loc>https://www.rest-calc.com/zh/learn/why-we-sleep.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.rest-calc.com/learn/why-we-sleep.html"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://www.rest-calc.com/zh/learn/why-we-sleep.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.rest-calc.com/learn/why-we-sleep.html"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <lastmod>2026-08-26</lastmod>
+  </url>
+  <url>
+    <loc>https://www.rest-calc.com/learn/sleep-exercise.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.rest-calc.com/learn/sleep-exercise.html"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://www.rest-calc.com/zh/learn/sleep-exercise.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.rest-calc.com/learn/sleep-exercise.html"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <lastmod>2026-08-26</lastmod>
+  </url>
+  <url>
+    <loc>https://www.rest-calc.com/zh/learn/sleep-exercise.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.rest-calc.com/learn/sleep-exercise.html"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://www.rest-calc.com/zh/learn/sleep-exercise.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.rest-calc.com/learn/sleep-exercise.html"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <lastmod>2026-08-26</lastmod>
+  </url>
+  <url>
+    <loc>https://www.rest-calc.com/learn/sleep-revolution.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.rest-calc.com/learn/sleep-revolution.html"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://www.rest-calc.com/zh/learn/sleep-revolution.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.rest-calc.com/learn/sleep-revolution.html"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <lastmod>2026-08-26</lastmod>
+  </url>
+  <url>
+    <loc>https://www.rest-calc.com/zh/learn/sleep-revolution.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.rest-calc.com/learn/sleep-revolution.html"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://www.rest-calc.com/zh/learn/sleep-revolution.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.rest-calc.com/learn/sleep-revolution.html"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <lastmod>2026-08-26</lastmod>
+  </url>
+  <url>
+    <loc>https://www.rest-calc.com/learn/bedtime-calculator.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.rest-calc.com/learn/bedtime-calculator.html"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://www.rest-calc.com/zh/learn/bedtime-calculator.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.rest-calc.com/learn/bedtime-calculator.html"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <lastmod>2026-08-26</lastmod>
+  </url>
+  <url>
+    <loc>https://www.rest-calc.com/zh/learn/bedtime-calculator.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.rest-calc.com/learn/bedtime-calculator.html"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://www.rest-calc.com/zh/learn/bedtime-calculator.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.rest-calc.com/learn/bedtime-calculator.html"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <lastmod>2026-08-26</lastmod>
+  </url>
+  <url>
+    <loc>https://www.rest-calc.com/learn/breathing-for-sleep.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.rest-calc.com/learn/breathing-for-sleep.html"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://www.rest-calc.com/zh/learn/breathing-for-sleep.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.rest-calc.com/learn/breathing-for-sleep.html"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <lastmod>2026-08-26</lastmod>
+  </url>
+  <url>
+    <loc>https://www.rest-calc.com/zh/learn/breathing-for-sleep.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.rest-calc.com/learn/breathing-for-sleep.html"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://www.rest-calc.com/zh/learn/breathing-for-sleep.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.rest-calc.com/learn/breathing-for-sleep.html"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <lastmod>2026-08-26</lastmod>
+  </url>
+  <url>
+    <loc>https://www.rest-calc.com/learn/caffeine-and-sleep.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.rest-calc.com/learn/caffeine-and-sleep.html"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://www.rest-calc.com/zh/learn/caffeine-and-sleep.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.rest-calc.com/learn/caffeine-and-sleep.html"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <lastmod>2026-08-26</lastmod>
+  </url>
+  <url>
+    <loc>https://www.rest-calc.com/zh/learn/caffeine-and-sleep.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.rest-calc.com/learn/caffeine-and-sleep.html"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://www.rest-calc.com/zh/learn/caffeine-and-sleep.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.rest-calc.com/learn/caffeine-and-sleep.html"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <lastmod>2026-08-26</lastmod>
+  </url>
+  <url>
+    <loc>https://www.rest-calc.com/learn/nap-calculator.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.rest-calc.com/learn/nap-calculator.html"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://www.rest-calc.com/zh/learn/nap-calculator.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.rest-calc.com/learn/nap-calculator.html"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <lastmod>2026-08-26</lastmod>
+  </url>
+  <url>
+    <loc>https://www.rest-calc.com/zh/learn/nap-calculator.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.rest-calc.com/learn/nap-calculator.html"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://www.rest-calc.com/zh/learn/nap-calculator.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.rest-calc.com/learn/nap-calculator.html"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <lastmod>2026-08-26</lastmod>
+  </url>
+  <url>
+    <loc>https://www.rest-calc.com/learn/sleep-duration-calculator.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.rest-calc.com/learn/sleep-duration-calculator.html"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://www.rest-calc.com/zh/learn/sleep-duration-calculator.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.rest-calc.com/learn/sleep-duration-calculator.html"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <lastmod>2026-08-26</lastmod>
+  </url>
+  <url>
+    <loc>https://www.rest-calc.com/zh/learn/sleep-duration-calculator.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.rest-calc.com/learn/sleep-duration-calculator.html"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://www.rest-calc.com/zh/learn/sleep-duration-calculator.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.rest-calc.com/learn/sleep-duration-calculator.html"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <lastmod>2026-08-26</lastmod>
+  </url>
+  <url>
+    <loc>https://www.rest-calc.com/learn/sleep-log.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.rest-calc.com/learn/sleep-log.html"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://www.rest-calc.com/zh/learn/sleep-log.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.rest-calc.com/learn/sleep-log.html"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <lastmod>2026-08-26</lastmod>
+  </url>
+  <url>
+    <loc>https://www.rest-calc.com/zh/learn/sleep-log.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.rest-calc.com/learn/sleep-log.html"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://www.rest-calc.com/zh/learn/sleep-log.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.rest-calc.com/learn/sleep-log.html"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <lastmod>2026-08-26</lastmod>
+  </url>
+  <url>
+    <loc>https://www.rest-calc.com/learn/sleep-routine-checklist.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.rest-calc.com/learn/sleep-routine-checklist.html"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://www.rest-calc.com/zh/learn/sleep-routine-checklist.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.rest-calc.com/learn/sleep-routine-checklist.html"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <lastmod>2026-08-26</lastmod>
+  </url>
+  <url>
+    <loc>https://www.rest-calc.com/zh/learn/sleep-routine-checklist.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.rest-calc.com/learn/sleep-routine-checklist.html"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://www.rest-calc.com/zh/learn/sleep-routine-checklist.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.rest-calc.com/learn/sleep-routine-checklist.html"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <lastmod>2026-08-26</lastmod>
+  </url>
+  <url>
+    <loc>https://www.rest-calc.com/learn/sleep-window-calculator.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.rest-calc.com/learn/sleep-window-calculator.html"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://www.rest-calc.com/zh/learn/sleep-window-calculator.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.rest-calc.com/learn/sleep-window-calculator.html"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <lastmod>2026-08-26</lastmod>
+  </url>
+  <url>
+    <loc>https://www.rest-calc.com/zh/learn/sleep-window-calculator.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.rest-calc.com/learn/sleep-window-calculator.html"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://www.rest-calc.com/zh/learn/sleep-window-calculator.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.rest-calc.com/learn/sleep-window-calculator.html"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <lastmod>2026-08-26</lastmod>
+  </url>
+  <url>
+    <loc>https://www.rest-calc.com/learn/wake-up-calculator.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.rest-calc.com/learn/wake-up-calculator.html"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://www.rest-calc.com/zh/learn/wake-up-calculator.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.rest-calc.com/learn/wake-up-calculator.html"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <lastmod>2026-08-26</lastmod>
+  </url>
+  <url>
+    <loc>https://www.rest-calc.com/zh/learn/wake-up-calculator.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.rest-calc.com/learn/wake-up-calculator.html"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://www.rest-calc.com/zh/learn/wake-up-calculator.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.rest-calc.com/learn/wake-up-calculator.html"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <lastmod>2026-08-26</lastmod>
   </url>
 </urlset>
