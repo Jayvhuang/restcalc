@@ -16,9 +16,10 @@
 <meta name="twitter:title" content="Caffeine Cutoff Calculator — Restcalc">
 <meta name="twitter:description" content="Find the latest time to stop caffeine before bed, based on your sensitivity.">
 <link rel="alternate" hreflang="en" href="https://www.rest-calc.com/tools/caffeine-cutoff-calculator.html">
+<link rel="alternate" hreflang="zh-Hans" href="https://www.rest-calc.com/zh/tools/caffeine-cutoff-calculator.html">
 <link rel="alternate" hreflang="x-default" href="https://www.rest-calc.com/tools/caffeine-cutoff-calculator.html">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌙</text></svg>">
-<link rel="stylesheet" href="../styles.css">
+<link rel="stylesheet" href="/styles.css">
 <script type="application/ld+json">
 {
   "@context":"https://schema.org",
@@ -56,10 +57,7 @@
       </div>
     </nav>
     <span class="nav-spacer"></span>
-    <span class="lang-foot" style="margin-top:0">
-      <button id="langEn">EN</button>
-      <button id="langZh">中文</button>
-    </span>
+    <span class="lang-foot" id="lang-switch" style="margin-top:0"></span>
     <button class="btn icon" id="themeBtn" title="Toggle theme">🌗</button>
   </div>
 </header>
@@ -285,7 +283,7 @@ const T = {
 };
 
 const FALL=0, CYCLE=90;
-let lang=(new URLSearchParams(location.search).get('lang')==='zh')?'zh':(localStorage.getItem('restcalc-lang')||'en');
+let lang='en';
 
 function toMin(t){const a=t.split(':').map(Number);return a[0]*60+a[1];}
 function fmt12(min){min=((min%1440)+1440)%1440;let h=Math.floor(min/60),m=min%60;const ap=h>=12?'PM':'AM';h=h%12;if(h===0)h=12;return h+':'+String(m).padStart(2,'0')+' '+ap;}
@@ -300,8 +298,6 @@ function applyStatic(){
   });
   const md=document.querySelector('meta[name="description"]');
   if(md)md.setAttribute('content',T[lang].metaDesc);
-  document.getElementById('langEn').classList.toggle('active',lang==='en');
-  document.getElementById('langZh').classList.toggle('active',lang==='zh');
 }
 
 function calcCaffeine(){
@@ -371,7 +367,7 @@ const TOOL_LIST=[
   ['sleep-log.html','Sleep Log & Trend','睡眠记录与趋势'],
   ['caffeine-cutoff-calculator.html','Caffeine Cutoff Calculator','咖啡因截止计算器'],
   ['breathing-timer.html','Bedtime Breathing Timer','睡前呼吸计时器'],
-  ['sleep-routine-checklist.html','Sleep Guidance Checklist','睡眠引导清单']
+  ['sleep-routine-checklist.html','Sleep Guidance Checklist','睡眠引导清单'],
   ['meal-cutoff-calculator.html','Pre-Sleep Meal Calculator','睡前饮食计算器'],
 ];
 function buildToolNav(){
@@ -383,7 +379,6 @@ function buildToolNav(){
 function init(){
   applyStatic();
   buildToolNav();
-  bindLang();
   bindTheme();
   calcCaffeine();
   renderFAQ();
@@ -395,5 +390,6 @@ function init(){
 }
 init();
 </script>
+<script src="/i18n.js"></script>
 </body>
 </html>
