@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title data-i18n="title">咖啡因截止计算器 — 睡前最后安全喝咖啡时间 | Restcalc</title>
+<meta name="description" content="免费咖啡因截止计算器。输入你的就寝时间与敏感度，找出最晚该在几点前停喝咖啡、茶或能量饮料，避免咖啡因破坏睡眠。">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<link rel="canonical" href="https://www.rest-calc.com/zh/tools/caffeine-cutoff-calculator.html">
+<meta property="og:title" content="咖啡因截止计算器 — Restcalc">
+<meta property="og:description" content="找出最晚该在几点前停喝咖啡、茶或能量饮料——别让咖啡因在你想睡时还醒着。">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://www.rest-calc.com/zh/tools/caffeine-cutoff-calculator.html">
+<meta property="og:image" content="https://www.rest-calc.com/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="咖啡因截止计算器 — Restcalc">
+<meta name="twitter:description" content="找出最晚该在几点前停喝咖啡、茶或能量饮料——别让咖啡因在你想睡时还醒着。">
+<link rel="alternate" hreflang="en" href="https://www.rest-calc.com/tools/caffeine-cutoff-calculator.html"
+<link rel="alternate" hreflang="zh-Hans" href="https://www.rest-calc.com/zh/tools/caffeine-cutoff-calculator.html">>
+<link rel="alternate" hreflang="zh-Hans" href="https://www.rest-calc.com/zh/tools/caffeine-cutoff-calculator.html">
+<link rel="alternate" hreflang="x-default" href="https://www.rest-calc.com/tools/caffeine-cutoff-calculator.html">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌙</text></svg>">
+<link rel="stylesheet" href="/styles.css">
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"WebPage",
+  "name":"咖啡因截止计算器 — Restcalc",
+  "description":"找出最晚该在几点前停喝咖啡、茶或能量饮料——别让咖啡因在你想睡时还醒着。",
+  "url":"https://www.rest-calc.com/zh/tools/caffeine-cutoff-calculator.html",
+  "inLanguage":"zh-Hans",
+  "isPartOf":{"@type":"WebSite","name":"Restcalc","url":"https://www.rest-calc.com"}
+}
+</script>
+<script type="application/ld+json" id="faq-jsonld"></script>
+<!-- Google AdSense — Auto Ads (live, matches deployed site) -->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9666933731991095" crossorigin="anonymous"></script>
+<!-- Google Search Console verification (correct account linked to AdSense) -->
+<meta name="google-site-verification" content="tepUg_Xy4wyDKFBE_BpTGInZXeRqBPmHvfgQdINOVP4" />
+<!-- Google Analytics 4 -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-HQFQQLZNCS"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-HQFQQLZNCS');
+</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="wrap nav">
+    <a class="logo" href="/index.html"><span class="moon">🌙</span><span>Rest</span>calc</a>
+        <nav class="nav-links">
+      <a href="/index.html" data-i18n="nav.home">首页</a>
+      <div class="has-dropdown">
+        <a href="/index.html#tools" data-i18n="nav.tools">全部工具</a>
+        <div class="dropdown" id="toolDropdown"></div>
+      </div>
+    </nav>
+    <span class="nav-spacer"></span>
+    <span class="lang-foot" id="lang-switch" style="margin-top:0"></span>
+    <button class="btn icon" id="themeBtn" title="Toggle theme">🌗</button>
+  </div>
+</header>
+
+<main>
+  <section class="hero wrap">
+    <div class="moon-big">☕</div>
+    <h1 data-i18n="h1">咖啡因截止计算器</h1>
+    <p class="sub" data-i18n="sub">找出最晚该在几点前停喝咖啡、茶或能量饮料——别让咖啡因在你想睡时还醒着。</p>
+  </section>
+
+  <section class="section wrap" id="tool">
+    <div class="card">
+      <h2 data-i18n="toolHeading">咖啡因截止计算器</h2>
+      <p class="desc" data-i18n="toolDesc">输入你计划的就寝时间，以及你对咖啡因的敏感度。我们往回推算你最后一杯的安全时刻。</p>
+      <div class="field">
+        <label for="caf-bed" data-i18n="bedLabel">我计划在以下时间入睡</label>
+        <input type="time" id="caf-bed" value="23:00">
+      </div>
+      <div class="field">
+        <label for="caf-sens" data-i18n="sensLabel">咖啡因敏感度</label>
+        <select id="caf-sens">
+          <option value="low" data-i18n="sens.low">低（很少受影响）</option>
+          <option value="normal" selected data-i18n="sens.normal">普通</option>
+          <option value="high" data-i18n="sens.high">高（非常敏感）</option>
+        </select>
+      </div>
+      <div class="results" id="caf-results"></div>
+      <div class="res-note" id="caf-note"></div>
+      <div class="res-note" data-i18n="resNote">以上时间仅为参考，并非医疗建议。咖啡因半衰期因人而异，差异很大。</div>
+    </div>
+  </section>
+
+  <section class="section wrap">
+    <div class="prose">
+      <h2 data-i18n="proseH1">咖啡因截止计算器是如何运作的</h2>
+      <p data-i18n="proseP1"><strong>咖啡因截止计算器</strong>会取你计划的入睡时间，按你的敏感度倒推一段缓冲时长。多数成年人大约每 5 小时清除体内一半的咖啡因——半衰期约 3–7 小时——所以一杯深夜的咖啡，到就寝时可能仍活跃。计算器把“我该几点停？”变成一个具体的钟点。</strong> takes the time you plan to sleep and counts backward by a buffer that depends on how sensitive you are. Most adults clear about half the caffeine in their system every 5 hours — a half-life of roughly 3–7 hours — so a late cup can still be active at bedtime. The calculator turns "when should I stop?" into one clock time.</p>
+      <p data-i18n="proseP2">如果你曾想过<strong>“为什么我下午 3 点的咖啡让我睡不着？”</strong>，答案是药代动力学，而非意志力。咖啡因会阻断腺苷——那种积累睡眠压力的化学品——所以即便它失效后，积累的腺苷也会一次性袭来。设置截止时间，就是为了把这层残留压到不会破坏睡眠的程度。</strong>, the answer is pharmacokinetics, not willpower. Caffeine blocks adenosine — the chemical that builds your sleep pressure — so even after it wears off, the accumulated adenosine hits at once. The cutoff exists to keep that residue below the level that fragments sleep.</p>
+      <h2 data-i18n="proseH2">为什么即便你觉得没事，咖啡因仍伤害睡眠？</h2>
+      <p data-i18n="proseP3">脑电图（EEG）睡眠研究显示，即便有人坚称自己“不受影响”，咖啡因仍会减少深睡与总睡眠时长。耐受性掩盖了咖啡因的感受，却保护不了你的睡眠结构。这就是为什么“固定截止时间”——而非“我能扛多少喝多少”——才是可靠法则。Restcalc 的 6 / 8 / 10–12 小时三档，遵循睡眠研究者所用的同一套指引，例如美国国家睡眠基金会，以及《临床睡眠医学杂志》（2013）的研究。</p>
+      <h3 data-i18n="proseH3">几个小建议</h3>
+      <ul>
+        <li data-i18n="tip1">设定每日咖啡因宵禁，之后改喝低因或花草茶。</li>
+        <li data-i18n="tip2">留意隐藏来源：茶、可乐、能量饮料、训练前补剂，以及黑巧克力。</li>
+        <li data-i18n="tip3">若下午需要提神，试试散步，或来一段 10–20 分钟的小憩。</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="section wrap" id="faq">
+    <div class="section-head">
+      <h2 data-i18n="faqHeading">关于咖啡因截止计算器的常见问题</h2>
+      <p data-i18n="faqSub">自信安排你最后一杯所需的一切。</p>
+    </div>
+    <div class="faq" id="faq-list"></div>
+  </section>
+
+  <section class="section wrap">
+    <div class="section-head"><h2 data-i18n="exploreHeading">探索更多睡眠工具</h2></div>
+    <div class="tips-grid">
+      <a class="tip" href="/zh/tools/bedtime-calculator.html"><div class="ico">🌙</div><h4 data-i18n="tools.bedtime.name">就寝时间计算器</h4><p data-i18n="tools.bedtime.desc">输入你需要起床的时间，我们按 90 分钟睡眠周期倒推。</p></a>
+      <a class="tip" href="/zh/tools/wake-up-calculator.html"><div class="ico">⏰</div><h4 data-i18n="tools.wake.name">醒来时间计算器</h4><p data-i18n="tools.wake.desc">输入你计划就寝的时间，我们叠加睡眠周期找出最佳起床时刻。</p></a>
+      <a class="tip" href="/zh/tools/sleep-duration-calculator.html"><div class="ico">📊</div><h4 data-i18n="tools.duration.name">睡眠时长计算器</h4><p data-i18n="tools.duration.desc">输入就寝与起床时间，查看总睡眠、完成的周期数以及质量评级。</p></a>
+      <a class="tip" href="/zh/tools/nap-calculator.html"><div class="ico">💤</div><h4 data-i18n="tools.nap.name">午睡计算器</h4><p data-i18n="tools.nap.desc">输入当前时间，查看提神小憩或完整周期午睡的最佳窗口。</p></a>
+      <a class="tip" href="/zh/tools/sleep-window-calculator.html"><div class="ico">🪟</div><h4 data-i18n="tools.window.name">睡眠时段助手</h4><p data-i18n="tools.window.desc">选择你空闲可睡的时间范围，我们会找出能凑满 90 分钟完整周期的最佳就寝时间。</p></a>
+      <a class="tip" href="/zh/tools/sleep-log.html"><div class="ico">📈</div><h4 data-i18n="tools.log.name">睡眠记录与趋势</h4><p data-i18n="tools.log.desc">记录几个晚上，把你的睡眠变成可视化趋势。</p></a>
+      <a class="tip" href="/zh/tools/breathing-timer.html"><div class="ico">🫁</div><h4 data-i18n="tools.breathing.name">Bedtime Breathing Timer</h4><p data-i18n="tools.breathing.desc">Follow a calm circle through 4-6, 4-7-8, or box breathing to relax before bed.</p></a>
+    <a class="tip" href="/zh/tools/sleep-routine-checklist.html"><div class="ico">📋</div><h4 data-i18n="tools.checklist.name">睡眠引导清单</h4><p data-i18n="tools.checklist.desc">为更好睡眠规划一整天——从下午戒咖啡因到熄灯就寝。</p></a>
+      </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap foot-grid">
+    <div class="col">
+      <h5>🌙 Restcalc</h5>
+      <p style="color:var(--muted);font-size:13.5px;max-width:260px" data-i18n="footTag">一款免费的睡眠计算器与就寝规划工具。为更清爽的早晨而打造。</p>
+    </div>
+    <div class="col">
+      <h5 data-i18n="footTools">工具</h5>
+      <a href="/zh/tools/caffeine-cutoff-calculator.html" data-i18n="tools.caffeine.name">咖啡因截止计算器</a>
+      <a href="/zh/tools/bedtime-calculator.html" data-i18n="tools.bedtime.name">就寝时间计算器</a>
+      <a href="/zh/tools/wake-up-calculator.html" data-i18n="tools.wake.name">醒来时间计算器</a>
+      <a href="/zh/tools/sleep-duration-calculator.html" data-i18n="tools.duration.name">睡眠时长计算器</a>
+      <a href="/zh/tools/nap-calculator.html" data-i18n="tools.nap.name">午睡计算器</a>
+      <a href="/zh/tools/sleep-window-calculator.html" data-i18n="tools.window.name">睡眠时段助手</a>
+      <a href="/zh/tools/sleep-log.html" data-i18n="tools.log.name">睡眠记录与趋势</a>
+      <a href="/zh/tools/breathing-timer.html" data-i18n="tools.breathing.name">Bedtime Breathing Timer</a>
+    <a href="/zh/tools/sleep-routine-checklist.html" data-i18n="tools.checklist.name">睡眠引导清单</a>
+    </div>
+    <div class="col">
+      <h5 data-i18n="footLearn">了解更多</h5>
+      <a href="../index.html#science" data-i18n="nav.science">运作原理</a>
+      <a href="../index.html#tips" data-i18n="nav.tips">建议</a>
+      <a href="../index.html#faq" data-i18n="nav.faq">常见问题</a>
+      <a href="/privacy.html" data-i18n="nav.privacy">隐私</a>
+    </div>
+    <div class="col">
+      <h5 data-i18n="footSources">数据来源</h5>
+      <a href="https://www.sleepfoundation.org/" target="_blank" rel="noopener">National Sleep Foundation</a>
+      <a href="https://jcsm.aasm.org/" target="_blank" rel="noopener">Journal of Clinical Sleep Medicine (2013)</a>
+      <a href="https://www.sleepfoundation.org/articles/caffeine-and-sleep" target="_blank" rel="noopener">Caffeine and Sleep — Sleep Foundation</a>
+    </div>
+  </div>
+  <div class="wrap disclaimer">
+    <span data-i18n="disc">Restcalc 仅提供一般性睡眠信息，用作教育用途，不能替代医疗建议。如果你有长期睡眠问题，请咨询医疗专业人士。</span>
+    <br>© <span id="year"></span> Restcalc. All rights reserved.
+  </div>
+</footer>
+
+<script>
+const T = {
+  en:{
+    title:"Caffeine Cutoff Calculator — Last Safe Coffee Time Before Bed | Restcalc",
+    metaDesc:"Free caffeine cutoff calculator. Enter your bedtime and sensitivity to find the latest time to stop coffee, tea, or energy drinks so caffeine won't wreck your sleep.",
+    nav:{home:"Home",tools:"All tools",science:"How it works",tips:"Tips",faq:"FAQ",privacy:"Privacy"},
+    h1:"Caffeine Cutoff Calculator",
+    sub:"Find the latest time to stop coffee, tea, or energy drinks — so caffeine won't still be awake when you want to be asleep.",
+    toolHeading:"Caffeine Cutoff Calculator",
+    toolDesc:"Enter your planned bedtime and how sensitive you are to caffeine. We work back to your last safe cup.",
+    bedLabel:"I plan to sleep at",
+    sensLabel:"Caffeine sensitivity",
+    sens:{low:"Low (rarely affected)",normal:"Normal",high:"High (very sensitive)"},
+    resNote:"Times are a guideline, not medical advice. Caffeine half-life varies widely between people.",
+    stop:"Stop caffeine",
+    hours:"hours before bed",
+    prev:"previous day",
+    noteBy:{
+      low:"With low sensitivity, a 6-hour buffer is usually enough — but everyone is different, so notice how you feel.",
+      normal:"For most people, stopping caffeine about 8 hours before bed keeps it from disrupting sleep.",
+      high:"If you are highly sensitive, aim to stop 10–12 hours before bed; we show the 11-hour midpoint. Even afternoon coffee can linger."
+    },
+    proseH1:"How the caffeine cutoff calculator works",
+    proseP1:"A <strong>caffeine cutoff calculator</strong> takes the time you plan to sleep and counts backward by a buffer that depends on how sensitive you are. Most adults clear about half the caffeine in their system every 5 hours — a half-life of roughly 3–7 hours — so a late cup can still be active at bedtime. The calculator turns \"when should I stop?\" into one clock time.",
+    proseP2:"If you have ever wondered <strong>\"why does my 3 p.m. coffee keep me up?\"</strong>, the answer is pharmacokinetics, not willpower. Caffeine blocks adenosine — the chemical that builds your sleep pressure — so even after it wears off, the accumulated adenosine hits at once. The cutoff exists to keep that residue below the level that fragments sleep.",
+    proseH2:"Why does caffeine hurt sleep even if you feel fine?",
+    proseP3:"EEG sleep studies show caffeine reduces deep sleep and total sleep time even in people who insist they are \"unaffected.\" Tolerance masks how caffeine feels but does not protect your sleep architecture. That is why a fixed cutoff — not \"however much I can handle\" — is the reliable rule. Restcalc's 6 / 8 / 10–12 hour tiers follow the same guidance sleep researchers use, such as the National Sleep Foundation and studies in the Journal of Clinical Sleep Medicine (2013).",
+    proseH3:"A few quick tips",
+    tip1:"Set a daily caffeine curfew and switch to decaf or herbal tea after it.",
+    tip2:"Remember hidden sources: tea, cola, energy drinks, pre-workout, and dark chocolate.",
+    tip3:"If you need an afternoon lift, try a short walk or a 10–20 minute nap instead.",
+    faqHeading:"Frequently asked questions about the Caffeine Cutoff Calculator",
+    faqSub:"Everything you need to time your last cup confidently.",
+    faq:[
+      {q:"How does the caffeine cutoff calculator work?",a:"It takes your planned bedtime and subtracts a buffer based on your sensitivity — 6 hours if you are rarely affected, 8 hours for most people, and 11 hours (the midpoint of 10–12) if you are highly sensitive. The result is the latest clock time to stop caffeine."},
+      {q:"Why 8 hours before bed for most people?",a:"Caffeine has a half-life of about 5 hours (range 3–7). Stopping roughly 8 hours before bed leaves only a small amount circulating at lights-out, below the level that fragments deep sleep."},
+      {q:"What if I am very sensitive to caffeine?",a:"Aim to stop 10–12 hours before bed. We show the 11-hour midpoint. Even an afternoon coffee can leave enough caffeine to lighten your sleep if you metabolize it slowly."},
+      {q:"Does decaf count?",a:"Decaf still contains a little caffeine — usually 2–5 mg per cup versus about 95 mg in regular coffee. For most people that is low enough not to matter, but if you are highly sensitive, avoid it in the evening too."},
+      {q:"Is this medical advice?",a:"No. Restcalc is an educational tool based on published sleep research. It does not diagnose or treat any condition. For ongoing sleep problems, consult a healthcare professional."}
+    ],
+    exploreHeading:"Explore more sleep tools",
+    exploreSub:"",
+    tools:{
+      caffeine:{name:"Caffeine Cutoff Calculator",desc:"Enter your bedtime and sensitivity to find your last safe caffeine time."},
+      bedtime:{name:"Bedtime Calculator",desc:"Enter the time you need to wake up. We count back in 90-minute sleep cycles."},
+      wake:{name:"Wake-up Calculator",desc:"Enter when you plan to go to bed. We add sleep cycles to find the best moments to wake up."},
+      duration:{name:"Sleep Duration Calculator",desc:"Enter your bedtime and wake time to see total sleep, completed cycles, and a quality rating."},
+      nap:{name:"Nap Calculator",desc:"Enter the current time to see the best window for a refreshing power nap or a full-cycle nap."},
+      window:{name:"Sleep Window Helper",desc:"Choose the time range you are free to sleep. We find the best bedtimes that complete full 90-minute cycles."},
+      log:{name:"Sleep Log & Trend",desc:"Log a few nights and see your sleep as a visual trend."},
+      checklist:{name:"Sleep Guidance Checklist",desc:"Plan your whole day for better sleep — from afternoon caffeine cutoff to lights-out."},
+      breathing:{name:"Bedtime Breathing Timer",desc:"Follow a calm circle through 4-6, 4-7-8, or box breathing to relax before bed."}
+    },
+    footTag:"A free sleep calculator and bedtime planner. Built for better mornings.",
+    footTools:"Tools", footLearn:"Learn", footSources:"Sources",
+    disc:"Restcalc provides general sleep information for educational purposes only and is not a substitute for medical advice. If you have chronic sleep problems, consult a healthcare professional."
+  },
+  zh:{
+    title:"咖啡因截止计算器 — 睡前最后安全喝咖啡时间 | Restcalc",
+    metaDesc:"免费咖啡因截止计算器。输入你的就寝时间与敏感度，找出最晚该在几点前停喝咖啡、茶或能量饮料，避免咖啡因破坏睡眠。",
+    nav:{home:"首页",tools:"全部工具",science:"运作原理",tips:"建议",faq:"常见问题",privacy:"隐私"},
+    h1:"咖啡因截止计算器",
+    sub:"找出最晚该在几点前停喝咖啡、茶或能量饮料——别让咖啡因在你想睡时还醒着。",
+    toolHeading:"咖啡因截止计算器",
+    toolDesc:"输入你计划的就寝时间，以及你对咖啡因的敏感度。我们往回推算你最后一杯的安全时刻。",
+    bedLabel:"我计划在以下时间入睡",
+    sensLabel:"咖啡因敏感度",
+    sens:{low:"低（很少受影响）",normal:"普通",high:"高（非常敏感）"},
+    resNote:"以上时间仅为参考，并非医疗建议。咖啡因半衰期因人而异，差异很大。",
+    stop:"停止摄入咖啡因",
+    hours:"小时前",
+    prev:"前一天",
+    noteBy:{
+      low:"若你对咖啡因不敏感，预留 6 小时通常足够——但因人而异，留意自己的身体感受。",
+      normal:"对多数人来说，睡前约 8 小时停喝，能避免咖啡因干扰睡眠。",
+      high:"若你高度敏感，目标是在睡前 10–12 小时停喝；这里取 11 小时的中点。哪怕下午的咖啡，也可能在体内残留。"
+    },
+    proseH1:"咖啡因截止计算器是如何运作的",
+    proseP1:"<strong>咖啡因截止计算器</strong>会取你计划的入睡时间，按你的敏感度倒推一段缓冲时长。多数成年人大约每 5 小时清除体内一半的咖啡因——半衰期约 3–7 小时——所以一杯深夜的咖啡，到就寝时可能仍活跃。计算器把“我该几点停？”变成一个具体的钟点。",
+    proseP2:"如果你曾想过<strong>“为什么我下午 3 点的咖啡让我睡不着？”</strong>，答案是药代动力学，而非意志力。咖啡因会阻断腺苷——那种积累睡眠压力的化学品——所以即便它失效后，积累的腺苷也会一次性袭来。设置截止时间，就是为了把这层残留压到不会破坏睡眠的程度。",
+    proseH2:"为什么即便你觉得没事，咖啡因仍伤害睡眠？",
+    proseP3:"脑电图（EEG）睡眠研究显示，即便有人坚称自己“不受影响”，咖啡因仍会减少深睡与总睡眠时长。耐受性掩盖了咖啡因的感受，却保护不了你的睡眠结构。这就是为什么“固定截止时间”——而非“我能扛多少喝多少”——才是可靠法则。Restcalc 的 6 / 8 / 10–12 小时三档，遵循睡眠研究者所用的同一套指引，例如美国国家睡眠基金会，以及《临床睡眠医学杂志》（2013）的研究。",
+    proseH3:"几个小建议",
+    tip1:"设定每日咖啡因宵禁，之后改喝低因或花草茶。",
+    tip2:"留意隐藏来源：茶、可乐、能量饮料、训练前补剂，以及黑巧克力。",
+    tip3:"若下午需要提神，试试散步，或来一段 10–20 分钟的小憩。",
+    faqHeading:"关于咖啡因截止计算器的常见问题",
+    faqSub:"自信安排你最后一杯所需的一切。",
+    faq:[
+      {q:"咖啡因截止计算器是如何运作的？",a:"它取你计划的就寝时间，按敏感度减去一段缓冲：不敏感者 6 小时、多数人为 8 小时、高度敏感者为 11 小时（10–12 的中点）。结果就是最晚该停喝咖啡因的钟点。"},
+      {q:"为什么多数人是睡前 8 小时？",a:"咖啡因半衰期约 5 小时（范围 3–7）。在睡前约 8 小时停喝，到熄灯时体内仅余少量，低于破坏深睡的程度。"},
+      {q:"若我对咖啡因非常敏感怎么办？",a:"目标是在睡前 10–12 小时停喝。我们取 11 小时的中点。哪怕下午的咖啡，若你代谢慢，也可能残留到影响睡眠。"},
+      {q:"低因咖啡算吗？",a:"低因仍含少量咖啡因——通常每杯 2–5 毫克，而普通咖啡约 95 毫克。对多数人来说低到无妨，但如果你高度敏感，晚上也请避开。"},
+      {q:"这是医疗建议吗？",a:"不是。Restcalc 是基于已发表睡眠研究的教育类工具，不诊断也不治疗任何状况。若有持续的睡眠问题，请咨询医疗专业人士。"}
+    ],
+    exploreHeading:"探索更多睡眠工具",
+    exploreSub:"",
+    tools:{
+      caffeine:{name:"咖啡因截止计算器",desc:"输入就寝时间与敏感度，找出你最后一杯的安全时刻。"},
+      bedtime:{name:"就寝时间计算器",desc:"输入你需要起床的时间，我们按 90 分钟睡眠周期倒推。"},
+      wake:{name:"醒来时间计算器",desc:"输入你计划就寝的时间，我们叠加睡眠周期找出最佳起床时刻。"},
+      duration:{name:"睡眠时长计算器",desc:"输入就寝与起床时间，查看总睡眠、完成的周期数以及质量评级。"},
+      nap:{name:"午睡计算器",desc:"输入当前时间，查看提神小憩或完整周期午睡的最佳窗口。"},
+      window:{name:"睡眠时段助手",desc:"选择你空闲可睡的时间范围，我们会找出能凑满 90 分钟完整周期的最佳就寝时间。"},
+      log:{name:"睡眠记录与趋势",desc:"记录几个晚上，把你的睡眠变成可视化趋势。"},
+      checklist:{name:"睡眠引导清单",desc:"为更好睡眠规划一整天——从下午戒咖啡因到熄灯就寝。"},
+      breathing:{name:"Bedtime Breathing Timer",desc:"Follow a calm circle through 4-6, 4-7-8, or box breathing to relax before bed."}
+    },
+    footTag:"一款免费的睡眠计算器与就寝规划工具。为更清爽的早晨而打造。",
+    footTools:"工具", footLearn:"了解更多", footSources:"数据来源",
+    disc:"Restcalc 仅提供一般性睡眠信息，用作教育用途，不能替代医疗建议。如果你有长期睡眠问题，请咨询医疗专业人士。"
+  }
+};
+
+const FALL=0, CYCLE=90;
+let lang='zh';
+
+function toMin(t){const a=t.split(':').map(Number);return a[0]*60+a[1];}
+function fmt12(min){min=((min%1440)+1440)%1440;let h=Math.floor(min/60),m=min%60;const ap=h>=12?'PM':'AM';h=h%12;if(h===0)h=12;return h+':'+String(m).padStart(2,'0')+' '+ap;}
+function setText(sel,html){const el=document.querySelector(sel);if(el)el.innerHTML=html;}
+
+function applyStatic(){
+  document.documentElement.lang=(lang==='zh')?'zh-CN':'en';
+  document.querySelectorAll('[data-i18n]').forEach(el=>{
+    const key=el.getAttribute('data-i18n');
+    let v=T[lang]; key.split('.').forEach(p=>v=v&&v[p]);
+    if(v!==undefined)el.innerHTML=v;
+  });
+  const md=document.querySelector('meta[name="description"]');
+  if(md)md.setAttribute('content',T[lang].metaDesc);
+}
+
+function calcCaffeine(){
+  const bed=toMin(document.getElementById('caf-bed').value);
+  const sens=document.getElementById('caf-sens').value;
+  const H={low:6,normal:8,high:11};
+  const h=H[sens];
+  let cut=bed-h*60;
+  const prev=(cut<0);
+  if(prev)cut+=1440;
+  const t=T[lang];
+  const html='<div class="res-row"><span class="res-time">'+fmt12(cut)+'</span><span class="res-meta"><b>'+t.stop+' '+h+' '+t.hours+'</b>'+(prev?' <span class="pill">'+t.prev+'</span>':'')+'</span></div>';
+  document.getElementById('caf-results').innerHTML=html;
+  setText('#caf-note', t.noteBy[sens]);
+}
+
+function renderFAQ(){
+  const l=T[lang].faq;
+  document.getElementById('faq-list').innerHTML=l.map(function(x){
+    return '<div class="faq-item"><div class="faq-q">'+x.q+'<span class="chev">▾</span></div><div class="faq-a"><div>'+x.a+'</div></div></div>';
+  }).join('');
+  document.querySelectorAll('#faq-list .faq-item').forEach(function(it){
+    it.querySelector('.faq-q').addEventListener('click',function(){
+      const a=it.querySelector('.faq-a');
+      const open=it.classList.toggle('open');
+      a.style.maxHeight=open?a.scrollHeight+'px':null;
+    });
+  });
+  const ld={"@context":"https://schema.org","@type":"FAQPage","mainEntity":l.map(function(x){return {"@type":"Question","name":x.q,"acceptedAnswer":{"@type":"Answer","text":x.a}};})};
+  document.getElementById('faq-jsonld').textContent=JSON.stringify(ld);
+}
+
+function setLang(l){
+  lang=l;
+  localStorage.setItem('restcalc-lang',l);
+  const u=new URLSearchParams(location.search);
+  if(l==='zh')u.set('lang','zh'); else u.delete('lang');
+  history.replaceState(null,'',location.pathname+(u.toString()?'?'+u.toString():'')+location.hash);
+  applyStatic();
+  buildToolNav();
+  calcCaffeine();
+  renderFAQ();
+}
+
+function bindLang(){
+  document.getElementById('langEn').addEventListener('click',function(){setLang('en');});
+  document.getElementById('langZh').addEventListener('click',function(){setLang('zh');});
+}
+function bindTheme(){
+  const saved=localStorage.getItem('restcalc-theme');
+  if(saved)document.documentElement.setAttribute('data-theme',saved);
+  const b=document.getElementById('themeBtn');
+  if(b)b.addEventListener('click',function(){
+    const cur=document.documentElement.getAttribute('data-theme');
+    const next=cur==='dark'?'light':'dark';
+    if(next==='dark')document.documentElement.setAttribute('data-theme','dark');
+    else document.documentElement.removeAttribute('data-theme');
+    localStorage.setItem('restcalc-theme',next);
+  });
+}
+
+const TOOL_LIST=[
+  ['/zh/tools/wake-up-calculator.html','Wake-up Calculator','醒来时间计算器'],
+  ['/zh/tools/sleep-duration-calculator.html','Sleep Duration Calculator','睡眠时长计算器'],
+  ['/zh/tools/nap-calculator.html','Nap Calculator','午睡计算器'],
+  ['/zh/tools/sleep-window-calculator.html','Sleep Window Helper','睡眠时段助手'],
+  ['/zh/tools/sleep-log.html','Sleep Log & Trend','睡眠记录与趋势'],
+  ['/zh/tools/caffeine-cutoff-calculator.html','Caffeine Cutoff Calculator','咖啡因截止计算器'],
+  ['/zh/tools/breathing-timer.html','Bedtime Breathing Timer','睡前呼吸计时器'],
+  ['/zh/tools/sleep-routine-checklist.html','Sleep Guidance Checklist','睡眠引导清单'],
+  ['/zh/tools/meal-cutoff-calculator.html','Pre-Sleep Meal Calculator','睡前饮食计算器'],
+];
+function buildToolNav(){
+  const d=document.getElementById('toolDropdown'); if(!d)return;
+  const i=(lang==='zh')?2:1;
+  d.innerHTML=TOOL_LIST.map(function(it){return '<a href="'+it[0]+'">'+it[i]+'</a>';}).join('');
+}
+
+function init(){
+  applyStatic();
+  buildToolNav();
+  bindTheme();
+  calcCaffeine();
+  renderFAQ();
+  const bed=document.getElementById('caf-bed');
+  const sens=document.getElementById('caf-sens');
+  if(bed)bed.addEventListener('input',calcCaffeine);
+  if(sens)sens.addEventListener('change',calcCaffeine);
+  const y=document.getElementById('year'); if(y)y.textContent=new Date().getFullYear();
+}
+init();
+</script>
+<script src="/i18n.js"></script>
+</body>
+</html>
