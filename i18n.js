@@ -12,7 +12,7 @@
   function zhUrl() {
     var p = location.pathname;
     if (inZh()) return p;
-    if (p === '/') return '/zh/';
+    if (p === '/') return '/zh';
     return '/zh' + p;
   }
   function enUrl() {
