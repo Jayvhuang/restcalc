@@ -16,9 +16,10 @@
 <meta name="twitter:title" content="Sleep Guidance Checklist — Restcalc">
 <meta name="twitter:description" content="Plan your whole day for better sleep — a free, full-day checklist with the why behind each step and quick links to the right calculator.">
 <link rel="alternate" hreflang="en" href="https://www.rest-calc.com/tools/sleep-routine-checklist.html">
+<link rel="alternate" hreflang="zh-Hans" href="https://www.rest-calc.com/zh/tools/sleep-routine-checklist.html">
 <link rel="alternate" hreflang="x-default" href="https://www.rest-calc.com/tools/sleep-routine-checklist.html">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌙</text></svg>">
-<link rel="stylesheet" href="../styles.css">
+<link rel="stylesheet" href="/styles.css">
 <script type="application/ld+json">
 {
   "@context":"https://schema.org",
@@ -93,10 +94,7 @@
       </div>
     </nav>
     <span class="nav-spacer"></span>
-    <span class="lang-foot" style="margin-top:0">
-      <button id="langEn">EN</button>
-      <button id="langZh">中文</button>
-    </span>
+    <span class="lang-foot" id="lang-switch" style="margin-top:0"></span>
     <button class="btn icon" id="themeBtn" title="Toggle theme">🌗</button>
   </div>
 </header>
@@ -437,7 +435,7 @@ const T = {
   }
 };
 
-let lang=(new URLSearchParams(location.search).get('lang')==='zh')?'zh':(localStorage.getItem('restcalc-lang')||'en');
+let lang='en';
 
 function setText(sel,html){const el=document.querySelector(sel);if(el)el.innerHTML=html;}
 
@@ -450,8 +448,6 @@ function applyStatic(){
   });
   const md=document.querySelector('meta[name="description"]');
   if(md)md.setAttribute('content',T[lang].metaDesc);
-  document.getElementById('langEn').classList.toggle('active',lang==='en');
-  document.getElementById('langZh').classList.toggle('active',lang==='zh');
 }
 
 /* ---------- checklist render ---------- */
@@ -633,8 +629,7 @@ function buildToolNav(){
 
 function init(){
   applyStatic();
-  buildToolNav();
-  bindLang(); bindTheme();
+  buildToolNav(); bindTheme();
   renderChecklist(); renderFAQ();
   updateNow();
   setInterval(updateNow,30000);
@@ -647,5 +642,6 @@ function init(){
 }
 init();
 </script>
+<script src="/i18n.js"></script>
 </body>
 </html>
