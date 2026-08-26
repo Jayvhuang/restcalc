@@ -393,14 +393,6 @@ function renderFAQ(){
   const ld={"@context":"https://schema.org","@type":"FAQPage","mainEntity":l.map(function(x){return {"@type":"Question","name":x.q,"acceptedAnswer":{"@type":"Answer","text":x.a}};})};
   document.getElementById('faq-jsonld').textContent=JSON.stringify(ld);
 }
-function setLang(l){
-  lang=l; localStorage.setItem('restcalc-lang',l);
-  const u=new URLSearchParams(location.search);
-  if(l==='zh')u.set('lang','zh'); else u.delete('lang');
-  history.replaceState(null,'',location.pathname+(u.toString()?'?'+u.toString():'')+location.hash);
-  applyStatic(); buildToolNav(); if(window.__calc)window.__calc(); renderFAQ();
-}
-function bindLang(){ document.getElementById('langEn').addEventListener('click',function(){setLang('en');}); document.getElementById('langZh').addEventListener('click',function(){setLang('zh');}); }
 function bindTheme(){
   const saved=localStorage.getItem('restcalc-theme');
   if(saved)document.documentElement.setAttribute('data-theme',saved);
