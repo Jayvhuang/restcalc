@@ -458,7 +458,7 @@ function saveChecks(obj){localStorage.setItem(CHECK_KEY,JSON.stringify(obj));}
 
 function deepLink(it){
   if(!it.deep)return '';
-  return '<a class="ideep" href="'+it.deep.href+(lang==='zh'?'?lang=zh':'')+'">'+T[lang].tools[it.deep.tool].name+' ↗</a>';
+  return '<a class="ideep" href="'+it.deep.href+'">'+T[lang].tools[it.deep.tool].name+' ↗</a>';
 }
 function phaseCheckedCount(ph){
   const s=loadChecks(); let c=0; ph.items.forEach(it=>{if(s[it.id])c++;}); return c;
@@ -584,18 +584,6 @@ function renderFAQ(){
 }
 
 /* ---------- lang / theme ---------- */
-function setLang(l){
-  lang=l;
-  localStorage.setItem('restcalc-lang',l);
-  const u=new URLSearchParams(location.search);
-  if(l==='zh')u.set('lang','zh'); else u.delete('lang');
-  history.replaceState(null,'',location.pathname+(u.toString()?'?'+u.toString():'')+location.hash);
-  applyStatic(); renderChecklist(); renderFAQ();
-}
-function bindLang(){
-  document.getElementById('langEn').addEventListener('click',function(){setLang('en');});
-  document.getElementById('langZh').addEventListener('click',function(){setLang('zh');});
-}
 function bindTheme(){
   const saved=localStorage.getItem('restcalc-theme');
   if(saved)document.documentElement.setAttribute('data-theme',saved);
