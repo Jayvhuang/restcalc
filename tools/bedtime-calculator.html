@@ -16,9 +16,10 @@
 <meta name="twitter:title" content="Bedtime Calculator — Restcalc">
 <meta name="twitter:description" content="Find the best time to go to bed using 90-minute sleep cycles.">
 <link rel="alternate" hreflang="en" href="https://www.rest-calc.com/tools/bedtime-calculator.html">
+<link rel="alternate" hreflang="zh-Hans" href="https://www.rest-calc.com/zh/tools/bedtime-calculator.html">
 <link rel="alternate" hreflang="x-default" href="https://www.rest-calc.com/tools/bedtime-calculator.html">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌙</text></svg>">
-<link rel="stylesheet" href="../styles.css">
+<link rel="stylesheet" href="/styles.css">
 <script type="application/ld+json">
 {
   "@context":"https://schema.org",
@@ -56,10 +57,7 @@
       </div>
     </nav>
     <span class="nav-spacer"></span>
-    <span class="lang-foot" style="margin-top:0">
-      <button id="langEn">EN</button>
-      <button id="langZh">中文</button>
-    </span>
+    <span class="lang-foot" id="lang-switch" style="margin-top:0"></span>
     <button class="btn icon" id="themeBtn" title="Toggle theme">🌗</button>
   </div>
 </header>
@@ -270,7 +268,7 @@ const T = {
 
 const FALL=15, CYCLE=90;
 const AGES={teen:{opts:[7,6,5],range:"8–10 hours per night",rangeZh:"每晚 8–10 小时"},adult:{opts:[6,5,4],range:"7–9 hours per night",rangeZh:"每晚 7–9 小时"},senior:{opts:[5,4],range:"7–8 hours per night",rangeZh:"每晚 7–8 小时"}};
-let lang=(new URLSearchParams(location.search).get('lang')==='zh')?'zh':(localStorage.getItem('restcalc-lang')||'en');
+let lang='en';
 
 function toMin(t){const a=t.split(':').map(Number);return a[0]*60+a[1];}
 function fmt12(min){min=((min%1440)+1440)%1440;let h=Math.floor(min/60),m=min%60;const ap=h>=12?'PM':'AM';h=h%12;if(h===0)h=12;return h+':'+String(m).padStart(2,'0')+' '+ap;}
@@ -285,8 +283,6 @@ function applyStatic(){
   });
   const md=document.querySelector('meta[name="description"]');
   if(md)md.setAttribute('content',T[lang].metaDesc);
-  document.getElementById('langEn').classList.toggle('active',lang==='en');
-  document.getElementById('langZh').classList.toggle('active',lang==='zh');
 }
 
 function calcBedtime(){
@@ -357,7 +353,7 @@ const TOOL_LIST=[
   ['sleep-log.html','Sleep Log & Trend','睡眠记录与趋势'],
   ['caffeine-cutoff-calculator.html','Caffeine Cutoff Calculator','咖啡因截止计算器'],
   ['breathing-timer.html','Bedtime Breathing Timer','睡前呼吸计时器'],
-  ['sleep-routine-checklist.html','Sleep Guidance Checklist','睡眠引导清单']
+  ['sleep-routine-checklist.html','Sleep Guidance Checklist','睡眠引导清单'],
   ['meal-cutoff-calculator.html','Pre-Sleep Meal Calculator','睡前饮食计算器'],
 ];
 function buildToolNav(){
@@ -369,7 +365,6 @@ function buildToolNav(){
 function init(){
   applyStatic();
   buildToolNav();
-  bindLang();
   bindTheme();
   calcBedtime();
   renderFAQ();
@@ -377,5 +372,6 @@ function init(){
 }
 init();
 </script>
+<script src="/i18n.js"></script>
 </body>
 </html>
