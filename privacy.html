@@ -7,6 +7,9 @@
 <meta name="description" content="How Restcalc handles your data: no uploads, sleep logs stored only in your browser, third-party ad and affiliate cookies explained.">
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="https://www.rest-calc.com/privacy.html">
+<link rel="alternate" hreflang="en" href="https://www.rest-calc.com/privacy.html">
+<link rel="alternate" hreflang="zh-Hans" href="https://www.rest-calc.com/zh/privacy.html">
+<link rel="alternate" hreflang="x-default" href="https://www.rest-calc.com/privacy.html">
 <meta property="og:title" content="Privacy Policy — Restcalc">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://www.rest-calc.com/privacy.html">
@@ -34,9 +37,8 @@ h1{font-size:28px;margin:0 0 6px}
 .card li{margin-bottom:8px}
 .note{color:var(--muted);font-size:13.5px}
 a.back{display:inline-block;margin-top:8px;color:var(--accent);text-decoration:none;font-weight:700}
-[lang-zh]{display:none}
-body.zh [lang-en]{display:none}
-body.zh [lang-zh]{display:block}
+.lang a{display:inline-block;border:1px solid var(--border);background:var(--surface-2);color:var(--muted);padding:6px 12px;border-radius:999px;cursor:pointer;font-size:13px;font-weight:700;text-decoration:none}
+.lang a.active{background:var(--accent);color:#fff;border-color:var(--accent)}
 footer{background:var(--surface);border-top:1px solid var(--border);padding:22px 0;color:var(--muted);font-size:13px;text-align:center}
 </style>
 </head>
@@ -44,10 +46,7 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:22px
 <header class="site">
   <div class="wrap bar">
     <a class="logo" href="./"><span class="moon">🌙</span><span>Rest</span>calc</a>
-    <div class="lang">
-      <button id="btnEn" class="active" onclick="setLang('en')">EN</button>
-      <button id="btnZh" onclick="setLang('zh')">中文</button>
-    </div>
+    <div class="lang"><span class="lang-foot" id="lang-switch"></span></div>
   </div>
 </header>
 
@@ -100,71 +99,14 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:22px
     <a class="back" href="./">← Back to Restcalc</a>
   </div>
 
-  <div lang-zh>
-    <h1>隐私政策</h1>
-    <p class="updated">最后更新：2026-07-11</p>
-
-    <div class="card">
-      <h2>概述</h2>
-      <p>Restcalc 是一款免费的睡眠规划教育工具。本政策说明我们如何处理你的数据。简而言之：<b>我们不收集、也不上传你的数据。</b></p>
-    </div>
-
-    <div class="card">
-      <h2>1. 我们不收集或上传你的数据</h2>
-      <p>Restcalc 上的所有计算都完全在你的浏览器本地运行。我们从未接收、存储或传输你的任何输入——就寝时间、起床时间、年龄段或睡眠记录。没有账号，也没有关于你的任何服务器端档案。</p>
-    </div>
-
-    <div class="card">
-      <h2>2. 睡眠记录的存储</h2>
-      <p>如果你使用<b>睡眠记录</b>工具，你的记录只保存在你自己的浏览器（<code>localStorage</code>）中。它们留在你的设备上，永远不会发送给我们或任何服务器。清除浏览器数据（或使用无痕模式）会立即将它们删除。</p>
-    </div>
-
-    <div class="card">
-      <h2>3. Cookie 与第三方</h2>
-      <p>我们不会自行设置追踪 Cookie。但本站点可能展示 Google AdSense 广告与亚马逊联盟链接。当你与这些第三方互动时，它们可能会设置自己的 Cookie——例如用于广告个性化或联盟归因。你可以随时通过浏览器设置管理 Cookie。</p>
-      <p>此外，第三方（如 Google）还可能使用网络信标（web beacon）或通过您的 IP 地址收集信息，用于广告个性化与归因。了解 Google 如何在使用其合作伙伴网站时使用数据：<a href="https://www.google.com/policies/privacy/partners/" target="_blank" rel="noopener">Google 如何使用数据</a>。</p>
-    </div>
-
-    <div class="card">
-      <h2>4. 联盟披露</h2>
-      <p>Restcalc 是亚马逊联盟（Amazon Associates）计划的参与者，属于联盟广告项目。如果你点击亚马逊链接并完成符合条件的购买，亚马逊可能会设置一个 Cookie，我们可能因此获得佣金——不会增加你的任何成本。</p>
-    </div>
-
-    <div class="card">
-      <h2>5. 未成年人</h2>
-      <p>Restcalc 不面向 13 岁以下儿童，我们也不会在知情情况下收集他们的数据。</p>
-    </div>
-
-    <div class="card">
-      <h2>6. 你的选择</h2>
-      <p>由于我们不存储任何你的数据，也就没有需要删除的账号。要移除本地的睡眠记录，只需清除本站点的浏览器存储即可。</p>
-    </div>
-
-    <div class="card">
-      <h2>7. 联系方式</h2>
-      <p class="note">对本政策有疑问？请通过邮箱联系站点运营方：<b>Jayvhzw@gmail.com</b>。</p>
-    </div>
-
-    <a class="back" href="./">← 返回 Restcalc</a>
-  </div>
+  
 </main>
 
 <footer>
   © 2026 Restcalc · <a href="./" style="color:var(--muted)">www.rest-calc.com</a>
 </footer>
 
-<script>
-function setLang(l){
-  document.body.className = (l==='zh') ? 'zh' : '';
-  document.getElementById('btnEn').classList.toggle('active', l==='en');
-  document.getElementById('btnZh').classList.toggle('active', l==='zh');
-  try{ localStorage.setItem('restcalc-priv-lang', l); }catch(e){}
-}
-(function(){
-  var saved='en';
-  try{ saved = localStorage.getItem('restcalc-priv-lang') || 'en'; }catch(e){}
-  setLang(saved);
-})();
-</script>
+
+<script src="/i18n.js"></script>
 </body>
 </html>
