@@ -1,15 +1,15 @@
 <!DOCTYPE html>
-<html lang="en" data-lang="en">
+<html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Sleep Knowledge Articles — Restcalc</title>
-<meta name="description" content="Deep-dive explainers on sleep science and method. New pieces added regularly.">
+<title>>Sleep Knowledge Articles | Restcalc</title>
+<meta name="description" content="class="sub">Deep-dive explainers on sleep science and method. New pieces added regularly.">
 <link rel="canonical" href="https://www.rest-calc.com/learn/index.html">
 <link rel="alternate" hreflang="en" href="https://www.rest-calc.com/learn/index.html">
-<link rel="alternate" hreflang="zh" href="https://www.rest-calc.com/learn/index.html?lang=zh">
+<link rel="alternate" hreflang="zh-Hans" href="https://www.rest-calc.com/zh/learn/index.html">
 <link rel="alternate" hreflang="x-default" href="https://www.rest-calc.com/learn/index.html">
-<link rel="stylesheet" href="../styles.css">
+<link rel="stylesheet" href="/styles.css">
 <style>
 .hub{max-width:820px;margin:0 auto;padding:40px 18px 64px}
 .hub h1{font-size:clamp(26px,4.4vw,36px);letter-spacing:-.5px;margin:8px 0 6px}
@@ -20,18 +20,15 @@
 .card p{color:var(--muted);font-size:14.5px;margin:0}
 .card .tag{display:inline-block;font-size:12px;font-weight:700;color:var(--accent);margin-bottom:6px;letter-spacing:.03em}
 .note{margin-top:26px;color:var(--muted);font-size:14px}
-.back-home{background:var(--surface);border:1px solid var(--border);color:var(--text);text-decoration:none;padding:6px 12px;border-radius:8px;font-weight:600;margin-right:6px}
-html[data-lang="zh"] .lang-en{display:none}
-html[data-lang="en"] .lang-zh{display:none}
-</style>
+.back-home{background:var(--surface);border:1px solid var(--border);color:var(--text);text-decoration:none;padding:6px 12px;border-radius:8px;font-weight:600;margin-right:6px}</style>
 </head>
 <body>
 <header class="site-header">
   <div class="wrap nav">
     <a class="logo" href="../index.html"><span class="moon">🌙</span><span>Rest</span>calc</a>
     <span class="nav-spacer"></span>
-    <a class="btn back-home" href="../index.html"><span class="lang-en">← Home</span><span class="lang-zh">← 主页</span></a>
-    <button class="btn lang" id="langBtn">中文</button>
+    <a class="btn back-home" href="../index.html"><span class="lang-en">← Home</span></a>
+    <span class="lang-foot" id="lang-switch" style="margin-top:0"></span>
   </div>
 </header>
 
@@ -58,27 +55,7 @@ html[data-lang="en"] .lang-zh{display:none}
     <p class="note">More articles coming soon — each one written to pair with a Restcalc tool.</p>
   </div>
 
-  <div class="lang-zh">
-    <h1>睡眠知识文章</h1>
-    <p class="sub">关于睡眠科学与方法的深度解读，持续更新。</p>
-
-    <a class="card" href="sleep-exercise.html">
-      <h3>哪种运动最助眠？一项 1348 人的研究给出了排名！</h3>
-      <p>2025 年 BMJ 子刊一项覆盖 22 项随机对照试验、1348 名失眠患者的荟萃分析：助眠效果最好的运动是瑜伽、太极、步行/慢跑这类正念运动——附机制解读与可直接执行的运动助眠处方。</p>
-    </a>
-
-    <a class="card" href="sleep-revolution.html">
-      <h3>《睡眠革命》：重新认识你的睡眠</h3>
-      <p>逐节拆解尼克·利特尔黑尔斯的《睡眠革命》——破除"必须睡满 8 小时"、以 90 分钟周期为单位的睡眠法、固定起床时间、睡眠类型、睡前/醒后程序、咖啡因与酒精、午睡，以及一份可立刻执行的行动清单。</p>
-    </a>
-
-    <a class="card" href="why-we-sleep.html?lang=zh">
-      <h3>《我们为什么要睡觉？》深度解读：马修·沃克 Why We Sleep 核心观点</h3>
-      <p>逐节拆解马修·沃克《我们为什么要睡觉？》——两套睡眠系统（昼夜节律与腺苷）、NREM/REM 睡眠结构、睡眠剥夺对大脑与身体的代价、梦的情感疗愈与创造力功能、现代生活三大睡眠阻碍，以及一份 12 条健康睡眠小贴士。</p>
-    </a>
-
-    <p class="note">更多文章即将发布——每篇都会与某个 Restcalc 工具搭配。</p>
-  </div>
+  
 </main>
 
 <footer class="site-footer">
@@ -89,23 +66,7 @@ html[data-lang="en"] .lang-zh{display:none}
   </div>
 </footer>
 
-<script>
-(function(){
-  var html=document.documentElement;
-  function getParam(){var m=location.search.match(/[?&]lang=(zh|en)/);return m?m[1]:null;}
-  function setLang(l){
-    html.setAttribute('data-lang',l);
-    html.lang=(l==='zh'?'zh-CN':'en');
-    var btn=document.getElementById('langBtn');
-    if(btn) btn.textContent=(l==='zh'?'EN':'中文');
-    try{var u=new URL(location.href);u.searchParams.set('lang',l);history.replaceState(null,'',u);}catch(e){}
-  }
-  setLang(getParam()||'en');
-  var btn=document.getElementById('langBtn');
-  if(btn) btn.addEventListener('click',function(){
-    setLang(html.getAttribute('data-lang')==='zh'?'en':'zh');
-  });
-})();
-</script>
+
+<script src="/i18n.js"></script>
 </body>
 </html>
