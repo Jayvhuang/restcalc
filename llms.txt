@@ -1,6 +1,6 @@
 # Restcalc — Sleep Calculator & Bedtime Planner
 
-> Restcalc is a free, browser-based sleep calculator and bedtime planner. It helps users find the best time to go to bed or wake up by aligning with natural 90-minute sleep cycles. No signup, no backend, 100% client-side. Available in English (default) and 中文 (Chinese, via an in-page toggle).
+> Restcalc is a free, browser-based sleep calculator and bedtime planner. It helps users find the best time to go to bed or wake up by aligning with natural 90-minute sleep cycles. No signup, no backend, 100% client-side. Bilingual: English at / and 中文 at /zh/ — each language is a real, crawlable page.
 
 ## What is Restcalc?
 
@@ -29,6 +29,15 @@ Each tool is a standalone page with its own calculator, explanation, and FAQ.
 - [The Sleep Revolution (R90 Sleep Method)](https://www.rest-calc.com/learn/sleep-revolution.html): A long-form explainer of Nick Littlehales' R90 sleep-cycle method — fixed wake time, chronotypes, the 16–18°C bedroom, pre-sleep and post-sleep routines, and why sleep quality beats duration. With citations to the National Sleep Foundation and sleep-science sources.
 - [《我们为什么要睡觉？》深度解读 (Why We Sleep)](https://www.rest-calc.com/learn/why-we-sleep.html): 马修·沃克《Why We Sleep》逐节拆解——两套睡眠系统（昼夜节律与腺苷）、NREM/REM 睡眠结构、睡眠剥夺对大脑与身体的代价、梦的情感疗愈与创造力功能、现代生活三大睡眠阻碍，以及 12 条健康睡眠小贴士。
 - [All articles](https://www.rest-calc.com/learn/index.html): The Restcalc article hub.
+- [How Caffeine Affects Your Sleep (and When to Stop)](https://www.rest-calc.com/learn/caffeine-and-sleep.html) · 中文版 [咖啡因如何影响你的睡眠（以及何时该停）](https://www.rest-calc.com/zh/learn/caffeine-and-sleep.html)
+- [What Time Should I Go to Bed? The 90-Minute Sleep Cycle Method](https://www.rest-calc.com/learn/bedtime-calculator.html) · 中文版 [该几点睡？90 分钟睡眠周期法](https://www.rest-calc.com/zh/learn/bedtime-calculator.html)
+- [What Time Should I Wake Up? Find Your Best Wake Time](https://www.rest-calc.com/learn/wake-up-calculator.html) · 中文版 [该几点醒？找到你的最佳起床时间](https://www.rest-calc.com/zh/learn/wake-up-calculator.html)
+- [How Many Hours of Sleep Do You Really Need?](https://www.rest-calc.com/learn/sleep-duration-calculator.html) · 中文版 [你真正需要睡多久？](https://www.rest-calc.com/zh/learn/sleep-duration-calculator.html)
+- [The Science of Napping: When, How Long, and Why It Works](https://www.rest-calc.com/learn/nap-calculator.html) · 中文版 [午睡的科学：何时、多久、为何有效](https://www.rest-calc.com/zh/learn/nap-calculator.html)
+- [Sleep Windows: Fit Full Sleep Cycles Into Your Schedule](https://www.rest-calc.com/learn/sleep-window-calculator.html) · 中文版 [睡眠窗口：把完整睡眠周期塞进你的日程](https://www.rest-calc.com/zh/learn/sleep-window-calculator.html)
+- [How to Track Your Sleep: A Simple 90-Minute-Cycle Log](https://www.rest-calc.com/learn/sleep-log.html) · 中文版 [如何记录睡眠：一个简单的 90 分钟周期日志](https://www.rest-calc.com/zh/learn/sleep-log.html)
+- [A Full-Day Sleep Routine Checklist](https://www.rest-calc.com/learn/sleep-routine-checklist.html) · 中文版 [一份覆盖全天的睡眠引导清单](https://www.rest-calc.com/zh/learn/sleep-routine-checklist.html)
+- [Breathing Exercises for Sleep: 4-6, 4-7-8, and Box Breathing](https://www.rest-calc.com/learn/breathing-for-sleep.html) · 中文版 [助眠呼吸练习：4-6、4-7-8 与方块呼吸](https://www.rest-calc.com/zh/learn/breathing-for-sleep.html)
 
 ## How Sleep Cycles Work
 
@@ -65,8 +74,8 @@ It may be timing, not duration. Waking mid-cycle can leave you groggy even after
 
 ## Languages
 
-- English (default, crawlable static content): https://www.rest-calc.com/
-- 中文 (Chinese): available via an in-page language toggle on every page. Note: the Chinese text is rendered client-side, so the English version is the primary crawlable content for search engines and AI crawlers.
+- English: https://www.rest-calc.com/ (crawlable static pages)
+- 中文 (Chinese): https://www.rest-calc.com/zh/ and every /zh/... page (crawlable static pages). English ↔ 中文 links live in the top-right switcher on every page.
 
 ## Monetization & Affiliate Disclosure
 
@@ -75,6 +84,6 @@ Restcalc participates in the Amazon Associates program. As an affiliate, the sit
 ## Technical Notes
 
 - Static site, no build step, no external runtime dependencies.
-- Nine independent tool pages plus a homepage; all calculations run client-side in JavaScript, and no user sleep data is uploaded.
+- Ten independent tool pages plus a homepage; all calculations run client-side in JavaScript, and no user sleep data is uploaded.
 - Structured data (JSON-LD): WebSite + ItemList on the homepage; WebPage + FAQPage on each tool page.
-- Multilingual via an in-page toggle (English default, 中文 available).
+- Bilingual via URL paths — English at /, Chinese at /zh/ (each language is a real crawlable page).
