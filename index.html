@@ -19,7 +19,7 @@
 <meta name="twitter:title" content="Restcalc — Sleep Calculator & Bedtime Planner">
 <meta name="twitter:description" content="Plan your sleep around natural 90-minute cycles and wake up refreshed.">
 <link rel="alternate" hreflang="en" href="https://www.rest-calc.com/">
-<link rel="alternate" hreflang="zh" href="https://www.rest-calc.com/?lang=zh">
+<link rel="alternate" hreflang="zh-Hans" href="https://www.rest-calc.com/zh/">
 <link rel="alternate" hreflang="x-default" href="https://www.rest-calc.com/">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌙</text></svg>">
 <script type="application/ld+json">
@@ -286,7 +286,7 @@ a{color:inherit;text-decoration:none}
     </nav>
     <span class="nav-spacer"></span>
     <button class="btn icon" id="themeBtn" title="Toggle theme">🌗</button>
-    <button class="btn lang" id="langBtn">中文</button>
+    <span class="lang-foot" id="lang-switch" style="margin-top:0"></span>
   </div>
 </header>
 
@@ -621,10 +621,7 @@ a{color:inherit;text-decoration:none}
     <div class="col">
       <h5>🌙 Restcalc</h5>
       <p style="color:var(--muted);font-size:13.5px;max-width:260px" data-i18n="foot.tag">A free sleep calculator and bedtime planner. Built for better mornings.</p>
-      <div class="lang-foot">
-        <button id="langEn">EN</button>
-        <button id="langZh">中文</button>
-      </div>
+      
     </div>
     <div class="col">
       <h5 data-i18n="foot.tools">Tools</h5>
@@ -1043,8 +1040,7 @@ const AGES={
 };
 // Wake-state colors, ordered best(0) -> worst(4). 5 levels now.
 const STATE_COLORS=['#16a34a','#22b07d','#eab308','#f97316','#ef4444'];
-let lang = (new URLSearchParams(location.search).get('lang')==='zh') ? 'zh'
-        : (localStorage.getItem('restcalc-lang')||'en');
+let lang='en';
 
 /* ============ helpers ============ */
 function toMin(t){const[h,m]=t.split(':').map(Number);return h*60+m;}
@@ -1060,12 +1056,7 @@ function applyStatic(){
     const parts=key.split('.');
     let v=val; parts.forEach(p=>v=v&&v[p]);
     if(v!==undefined) el.innerHTML=v;
-  });
-  document.getElementById('langBtn').textContent = T[lang].langName;
-  // footer lang buttons
-  document.getElementById('langEn').classList.toggle('active',lang==='en');
-  document.getElementById('langZh').classList.toggle('active',lang==='zh');
-  // tabs labels live in data-i18n spans already handled
+  });// footer lang buttons// tabs labels live in data-i18n spans already handled
 }
 
 /* ============ dynamic lists ============ */
@@ -1474,11 +1465,6 @@ function setLang(l){
   ['bedtime','wake','duration','nap','window','caffeine','breathing'].forEach(k=>window['calc'+k.charAt(0).toUpperCase()+k.slice(1)]());
   buildLogRows(); renderLog();
 }
-function bindLang(){
-  document.getElementById('langBtn').addEventListener('click',()=>setLang(lang==='en'?'zh':'en'));
-  document.getElementById('langEn').addEventListener('click',()=>setLang('en'));
-  document.getElementById('langZh').addEventListener('click',()=>setLang('zh'));
-}
 function bindTheme(){
   const saved=localStorage.getItem('restcalc-theme');
   if(saved)document.documentElement.setAttribute('data-theme',saved);
@@ -1634,7 +1620,7 @@ function clLoad(){try{return JSON.parse(localStorage.getItem(CL_KEY))||{};}catch
 function clSave(o){localStorage.setItem(CL_KEY,JSON.stringify(o));}
 function clDeep(it){
   if(!it.deep)return '';
-  return '<a class="ideep" href="'+it.deep.href+(lang==='zh'?'?lang=zh':'')+'">'+T[lang].tools[it.deep.tool].name+' ↗</a>';
+  return '<a class="ideep" href="'+it.deep.href+'">'+T[lang].tools[it.deep.tool].name+' ↗</a>';
 }
 function clPhaseChecked(ph){
   const s=clLoad(); let c=0; ph.items.forEach(it=>{if(s[it.id])c++;}); return c;
@@ -1760,8 +1746,7 @@ function buildToolNav(){
 function init(){
   document.getElementById('year').textContent=new Date().getFullYear();
   applyStatic();
-  renderScience();renderTips();renderFAQ();renderAffiliate();
-  bindLang();bindTheme();setupTabs();
+  renderScience();renderTips();renderFAQ();renderAffiliate();bindTheme();setupTabs();
   try{ makeStars(); }catch(e){ console.error('stars',e); }
   try{ renderChecklist(); }catch(e){ console.error('checklist',e); }
   try{ updateChecklistNow(); }catch(e){}
@@ -1787,5 +1772,6 @@ function init(){
 }
 document.addEventListener('DOMContentLoaded',init);
 </script>
+<script src="/i18n.js"></script>
 </body>
 </html>
