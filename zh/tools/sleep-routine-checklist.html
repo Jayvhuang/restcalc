@@ -119,8 +119,9 @@
 
       <div id="checklist"></div>
 
-      <div style="display:flex;gap:10px;margin-top:16px;">
+      <div style="display:flex;gap:10px;margin-top:16px;flex-wrap:wrap;">
         <button class="btn-ghost" id="resetBtn" data-i18n="reset">重置清单</button>
+        <button class="btn-ghost" id="copyBtn" data-i18n="copyList">📋 复制清单</button>
       </div>
     </div>
   </section>
@@ -128,13 +129,13 @@
   <section class="section wrap">
     <div class="prose bedwrap">
       <h2 data-i18n="proseH1">为什么“全天计划”胜过“只在睡前准备”</h2>
-      <p data-i18n="proseP1">大多数睡眠建议只说到“关掉手机”。但决定你睡得好不好的事，几小时前就定下了——下午 4 点的咖啡、迟来的晚餐、刺眼的屏幕、过热的卧室。睡眠卫生是一种<strong>全天</strong>习惯，不是最后一刻的开关。这份清单遵循 CDC、Mayo Clinic、NHS、Sleep Foundation 等机构的共识指引。</strong> habit, not a last-minute switch. This checklist follows the consensus guidance from bodies like the CDC, Mayo Clinic, the NHS, and the Sleep Foundation.</p>
+      <p data-i18n="proseP1">大多数睡眠建议只说到“关掉手机”。但决定你睡得好不好的事，几小时前就定下了——下午 4 点的咖啡、迟来的晚餐、刺眼的屏幕、过热的卧室。睡眠卫生是一种<strong>全天</strong>习惯，不是最后一刻的开关。这份清单遵循 CDC、Mayo Clinic、NHS、Sleep Foundation 等机构的共识指引。</p>
       <h3 data-i18n="proseH3">证据指向什么</h3>
       <ul>
-        <li data-i18n="tip1"><strong>咖啡因很持久。</strong>半衰期约 5–6 小时，下午的一杯咖啡夜里仍可能干扰睡眠。早些时候就截止。</strong> Its half-life is about 5–6 hours, so an afternoon coffee can still block sleep at night. Cut it off in the early afternoon.</li>
-        <li data-i18n="tip2"><strong>酒精不是睡眠。</strong>它让人犯困，却会破坏睡眠结构，并因夜尿导致觉醒。</strong> It makes you drowsy but fragments sleep architecture and causes night-time awakenings to use the bathroom.</li>
-        <li data-i18n="tip3"><strong>光线设定时钟。</strong>早晨与白天的光照锚定你的生物钟；睡前最后一小时调暗、换暖光，助褪黑素上升。</strong> Morning and daytime light anchors your body clock; dim, warm light in the last hour before bed helps melatonin rise.</li>
-        <li data-i18n="tip4"><strong>凉、暗、静。</strong>约 18–21°C、低光照、低噪音的卧室，更利深层睡眠。</strong> A bedroom around 18–21°C, with low light and low noise, supports deeper sleep.</li>
+        <li data-i18n="tip1"><strong>咖啡因很持久。</strong>半衰期约 5–6 小时，下午的一杯咖啡夜里仍可能干扰睡眠。早些时候就截止。</li>
+        <li data-i18n="tip2"><strong>酒精不是睡眠。</strong>它让人犯困，却会破坏睡眠结构，并因夜尿导致觉醒。</li>
+        <li data-i18n="tip3"><strong>光线设定时钟。</strong>早晨与白天的光照锚定你的生物钟；睡前最后一小时调暗、换暖光，助褪黑素上升。</li>
+        <li data-i18n="tip4"><strong>凉、暗、静。</strong>约 18–21°C、低光照、低噪音的卧室，更利深层睡眠。</li>
       </ul>
       <p class="hint" data-i18n="proseNote">本页仅为科普，非医疗建议。若有持续睡眠问题，请咨询医疗专业人士。</p>
     </div>
@@ -392,6 +393,9 @@ const T = {
     sub:"好睡眠是一整天慢慢铺出来的。这份清单从你早晨起床、下午戒咖啡因，一路排到熄灯就寝——每一步都写明原因，并按需链接到对应计算器。边做边勾即可。",
     bedLabel:"我的就寝时间是",
     reset:"重置清单",
+    copyList:"📋 复制清单",
+    copied:"已复制 ✓",
+    copyBed:"我的就寝时间：",
     selectAll:"全选",
     clearAll:"全不选",
     tooEarly:"还没到——距就寝超过 8 小时。先放松，准备稍后开始。",
@@ -539,6 +543,35 @@ function updateProgress(){
   else el.textContent=done+' / '+ids.length;
 }
 
+/* ---------- copy checklist as Markdown ---------- */
+function buildChecklistText(){
+  const bed=document.getElementById('bedInput').value||'23:00';
+  let out='# '+T[lang].h1+'\n'+T[lang].copyBed+bed+'\n\n';
+  PHASES.forEach(function(ph){
+    out+='## '+ph.icon+' '+ph.title[lang]+'\n';
+    ph.items.forEach(function(it){
+      out+='- [ ] '+it.icon+' **'+it.t[lang]+'** — '+it[lang]+'\n';
+    });
+    out+='\n';
+  });
+  return out.trim();
+}
+function fallbackCopy(txt){
+  const ta=document.createElement('textarea');
+  ta.value=txt; ta.style.position='fixed'; ta.style.opacity='0';
+  document.body.appendChild(ta); ta.select();
+  try{document.execCommand('copy');}catch(e){}
+  document.body.removeChild(ta);
+}
+function copyChecklist(){
+  const txt=buildChecklistText();
+  const btn=document.getElementById('copyBtn');
+  const done=function(){ if(btn){ btn.innerHTML=T[lang].copied; setTimeout(function(){ btn.innerHTML=T[lang].copyList; },1800); } };
+  if(navigator.clipboard&&navigator.clipboard.writeText){
+    navigator.clipboard.writeText(txt).then(done).catch(function(){ fallbackCopy(txt); done(); });
+  } else { fallbackCopy(txt); done(); }
+}
+
 /* ---------- live current-phase badge (静中有动) ---------- */
 function minutesOf(str){const p=str.split(':');return (+p[0])*60+(+p[1]);}
 function updateNow(){
@@ -625,6 +658,8 @@ function init(){
   document.getElementById('resetBtn').addEventListener('click',function(){
     localStorage.removeItem(CHECK_KEY); renderChecklist();
   });
+  const cBtn=document.getElementById('copyBtn');
+  if(cBtn)cBtn.addEventListener('click',copyChecklist);
   const clNow=document.getElementById('nowBadge'); if(clNow)clNow.addEventListener('click',function(){const a=document.querySelector('.phase.active'); if(a)a.scrollIntoView({behavior:'smooth',block:'start'});});
   const y=document.getElementById('year'); if(y)y.textContent=new Date().getFullYear();
 }
