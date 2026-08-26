@@ -254,7 +254,7 @@ a{color:inherit;text-decoration:none}
 .sum-card .lbl{font-size:12.5px;color:var(--muted);margin-top:4px}
 @media(max-width:560px){.log-head,.log-row{grid-template-columns:1fr 1fr}.log-summary{grid-template-columns:1fr 1fr}}
 </style>
-<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="/styles.css">
 
 <!-- Google AdSense — Auto Ads (live, matches deployed site) -->
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9666933731991095" crossorigin="anonymous"></script>
@@ -1450,21 +1450,6 @@ function setupTabs(){
 }
 
 /* ============ language switch ============ */
-function setLang(l){
-  lang=l;
-  localStorage.setItem('restcalc-lang',l);
-  const u=new URLSearchParams(location.search);
-  if(l==='zh')u.set('lang','zh'); else u.delete('lang');
-  const qs=u.toString();
-  history.replaceState(null,'',location.pathname+(qs?'?'+qs:'')+location.hash);
-  applyStatic();
-  renderScience();renderTips();renderFAQ();renderAffiliate();
-  buildToolNav();
-  renderChecklist();
-  // recompute current panel
-  ['bedtime','wake','duration','nap','window','caffeine','breathing'].forEach(k=>window['calc'+k.charAt(0).toUpperCase()+k.slice(1)]());
-  buildLogRows(); renderLog();
-}
 function bindTheme(){
   const saved=localStorage.getItem('restcalc-theme');
   if(saved)document.documentElement.setAttribute('data-theme',saved);
