@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>睡前饮食计算器 — 算出最晚该在几点前吃完 | Restcalc</title>
+<meta name="description" content="免费睡前饮食计算器。输入就寝时间与进食类型（普通晚餐、油腻大餐、少量加餐，或反流/怀孕），算出最晚该在几点前吃完。">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<link rel="canonical" href="https://www.rest-calc.com/zh/tools/meal-cutoff-calculator.html">
+<meta property="og:title" content="睡前饮食计算器 — Restcalc">
+<meta property="og:description" content="输入就寝时间与进食类型，算出睡前最晚该在几点前吃完。">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://www.rest-calc.com/zh/tools/meal-cutoff-calculator.html">
+<meta property="og:image" content="https://www.rest-calc.com/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="睡前饮食计算器 — Restcalc">
+<meta name="twitter:description" content="算出睡前最晚该在几点前吃完，依据是你的进食类型。">
+<link rel="alternate" hreflang="en" href="https://www.rest-calc.com/tools/meal-cutoff-calculator.html">
+<link rel="alternate" hreflang="zh-Hans" href="https://www.rest-calc.com/zh/tools/meal-cutoff-calculator.html">
+<link rel="alternate" hreflang="x-default" href="https://www.rest-calc.com/tools/meal-cutoff-calculator.html">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌙</text></svg>">
+<link rel="stylesheet" href="/styles.css">
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"WebPage",
+  "name":"睡前饮食计算器 — Restcalc",
+  "description":"免费计算器，依据进食类型算出睡前最晚该在几点前吃完。",
+  "url":"https://www.rest-calc.com/zh/tools/meal-cutoff-calculator.html",
+  "inLanguage":"zh-Hans",
+  "isPartOf":{"@type":"WebSite","name":"Restcalc","url":"https://www.rest-calc.com"}
+}
+</script>
+<script type="application/ld+json" id="faq-jsonld"></script>
+<!-- Google AdSense — Auto Ads (live, matches deployed site) -->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9666933731991095" crossorigin="anonymous"></script>
+<!-- Google Search Console verification (correct account linked to AdSense) -->
+<meta name="google-site-verification" content="tepUg_Xy4wyDKFBE_BpTGInZXeRqBPmHvfgQdINOVP4" />
+<!-- Google Analytics 4 -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-HQFQQLZNCS"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-HQFQQLZNCS');
+</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="wrap nav">
+    <a class="logo" href="/index.html"><span class="moon">🌙</span><span>Rest</span>calc</a>
+        <nav class="nav-links">
+      <a href="/index.html">首页</a>
+      <div class="has-dropdown">
+        <a href="/index.html#tools">全部工具</a>
+        <div class="dropdown" id="toolDropdown"></div>
+      </div>
+    </nav>
+    <span class="nav-spacer"></span>
+    <span class="lang-foot" id="lang-switch"></span>
+    <button class="btn icon" id="themeBtn" title="切换主题">🌗</button>
+  </div>
+</header>
+
+<main>
+  <section class="hero wrap">
+    <div class="moon-big">🍽️</div>
+    <h1>睡前饮食计算器</h1>
+    <p class="sub">算出最晚该在几点前吃完——让消化完成，身体准备好入睡。</p>
+  </section>
+
+  <section class="section wrap" id="tool">
+    <div class="card">
+      <h2>睡前饮食计算器</h2>
+      <p class="desc">输入你计划的就寝时间，并选择你吃了什么。我们往回推算你最后一口的安全时刻。</p>
+      <div class="field">
+        <label for="meal-bed">我计划在以下时间入睡</label>
+        <input type="time" id="meal-bed" value="23:00">
+      </div>
+      <div class="field">
+        <label for="meal-type">你吃了什么？</label>
+        <select id="meal-type"></select>
+      </div>
+      <div class="results" id="meal-results"></div>
+      <div class="res-note" id="meal-note"></div>
+      <div class="res-note">以上时间仅为参考，并非医疗建议。个人消化情况存在差异。</div>
+    </div>
+  </section>
+
+  <section class="section wrap">
+    <div class="prose">
+      <h2>睡前饮食计算器是如何运作的</h2>
+      <p><strong>睡前饮食计算器</strong>会取你计划的入睡时间，按你吃了什么、吃了多少倒推一段缓冲时长。食物在胃里约需 2–4 小时基本排空。吃得太晚或太饱，消化持续活跃，会推高核心体温、并可能引起反流——两者都会推迟入睡。</p>
+      <p>计算器把"别吃太晚"这条模糊的建议，变成一个具体的钟点。选择进食类型，它就会显示你最晚该在几点前吃完，以及睡前建议的进食区间。</p>
+      <h2>四类进食情况</h2>
+      <ul>
+        <li><strong>普通晚餐：</strong>最迟睡前 2–3 小时吃完。</li>
+        <li><strong>较油腻、肉多、量大的晚餐：</strong>最迟睡前 3–4 小时吃完。</li>
+        <li><strong>少量加餐（非高脂高糖）：</strong>最迟睡前 1–2 小时吃完。</li>
+        <li><strong>有胃酸反流、烧心、高血糖或怀孕：</strong>最迟睡前 3–4 小时吃完。</li>
+      </ul>
+      <h3>几个小建议</h3>
+      <ul>
+        <li>晚餐尽量早一点；对多数人来说，预留 3 小时缓冲较合适。</li>
+        <li>若深夜饿了，选少量、低脂、低糖的加餐，而不要来一顿正餐。</li>
+        <li>咖啡因与酒精同样干扰睡眠——可参考下方的其他计算器。</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="section wrap" id="why">
+    <div class="prose">
+      <h2>为什么睡前饮食要控时控类</h2>
+
+      <h3>原理 1：消化系统需要时间，躺下会增加反流风险</h3>
+      <p>吃完饭后，胃需要时间排空。一般混合性正餐，尤其含脂肪和蛋白质较多的晚餐，胃排空可能需要数小时。刚吃完就躺下，胃内压力较高，食物和胃酸更容易向上反流，引起：烧心；胸口灼热；反酸；咳嗽；喉咙不适；夜间醒来。</p>
+
+      <h3>原理 2：夜间代谢能力下降，晚吃更容易造成血糖波动</h3>
+      <p>人的代谢并不是一天 24 小时都一样。受昼夜节律影响，晚上和夜间通常：胰岛素敏感性下降；葡萄糖耐受能力下降；脂质代谢能力变差；能量消耗降低。所以同样一顿饭，晚上很晚吃，可能比白天吃造成更高的餐后血糖和更差的脂质处理。内分泌研究显示，晚餐过晚会影响葡萄糖耐受和脂肪代谢。</p>
+
+      <h3>原理 3：睡前大餐会影响睡眠结构</h3>
+      <p>睡前进食，尤其是大餐，会让身体在该休息时仍处于消化和代谢活跃状态，可能导致：入睡变慢；夜间醒来增加；睡眠效率下降；深睡眠减少；胃胀或反流导致睡眠中断。一些观察性研究发现，睡前 1 小时内进食或饮水与睡眠效率下降、夜间觉醒增加有关。不过研究结果并非完全一致，因为食物种类、进食量、个体代谢和作息差异都会影响结果。</p>
+
+      <h3>原理 4：食物种类比「吃不吃」也很重要</h3>
+      <p>并不是所有睡前食物影响都一样。</p>
+      <p><strong>更容易影响睡眠和代谢的食物：</strong>油炸食物；烧烤；火锅；奶油甜点；高糖饮料；酒精；咖啡、浓茶、能量饮料；辛辣食物；大量肉类；大量汤水。</p>
+      <p><strong>相对更适合少量加餐的食物：</strong>温牛奶；无糖酸奶；少量全麦面包；燕麦；鸡蛋；豆腐/豆浆；少量坚果；香蕉。</p>
+      <p>如果是「睡前很饿导致睡不着」，少量清淡加餐可能比硬扛更好。但关键是：小份、低脂、低糖、不过量。</p>
+    </div>
+  </section>
+
+  <section class="section wrap" id="faq">
+    <div class="section-head">
+      <h2>关于睡前饮食计算器的常见问题</h2>
+      <p>自信安排你最后一餐所需的一切。</p>
+    </div>
+    <div class="faq" id="faq-list"></div>
+  </section>
+
+  <section class="section wrap">
+    <div class="section-head"><h2>探索更多睡眠工具</h2></div>
+    <div class="tips-grid">
+      <a class="tip" href="/tools/bedtime-calculator.html"><div class="ico">🌙</div><h4>就寝时间计算器</h4><p>输入你需要起床的时间，我们按 90 分钟睡眠周期倒推。</p></a>
+      <a class="tip" href="/tools/wake-up-calculator.html"><div class="ico">⏰</div><h4>醒来时间计算器</h4><p>输入你计划就寝的时间，我们叠加睡眠周期找出最佳起床时刻。</p></a>
+      <a class="tip" href="/tools/sleep-duration-calculator.html"><div class="ico">📊</div><h4>睡眠时长计算器</h4><p>输入就寝与起床时间，查看总睡眠、完成的周期数以及质量评级。</p></a>
+      <a class="tip" href="/tools/nap-calculator.html"><div class="ico">💤</div><h4>午睡计算器</h4><p>输入当前时间，查看提神小憩或完整周期午睡的最佳窗口。</p></a>
+      <a class="tip" href="/tools/sleep-window-calculator.html"><div class="ico">🪟</div><h4>睡眠时段助手</h4><p>选择你空闲可睡的时间范围，我们会找出能凑满 90 分钟完整周期的最佳就寝时间。</p></a>
+      <a class="tip" href="/tools/sleep-log.html"><div class="ico">📈</div><h4>睡眠记录与趋势</h4><p>记录几个晚上，把你的睡眠变成可视化趋势。</p></a>
+      <a class="tip" href="/tools/caffeine-cutoff-calculator.html"><div class="ico">🥤</div><h4>咖啡因截止计算器</h4><p>输入就寝时间与敏感度，找出你最后一杯的安全时刻。</p></a>
+      <a class="tip" href="/tools/breathing-timer.html"><div class="ico">🫁</div><h4>睡前放松呼吸计时器</h4><p>跟着舒缓圆圈，用 4-6、4-7-8 或方块呼吸在睡前放松。</p></a>
+      <a class="tip" href="/tools/sleep-routine-checklist.html"><div class="ico">📋</div><h4>睡眠引导清单</h4><p>为更好睡眠规划一整天——从下午戒咖啡因到熄灯就寝。</p></a>
+      </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap foot-grid">
+    <div class="col">
+      <h5>🌙 Restcalc</h5>
+      <p style="color:var(--muted);font-size:13.5px;max-width:260px">一款免费的睡眠计算器与就寝规划工具。为更清爽的早晨而打造。</p>
+    </div>
+    <div class="col">
+      <h5>工具</h5>
+      <a href="/tools/meal-cutoff-calculator.html">睡前饮食计算器</a>
+      <a href="/tools/caffeine-cutoff-calculator.html">咖啡因截止计算器</a>
+      <a href="/tools/bedtime-calculator.html">就寝时间计算器</a>
+      <a href="/tools/wake-up-calculator.html">醒来时间计算器</a>
+      <a href="/tools/sleep-duration-calculator.html">睡眠时长计算器</a>
+      <a href="/tools/nap-calculator.html">午睡计算器</a>
+      <a href="/tools/sleep-window-calculator.html">睡眠时段助手</a>
+      <a href="/tools/sleep-log.html">睡眠记录与趋势</a>
+      <a href="/tools/breathing-timer.html">睡前放松呼吸计时器</a>
+      <a href="/tools/sleep-routine-checklist.html">睡眠引导清单</a>
+    </div>
+    <div class="col">
+      <h5>了解更多</h5>
+      <a href="/index.html#science">运作原理</a>
+      <a href="/index.html#tips">建议</a>
+      <a href="/index.html#faq">常见问题</a>
+      <a href="/privacy.html">隐私</a>
+    </div>
+    <div class="col">
+      <h5>数据来源</h5>
+      <a href="https://www.sleepfoundation.org/" target="_blank" rel="noopener">National Sleep Foundation</a>
+      <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5713303/" target="_blank" rel="noopener">Gastric emptying & sleep (PMC)</a>
+      <a href="https://www.sleepfoundation.org/sleep-hygiene" target="_blank" rel="noopener">Sleep Hygiene — Sleep Foundation</a>
+    </div>
+  </div>
+  <div class="wrap disclaimer">
+    <span>Restcalc 仅提供一般性睡眠信息，用作教育用途，不能替代医疗建议。如果你有长期睡眠问题，请咨询医疗专业人士。</span>
+    <br>© <span id="year"></span> Restcalc. 保留所有权利。
+  </div>
+</footer>
+
+<script>
+const T = {
+  en:{
+    title:"Pre-Sleep Meal Calculator — Latest Time to Finish Eating | Restcalc",
+    metaDesc:"Free pre-sleep meal calculator. Enter your bedtime and what you ate (normal dinner, heavy meal, light snack, or reflux/pregnancy) to find the latest time you should finish eating.",
+    nav:{home:"Home",tools:"All tools",science:"How it works",tips:"Tips",faq:"FAQ",privacy:"Privacy"},
+    h1:"Pre-Sleep Meal Calculator",
+    sub:"Find the latest time to finish eating — so digestion is done and your body is ready to sleep.",
+    toolHeading:"Pre-Sleep Meal Calculator",
+    toolDesc:"Enter your planned bedtime and pick what you ate. We work back to your last safe bite.",
+    bedLabel:"I plan to sleep at",
+    typeLabel:"What did you eat?",
+    resNote:"Times are a guideline, not medical advice. Individual digestion varies.",
+    mealLatest:"finish by",
+    mealWindow:"Best eating window: {a} – {b} (finish by {b} at the latest)",
+    prev:"previous day",
+    proseH1:"How the pre-sleep meal calculator works",
+    proseP1:"A <strong>pre-sleep meal calculator</strong> takes the time you plan to sleep and counts backward by a buffer that depends on what and how much you ate. The stomach needs roughly 2–4 hours to empty a meal. Eating too late or too heavily keeps digestion active, which raises core temperature and can trigger reflux — both push back the moment you fall asleep.",
+    proseP2:"The calculator turns the vague rule \"don't eat late\" into one concrete clock time. Pick your meal type and it shows the latest time you should finish eating, plus a recommended eating window before bed.",
+    proseH2:"The four meal types",
+    rule:{normal:"<strong>Normal dinner:</strong> finish 2–3 hours before bed.",
+      heavy:"<strong>Heavy, oily, or meat-heavy dinner:</strong> finish 3–4 hours before bed.",
+      snack:"<strong>Light snack (low-fat, low-sugar):</strong> finish 1–2 hours before bed.",
+      reflux:"<strong>Reflux, heartburn, high blood sugar, or pregnancy:</strong> finish 3–4 hours before bed."},
+    proseH3:"A few quick tips",
+    tip1:"Keep dinner on the earlier side; a 3-hour buffer suits most people.",
+    tip2:"If you get hungry late, choose a light, low-fat, low-sugar snack rather than a full meal.",
+    tip3:"Caffeine and alcohol also disrupt sleep — see the related calculators below.",
+    sciH1:"Why late eating hurts sleep",
+    sci1h:"Principle 1: Digestion takes time — lying down raises reflux risk",
+    sci1:"After a meal, the stomach needs time to empty. A mixed meal — especially a dinner higher in fat and protein — can take several hours to clear. Lying down soon after eating raises stomach pressure, making food and acid more likely to flow back up, causing heartburn, chest burning, acid reflux, coughing, throat irritation, and nighttime waking.",
+    sci2h:"Principle 2: Nighttime metabolism drops — late meals spike blood sugar",
+    sci2:"Your metabolism is not the same around the clock. Driven by the circadian rhythm, evenings and nights usually bring lower insulin sensitivity, reduced glucose tolerance, poorer fat metabolism, and less energy expenditure. So the same meal eaten very late at night can produce a higher post-meal blood sugar and worse fat processing than the same meal eaten earlier in the day. Endocrinology research shows that eating dinner too late affects glucose tolerance and fat metabolism.",
+    sci3h:"Principle 3: A big pre-sleep meal disrupts sleep structure",
+    sci3:"Eating before bed — especially a large meal — keeps the body in an active digesting and metabolizing state when it should be resting. This can lead to slower sleep onset, more nighttime awakenings, lower sleep efficiency, less deep sleep, and interruptions from bloating or reflux. Some observational studies link eating or drinking within 1 hour of bed with lower sleep efficiency and more awakenings. Results are not perfectly consistent, though, because food type, portion size, individual metabolism, and schedule all play a role.",
+    sci4h:"Principle 4: Food type matters as much as timing",
+    sci4:"Not all pre-sleep foods affect sleep the same way.",
+    sci4bad:"<strong>Harder on sleep and metabolism:</strong> fried food; barbecue; hotpot; creamy desserts; sugary drinks; alcohol; coffee, strong tea, and energy drinks; spicy food; large meat portions; large amounts of soup or liquid.",
+    sci4good:"<strong>Better choices for a light snack:</strong> warm milk; unsweetened yogurt; a little whole-wheat bread; oats; egg; tofu or soy milk; a few nuts; banana.",
+    sci4tip:"If hunger is what's keeping you awake, a small, light snack is often better than toughing it out. The key: small portion, low-fat, low-sugar, not excessive.",
+    faqHeading:"Frequently asked questions about the Pre-Sleep Meal Calculator",
+    faqSub:"Everything you need to time your last meal confidently.",
+    faq:[
+      {q:"How does the pre-sleep meal calculator work?",a:"It takes your planned bedtime and subtracts a buffer based on your meal type — normal dinner 2–3 hours, heavy/oily dinner 3–4 hours, light low-fat snack 1–2 hours, and reflux/heartburn/high-blood-sugar/pregnancy 3–4 hours. The result is the latest clock time to finish eating."},
+      {q:"Why 2–4 hours before bed?",a:"The stomach takes roughly 2–4 hours to empty a meal. A late or heavy meal keeps digestion active, raises core temperature, and can cause reflux — all of which delay sleep onset."},
+      {q:"What if I just want a late snack?",a:"A light, low-fat, low-sugar snack is fine 1–2 hours before bed. Avoid a full meal, fried food, or anything sugary close to sleep."},
+      {q:"I have acid reflux — how early should I eat?",a:"Aim to finish 3–4 hours before bed. Lying down soon after eating makes reflux worse, so give your stomach time to empty."},
+      {q:"Is this medical advice?",a:"No. Restcalc is an educational tool based on published sleep research. It does not diagnose or treat any condition. For ongoing sleep or digestive problems, consult a healthcare professional."},
+      {q:"Does what I eat matter, or just the timing?",a:"Both. Late timing is the bigger lever, but food type matters too. Fried, barbecued, or spicy food, creamy desserts, sugary drinks, alcohol, and caffeine all disturb sleep and metabolism. If you need a late bite, keep it small and light — warm milk, unsweetened yogurt, a little whole-wheat bread, oats, egg, tofu, a few nuts, or a banana."}
+    ],
+    exploreHeading:"Explore more sleep tools",
+    exploreSub:"",
+    tools:{
+      meal:{name:"Pre-Sleep Meal Calculator",desc:"Enter your bedtime and what you ate to find the latest time to finish eating."},
+      caffeine:{name:"Caffeine Cutoff Calculator",desc:"Enter your bedtime and sensitivity to find your last safe caffeine time."},
+      bedtime:{name:"Bedtime Calculator",desc:"Enter the time you need to wake up. We count back in 90-minute sleep cycles."},
+      wake:{name:"Wake-up Calculator",desc:"Enter when you plan to go to bed. We add sleep cycles to find the best moments to wake up."},
+      duration:{name:"Sleep Duration Calculator",desc:"Enter your bedtime and wake time to see total sleep, completed cycles, and a quality rating."},
+      nap:{name:"Nap Calculator",desc:"Enter the current time to see the best window for a refreshing power nap or a full-cycle nap."},
+      window:{name:"Sleep Window Helper",desc:"Choose the time range you are free to sleep. We find the best bedtimes that complete full 90-minute cycles."},
+      log:{name:"Sleep Log & Trend",desc:"Log a few nights and see your sleep as a visual trend."},
+      checklist:{name:"Sleep Guidance Checklist",desc:"Plan your whole day for better sleep — from afternoon caffeine cutoff to lights-out."},
+      breathing:{name:"Bedtime Breathing Timer",desc:"Follow a calm circle through 4-6, 4-7-8, or box breathing to relax before bed."}
+    },
+    footTag:"A free sleep calculator and bedtime planner. Built for better mornings.",
+    footTools:"Tools", footLearn:"Learn", footSources:"Sources",
+    disc:"Restcalc provides general sleep information for educational purposes only and is not a substitute for medical advice. If you have chronic sleep problems, consult a healthcare professional."
+  },
+  zh:{
+    title:"睡前饮食计算器 — 算出最晚该在几点前吃完 | Restcalc",
+    metaDesc:"免费睡前饮食计算器。输入就寝时间与进食类型（普通晚餐、油腻大餐、少量加餐，或反流/怀孕），算出最晚该在几点前吃完。",
+    nav:{home:"首页",tools:"全部工具",science:"运作原理",tips:"建议",faq:"常见问题",privacy:"隐私"},
+    h1:"睡前饮食计算器",
+    sub:"算出最晚该在几点前吃完——让消化完成，身体准备好入睡。",
+    toolHeading:"睡前饮食计算器",
+    toolDesc:"输入你计划的就寝时间，并选择你吃了什么。我们往回推算你最后一口的安全时刻。",
+    bedLabel:"我计划在以下时间入睡",
+    typeLabel:"你吃了什么？",
+    resNote:"以上时间仅为参考，并非医疗建议。个人消化情况存在差异。",
+    mealLatest:"最迟吃完",
+    mealWindow:"建议进食区间：{a} – {b}（最迟 {b} 前吃完）",
+    prev:"前一天",
+    proseH1:"睡前饮食计算器是如何运作的",
+    proseP1:"<strong>睡前饮食计算器</strong>会取你计划的入睡时间，按你吃了什么、吃了多少倒推一段缓冲时长。食物在胃里约需 2–4 小时基本排空。吃得太晚或太饱，消化持续活跃，会推高核心体温、并可能引起反流——两者都会推迟入睡。",
+    proseP2:"计算器把“别吃太晚”这条模糊的建议，变成一个具体的钟点。选择进食类型，它就会显示你最晚该在几点前吃完，以及睡前建议的进食区间。",
+    proseH2:"四类进食情况",
+    rule:{normal:"<strong>普通晚餐：</strong>最迟睡前 2–3 小时吃完。",
+      heavy:"<strong>较油腻、肉多、量大的晚餐：</strong>最迟睡前 3–4 小时吃完。",
+      snack:"<strong>少量加餐（非高脂高糖）：</strong>最迟睡前 1–2 小时吃完。",
+      reflux:"<strong>有胃酸反流、烧心、高血糖或怀孕：</strong>最迟睡前 3–4 小时吃完。"},
+    proseH3:"几个小建议",
+    tip1:"晚餐尽量早一点；对多数人来说，预留 3 小时缓冲较合适。",
+    tip2:"若深夜饿了，选少量、低脂、低糖的加餐，而不要来一顿正餐。",
+    tip3:"咖啡因与酒精同样干扰睡眠——可参考下方的其他计算器。",
+    sciH1:"为什么睡前饮食要控时控类",
+    sci1h:"原理 1：消化系统需要时间，躺下会增加反流风险",
+    sci1:"吃完饭后，胃需要时间排空。一般混合性正餐，尤其含脂肪和蛋白质较多的晚餐，胃排空可能需要数小时。刚吃完就躺下，胃内压力较高，食物和胃酸更容易向上反流，引起：烧心；胸口灼热；反酸；咳嗽；喉咙不适；夜间醒来。",
+    sci2h:"原理 2：夜间代谢能力下降，晚吃更容易造成血糖波动",
+    sci2:"人的代谢并不是一天 24 小时都一样。受昼夜节律影响，晚上和夜间通常：胰岛素敏感性下降；葡萄糖耐受能力下降；脂质代谢能力变差；能量消耗降低。所以同样一顿饭，晚上很晚吃，可能比白天吃造成更高的餐后血糖和更差的脂质处理。内分泌研究显示，晚餐过晚会影响葡萄糖耐受和脂肪代谢。",
+    sci3h:"原理 3：睡前大餐会影响睡眠结构",
+    sci3:"睡前进食，尤其是大餐，会让身体在该休息时仍处于消化和代谢活跃状态，可能导致：入睡变慢；夜间醒来增加；睡眠效率下降；深睡眠减少；胃胀或反流导致睡眠中断。一些观察性研究发现，睡前 1 小时内进食或饮水与睡眠效率下降、夜间觉醒增加有关。不过研究结果并非完全一致，因为食物种类、进食量、个体代谢和作息差异都会影响结果。",
+    sci4h:"原理 4：食物种类比「吃不吃」也很重要",
+    sci4:"并不是所有睡前食物影响都一样。",
+    sci4bad:"<strong>更容易影响睡眠和代谢的食物：</strong>油炸食物；烧烤；火锅；奶油甜点；高糖饮料；酒精；咖啡、浓茶、能量饮料；辛辣食物；大量肉类；大量汤水。",
+    sci4good:"<strong>相对更适合少量加餐的食物：</strong>温牛奶；无糖酸奶；少量全麦面包；燕麦；鸡蛋；豆腐/豆浆；少量坚果；香蕉。",
+    sci4tip:"如果是「睡前很饿导致睡不着」，少量清淡加餐可能比硬扛更好。但关键是：小份、低脂、低糖、不过量。",
+    faqHeading:"关于睡前饮食计算器的常见问题",
+    faqSub:"自信安排你最后一餐所需的一切。",
+    faq:[
+      {q:"睡前饮食计算器是如何运作的？",a:"它取你计划的就寝时间，按进食类型减去一段缓冲：普通晚餐 2–3 小时、油腻大餐 3–4 小时、少量低脂加餐 1–2 小时、反流/烧心/高血糖/怀孕 3–4 小时。结果就是最晚该吃完的钟点。"},
+      {q:"为什么是睡前 2–4 小时？",a:"胃约需 2–4 小时排空一顿饭。太晚或太饱的进食会让消化持续活跃、推高核心体温并可能引起反流——都会推迟入睡。"},
+      {q:"如果我只想深夜吃点点心呢？",a:"少量、低脂、低糖的加餐，在睡前 1–2 小时吃完没问题。避免正餐、油炸食物或临近睡眠吃甜食。"},
+      {q:"我有胃酸反流，该多早吃完？",a:"目标是睡前 3–4 小时吃完。吃完不久就躺下会加重反流，所以给胃留出排空的时间。"},
+      {q:"这是医疗建议吗？",a:"不是。Restcalc 是基于已发表睡眠研究的教育类工具，不诊断也不治疗任何状况。若有持续的睡眠或消化问题，请咨询医疗专业人士。"},
+      {q:"吃什么重要，还是只是时间重要？",a:"两者都重要。吃得晚是更大的影响因素，但食物种类同样关键。油炸、烧烤或辛辣食物、奶油甜点、高糖饮料、酒精和咖啡因都会干扰睡眠与代谢。如果深夜需要进食，保持少量清淡——温牛奶、无糖酸奶、少量全麦面包、燕麦、鸡蛋、豆腐、少量坚果或香蕉。"}
+    ],
+    exploreHeading:"探索更多睡眠工具",
+    exploreSub:"",
+    tools:{
+      meal:{name:"睡前饮食计算器",desc:"输入就寝时间与晚餐类型，算出最晚该在几点吃完。"},
+      caffeine:{name:"咖啡因截止计算器",desc:"输入就寝时间与敏感度，找出你最后一杯的安全时刻。"},
+      bedtime:{name:"就寝时间计算器",desc:"输入你需要起床的时间，我们按 90 分钟睡眠周期倒推。"},
+      wake:{name:"醒来时间计算器",desc:"输入你计划就寝的时间，我们叠加睡眠周期找出最佳起床时刻。"},
+      duration:{name:"睡眠时长计算器",desc:"输入就寝与起床时间，查看总睡眠、完成的周期数以及质量评级。"},
+      nap:{name:"午睡计算器",desc:"输入当前时间，查看提神小憩或完整周期午睡的最佳窗口。"},
+      window:{name:"睡眠时段助手",desc:"选择你空闲可睡的时间范围，我们会找出能凑满 90 分钟完整周期的最佳就寝时间。"},
+      log:{name:"睡眠记录与趋势",desc:"记录几个晚上，把你的睡眠变成可视化趋势。"},
+      checklist:{name:"睡眠引导清单",desc:"为更好睡眠规划一整天——从下午戒咖啡因到熄灯就寝。"},
+      breathing:{name:"睡前放松呼吸计时器",desc:"跟着舒缓圆圈，用 4-6、4-7-8 或方块呼吸在睡前放松。"}
+    },
+    footTag:"一款免费的睡眠计算器与就寝规划工具。为更清爽的早晨而打造。",
+    footTools:"工具", footLearn:"了解更多", footSources:"数据来源",
+    disc:"Restcalc 仅提供一般性睡眠信息，用作教育用途，不能替代医疗建议。如果你有长期睡眠问题，请咨询医疗专业人士。"
+  }
+};
+
+const MEALS = {
+  normal:{en:'Normal dinner', zh:'普通晚餐', min:2, max:3, note:{en:'A standard dinner is usually cleared in about 3 hours. Finishing 2–3 hours before bed keeps digestion from competing with sleep.', zh:'普通晚餐通常约 3 小时可排空。睡前 2–3 小时吃完，可避免消化与睡眠互相干扰。'}},
+  heavy:{en:'Heavy, oily, or meat-heavy dinner', zh:'较油腻、肉多、量大的晚餐', min:3, max:4, note:{en:'Fatty and protein-rich meals slow gastric emptying, so give yourself 3–4 hours before lying down.', zh:'油腻、高蛋白的饭菜会拖慢胃排空，请预留 3–4 小时再躺下。'}},
+  snack:{en:'Light snack (low-fat, low-sugar)', zh:'少量加餐（非高脂高糖）', min:1, max:2, note:{en:'A small, light snack is easier to digest — 1–2 hours of buffer is usually enough.', zh:'少量、清淡的加餐更易消化，通常预留 1–2 小时就够。'}},
+  reflux:{en:'Reflux, heartburn, high blood sugar, or pregnancy', zh:'有胃酸反流、烧心、高血糖或怀孕', min:3, max:4, note:{en:'Lying down soon after eating worsens reflux and blood-sugar swings. Aim to finish 3–4 hours before bed.', zh:'吃完不久就躺下会加重反流与血糖波动。目标是睡前 3–4 小时吃完。'}}
+};
+
+let lang='zh';
+
+function toMin(t){const a=t.split(':').map(Number);return a[0]*60+a[1];}
+function fmt12(min){min=((min%1440)+1440)%1440;let h=Math.floor(min/60),m=min%60;const ap=h>=12?'PM':'AM';h=h%12;if(h===0)h=12;return h+':'+String(m).padStart(2,'0')+' '+ap;}
+function setText(sel,html){const el=document.querySelector(sel);if(el)el.innerHTML=html;}
+
+function buildMealOptions(){
+  const sel=document.getElementById('meal-type'); if(!sel)return;
+  const cur=sel.value||'normal';
+  sel.innerHTML=Object.keys(MEALS).map(function(k){
+    return '<option value="'+k+'">'+MEALS[k][lang]+'</option>';
+  }).join('');
+  if(MEALS[cur])sel.value=cur;
+}
+
+function calcMeal(){
+  const bed=toMin(document.getElementById('meal-bed').value||'23:00');
+  const type=document.getElementById('meal-type').value||'normal';
+  const m=MEALS[type]||MEALS.normal;
+  let latest=bed-m.min*60;
+  let earliest=bed-m.max*60;
+  const prevL=(latest<0), prevE=(earliest<0);
+  if(prevL)latest+=1440;
+  if(prevE)earliest+=1440;
+  const t=T[lang];
+  const html='<div class="res-row"><span class="res-time">'+fmt12(latest)+'</span>'+
+    '<span class="res-meta"><b>'+m[lang]+'</b>'+(prevL?' <span class="pill">'+t.prev+'</span>':'')+'</span></div>'+
+    '<div class="res-sub">'+t.mealWindow.replace('{a}',fmt12(earliest)).replace('{b}',fmt12(latest))+'</div>';
+  document.getElementById('meal-results').innerHTML=html;
+  setText('#meal-note', m.note[lang]);
+}
+
+function renderFAQ(){
+  const l=T[lang].faq;
+  document.getElementById('faq-list').innerHTML=l.map(function(x){
+    return '<div class="faq-item"><div class="faq-q">'+x.q+'<span class="chev">▾</span></div><div class="faq-a"><div>'+x.a+'</div></div></div>';
+  }).join('');
+  document.querySelectorAll('#faq-list .faq-item').forEach(function(it){
+    it.querySelector('.faq-q').addEventListener('click',function(){
+      const a=it.querySelector('.faq-a');
+      const open=it.classList.toggle('open');
+      a.style.maxHeight=open?a.scrollHeight+'px':null;
+    });
+  });
+  const ld={"@context":"https://schema.org","@type":"FAQPage","mainEntity":l.map(function(x){return {"@type":"Question","name":x.q,"acceptedAnswer":{"@type":"Answer","text":x.a}};})};
+  document.getElementById('faq-jsonld').textContent=JSON.stringify(ld);
+}
+
+function bindTheme(){
+  const saved=localStorage.getItem('restcalc-theme');
+  if(saved)document.documentElement.setAttribute('data-theme',saved);
+  const b=document.getElementById('themeBtn');
+  if(b)b.addEventListener('click',function(){
+    const cur=document.documentElement.getAttribute('data-theme');
+    const next=cur==='dark'?'light':'dark';
+    if(next==='dark')document.documentElement.setAttribute('data-theme','dark');
+    else document.documentElement.removeAttribute('data-theme');
+    localStorage.setItem('restcalc-theme',next);
+  });
+}
+
+const TOOL_LIST=[
+  ['/tools/wake-up-calculator.html','Wake-up Calculator','醒来时间计算器'],
+  ['/tools/sleep-duration-calculator.html','Sleep Duration Calculator','睡眠时长计算器'],
+  ['/tools/nap-calculator.html','Nap Calculator','午睡计算器'],
+  ['/tools/sleep-window-calculator.html','Sleep Window Helper','睡眠时段助手'],
+  ['/tools/sleep-log.html','Sleep Log & Trend','睡眠记录与趋势'],
+  ['/tools/caffeine-cutoff-calculator.html','Caffeine Cutoff Calculator','咖啡因截止计算器'],
+  ['/tools/meal-cutoff-calculator.html','Pre-Sleep Meal Calculator','睡前饮食计算器'],
+  ['/tools/breathing-timer.html','Bedtime Breathing Timer','睡前呼吸计时器'],
+  ['/tools/sleep-routine-checklist.html','Sleep Guidance Checklist','睡眠引导清单']
+];
+function buildToolNav(){
+  const d=document.getElementById('toolDropdown'); if(!d)return;
+  const i=(lang==='zh')?2:1;
+  d.innerHTML=TOOL_LIST.map(function(it){return '<a href="'+it[0]+'">'+it[i]+'</a>';}).join('');
+}
+
+function init(){
+  buildToolNav();
+  buildMealOptions();
+  bindTheme();
+  calcMeal();
+  renderFAQ();
+  const bed=document.getElementById('meal-bed');
+  const type=document.getElementById('meal-type');
+  if(bed)bed.addEventListener('input',calcMeal);
+  if(type)type.addEventListener('change',calcMeal);
+  const y=document.getElementById('year'); if(y)y.textContent=new Date().getFullYear();
+}
+init();
+</script>
+<script src="/i18n.js"></script>
+</body>
+</html>
