@@ -16,10 +16,10 @@
 <meta name="twitter:title" content="How Caffeine Affects Your Sleep — Restcalc">
 <meta name="twitter:description" content="Why afternoon coffee can still keep you up, and the simple cutoff rule that fixes it.">
 <link rel="alternate" hreflang="en" href="https://www.rest-calc.com/learn/caffeine-and-sleep.html">
-<link rel="alternate" hreflang="zh" href="https://www.rest-calc.com/learn/caffeine-and-sleep.html?lang=zh">
+<link rel="alternate" hreflang="zh-Hans" href="https://www.rest-calc.com/zh/learn/caffeine-and-sleep.html">
 <link rel="alternate" hreflang="x-default" href="https://www.rest-calc.com/learn/caffeine-and-sleep.html">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌙</text></svg>">
-<link rel="stylesheet" href="../styles.css">
+<link rel="stylesheet" href="/styles.css">
 <script type="application/ld+json">
 {
   "@context":"https://schema.org",
@@ -55,10 +55,7 @@
       <a href="../privacy.html" data-i18n="nav.privacy">Privacy</a>
     </nav>
     <span class="nav-spacer"></span>
-    <span class="lang-foot" style="margin-top:0">
-      <button id="langEn">EN</button>
-      <button id="langZh">中文</button>
-    </span>
+    <span class="lang-foot" id="lang-switch" style="margin-top:0"></span>
     <button class="btn icon" id="themeBtn" title="Toggle theme">🌗</button>
   </div>
 </header>
@@ -265,7 +262,7 @@ const T = {
   }
 };
 
-let lang=(new URLSearchParams(location.search).get('lang')==='zh')?'zh':(localStorage.getItem('restcalc-lang')||'en');
+let lang='en';
 
 function applyStatic(){
   document.documentElement.lang=(lang==='zh')?'zh-CN':'en';
@@ -276,8 +273,6 @@ function applyStatic(){
   });
   const md=document.querySelector('meta[name="description"]');
   if(md)md.setAttribute('content',T[lang].metaDesc);
-  document.getElementById('langEn').classList.toggle('active',lang==='en');
-  document.getElementById('langZh').classList.toggle('active',lang==='zh');
 }
 
 function setLang(l){
@@ -308,11 +303,11 @@ function bindTheme(){
 
 function init(){
   applyStatic();
-  bindLang();
   bindTheme();
   const y=document.getElementById('year'); if(y)y.textContent=new Date().getFullYear();
 }
 init();
 </script>
+<script src="/i18n.js"></script>
 </body>
 </html>
