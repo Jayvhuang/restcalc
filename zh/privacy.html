@@ -38,6 +38,8 @@ h1{font-size:28px;margin:0 0 6px}
 .note{color:var(--muted);font-size:13.5px}
 a.back{display:inline-block;margin-top:8px;color:var(--accent);text-decoration:none;font-weight:700}
 .lang a{display:inline-block;border:1px solid var(--border);background:var(--surface-2);color:var(--muted);padding:6px 12px;border-radius:999px;cursor:pointer;font-size:13px;font-weight:700;text-decoration:none}
+.home-btn{display:inline-block;border:1px solid var(--border);background:var(--surface-2);color:var(--muted);padding:6px 12px;border-radius:999px;cursor:pointer;font-size:13px;font-weight:700;text-decoration:none}
+.home-btn:hover{background:var(--accent);color:#fff;border-color:var(--accent)}
 .lang a.active{background:var(--accent);color:#fff;border-color:var(--accent)}
 footer{background:var(--surface);border-top:1px solid var(--border);padding:22px 0;color:var(--muted);font-size:13px;text-align:center}
 </style>
@@ -45,8 +47,8 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:22px
 <body>
 <header class="site">
   <div class="wrap bar">
-    <a class="logo" href="./"><span class="moon">🌙</span><span>Rest</span>calc</a>
-    <div class="lang"><span class="lang-foot" id="lang-switch"></span></div>
+    <a class="logo" href="/zh/"><span class="moon">🌙</span><span>Rest</span>calc</a>
+    <div class="lang"><a class="home-btn" href="/zh/">← 主页</a><span class="lang-foot" id="lang-switch"></span></div>
   </div>
 </header>
 
@@ -96,7 +98,7 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:22px
       <p class="note">对本政策有疑问？请通过邮箱联系站点运营方：<b>Jayvhzw@gmail.com</b>。</p>
     </div>
 
-    <a class="back" href="./">← 返回 Restcalc</a>
+    <a class="back" href="/zh/">← 返回 Restcalc</a>
   </div>
 </main>
 
