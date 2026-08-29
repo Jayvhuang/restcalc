@@ -460,4 +460,13 @@
     <priority>0.7</priority>
     <lastmod>2026-08-29</lastmod>
   </url>
+  <url>
+    <loc>https://www.rest-calc.com/learn/sleep-on-couch-vs-bed.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.rest-calc.com/learn/sleep-on-couch-vs-bed.html"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://www.rest-calc.com/zh/learn/sleep-on-couch-vs-bed.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.rest-calc.com/learn/sleep-on-couch-vs-bed.html"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <lastmod>2026-08-29</lastmod>
+  </url>
 </urlset>
