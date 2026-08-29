@@ -38,6 +38,7 @@ Each tool is a standalone page with its own calculator, explanation, and FAQ.
 - [How to Track Your Sleep: A Simple 90-Minute-Cycle Log](https://www.rest-calc.com/learn/sleep-log.html) · 中文版 [如何记录睡眠：一个简单的 90 分钟周期日志](https://www.rest-calc.com/zh/learn/sleep-log.html)
 - [A Full-Day Sleep Routine Checklist](https://www.rest-calc.com/learn/sleep-routine-checklist.html) · 中文版 [一份覆盖全天的睡眠引导清单](https://www.rest-calc.com/zh/learn/sleep-routine-checklist.html)
 - [Breathing Exercises for Sleep: 4-6, 4-7-8, and Box Breathing](https://www.rest-calc.com/learn/breathing-for-sleep.html) · 中文版 [助眠呼吸练习：4-6、4-7-8 与方块呼吸](https://www.rest-calc.com/zh/learn/breathing-for-sleep.html)
+- [Asleep on the Couch, Wide Awake in Bed? The Science of Conditioned Arousal](https://www.rest-calc.com/learn/sleep-on-couch-vs-bed.html) · 中文版 [沙发一躺就睡着，在床上却翻来覆去，为什么呢？](https://www.rest-calc.com/zh/learn/sleep-on-couch-vs-bed.html)
 
 ## How Sleep Cycles Work
 
